@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://rbmewcknu8gp"
+path="res://.godot/imported/frog.aseprite-66a6420862d8353f5e0d10a346630bd8.res"
+
+[deps]
+
+source_file="res://frog/frog.aseprite"
+dest_files=["res://.godot/imported/frog.aseprite-66a6420862d8353f5e0d10a346630bd8.res"]
+
+[params]
+

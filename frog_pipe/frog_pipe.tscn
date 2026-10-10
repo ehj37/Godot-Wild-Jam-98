@@ -1,0 +1,33 @@
+[gd_scene format=4 uid="uid://coil6jaqwwyf3"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_4p3nq"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABgAAAAUklGRlgAAABXRUJQVlA4TEsAAAAvH8AHEB8gJCBTZtkhi5j/QDWwjWxbyY0pUHNKInc7TVASBdjNcPKI/itM24bJbk/RZRa7bU9Bsdj2HLwfygFCKQNIdBAtQKr/vgEA")
+size_override = Vector2(32, 32)
+
+[node name="FrogPipe" type="Node2D" unique_id=852955402]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1595138800]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_4p3nq")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://frog_pipe/frog_pipe.aseprite",
+"source_uid": 9074651925626536974
+}
+metadata/_aseprite_wizard_source_file_hash_ = "b1c0f53e412030928e97cd1e3b8c181f"

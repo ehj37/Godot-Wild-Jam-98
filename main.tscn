@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dc7gm3ywju780"]
+
+[ext_resource type="Script" uid="uid://c5fglonfx4x5p" path="res://level.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dwk3a5y3tst4v" path="res://frog/frog.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="4_1bvp3"]
+
+[node name="Main" type="Node2D" unique_id=967149725]
+script = ExtResource("1_ig7tw")
+
+[node name="Frog" parent="." unique_id=1005689057 instance=ExtResource("2_0xm2m")]
+position = Vector2(112, 496)
+direction = 3
+grid_location = Vector2i(3, 15)
+
+[node name="Frog2" parent="." unique_id=1664283438 instance=ExtResource("2_0xm2m")]
+position = Vector2(80, 496)
+direction = 3
+grid_location = Vector2i(2, 15)
+
+[node name="Frog3" parent="." unique_id=716271338 instance=ExtResource("2_0xm2m")]
+position = Vector2(48, 496)
+direction = 3
+grid_location = Vector2i(1, 15)
+
+[node name="Grid" parent="." unique_id=393757855 instance=ExtResource("3_h2yge")]
+
+[node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("4_1bvp3")]
+position = Vector2(16, 496)
+rotation = 1.5707964
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=898425967]
+position = Vector2(320, 464)
+zoom = Vector2(2, 2)
