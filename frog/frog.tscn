@@ -3,19 +3,20 @@
 [ext_resource type="Script" uid="uid://wu3t8s3ue7ar" path="res://frog/frog.gd" id="1_e7v6w"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_e7v6w"]
-_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABmAAAAUklGRl4AAABXRUJQVlA4TFIAAAAvH8AHECcgECB0+H+TYUMgkCSxv98UAoEUBzPO8x9gBssPito2kvYi0M4AGC2Skz+plbrP/Ub0fwLSJwayFgTwYEBVOgBkhReU4cBM8jmnaT8J")
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABuAAAAUklGRmYAAABXRUJQVlA4TFkAAAAvH8AHEC9AkG2zadyf7RrTIMi22SDm73eJCwRSHMw4z38Aoeey0gZGkWw1IgoYggEKAWGNZP9itupduUb0fwLMJg6sNnKDpnXoygFglfxDOStcRv6+L2o7CQA=")
 size_override = Vector2(32, 32)
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_88uyt"]
-_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABOAAAAUklGRkYAAABXRUJQVlA4TDkAAAAvH8AHEB8gEEjyFx1jjYj5D1ygNJKk6AD3pgShnh5FCASGW+z5iP5PgEXq9bMhiUOVA1MuFLG3LFIA")
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABYAAAAUklGRlAAAABXRUJQVlA4TEQAAAAvH8AHECcgECD4/7RhQ0BQ5P9oMf8BOK5AUW0rkVMAMzxMQAKn/qUAt24j+j8B6VfhrQtoflEjLwNgv0zTXtK8t6VPBQ==")
 size_override = Vector2(32, 32)
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_j225e"]
-_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABiAAAAUklGRloAAABXRUJQVlA4TE4AAAAvH8AHECcgECB0+H+TYUMgkCSxv98UAoEUBzPO8x9gBssPagIAaXAEkJGABjaY/UttL96I/k8AWFH1LCEiuh954hNcnhRBrPEEyhgRjAo=")
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABuAAAAUklGRmYAAABXRUJQVlA4TFkAAAAvH8AHEC9AkG2zadyf7RrTIMi22SDm73eJCwRSHMw4z38Aoeey0ga1sW1D1tz/n5waVKCDvf9imJdKI/o/AeoXa8UCEZFGMhMVg7QrIvREeiIaHlH9HK8+FQA=")
 size_override = Vector2(32, 32)
 
 [node name="Frog" type="Node2D" unique_id=1005689057 groups=["frog"]]
 script = ExtResource("1_e7v6w")
+on_blocked_behavior = null
 
 [node name="SpriteSide" type="Sprite2D" parent="." unique_id=1980519305]
 texture_filter = 1
@@ -43,7 +44,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://frog/frog_right.aseprite",
 "source_uid": 1147915934375564785
 }
-metadata/_aseprite_wizard_source_file_hash_ = "81c93b48ac9df11ea327d8a5ec6fbb0f"
+metadata/_aseprite_wizard_source_file_hash_ = "850e262a439baf1289f5acf912dda240"
 
 [node name="SpriteUp" type="Sprite2D" parent="." unique_id=1758628213]
 texture_filter = 1
@@ -70,7 +71,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://frog/frog_up.aseprite",
 "source_uid": 2454060633955329381
 }
-metadata/_aseprite_wizard_source_file_hash_ = "92b89c445665d1c301a4f781923c84ee"
+metadata/_aseprite_wizard_source_file_hash_ = "ac73be68f4a3c8a013682fad500753bb"
 
 [node name="SpriteDown" type="Sprite2D" parent="." unique_id=1743307107]
 texture_filter = 1
@@ -97,4 +98,8 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://frog/frog_down.aseprite",
 "source_uid": 3708121150384852211
 }
-metadata/_aseprite_wizard_source_file_hash_ = "293c48f3e8794785354bae5ec9208b09"
+metadata/_aseprite_wizard_source_file_hash_ = "205facced276d3e51249321c2801ef84"
+
+[node name="NumberLabel" type="Label" parent="." unique_id=279380440]
+offset_right = 40.0
+offset_bottom = 23.0

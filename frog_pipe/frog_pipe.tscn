@@ -2,16 +2,17 @@
 
 [ext_resource type="Script" uid="uid://cl7j1nby0at7k" path="res://frog_pipe/frog_pipe.gd" id="1_f5mxp"]
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_4p3nq"]
-_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABgAAAAUklGRlgAAABXRUJQVlA4TEsAAAAvH8AHEB8gJCBTZtkhi5j/QDWwjWxbyY0pUHNKInc7TVASBdjNcPKI/itM24bJbk/RZRa7bU9Bsdj2HLwfygFCKQNIdBAtQKr/vgEA")
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_f5mxp"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAAB4AAAAUklGRnAAAABXRUJQVlA4TGMAAAAvH8AHEDdAJECa5AbdbHaMkzVZ8x+gDIZDMDCKJEnRaDgHG+MAHEytA3Bw/k0wfyP6rzBtGya7PUWupyW0Po9eIVTEAmofc2+Q+gUhxXxFnUREijoAuC1hmQARq/B1+KH4vzcA")
 size_override = Vector2(32, 32)
 
 [node name="FrogPipe" type="Node2D" unique_id=852955402 groups=["frog_pipe"]]
 script = ExtResource("1_f5mxp")
+grid_residency = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1595138800]
 texture_filter = 1
-texture = SubResource("PortableCompressedTexture2D_4p3nq")
+texture = SubResource("PortableCompressedTexture2D_f5mxp")
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -33,4 +34,4 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://frog_pipe/frog_pipe.aseprite",
 "source_uid": 9074651925626536974
 }
-metadata/_aseprite_wizard_source_file_hash_ = "b1c0f53e412030928e97cd1e3b8c181f"
+metadata/_aseprite_wizard_source_file_hash_ = "475e304b8cb104cb756fed7e07d47216"

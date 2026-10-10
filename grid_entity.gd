@@ -4,6 +4,7 @@ class_name GridEntity
 
 extends Node2D
 
+@export var grid_residency: GridState.Residency
 var grid_location: Vector2i:
 	set(new_value):
 		grid_location = new_value
@@ -20,4 +21,4 @@ func _process(_delta: float) -> void:
 func _ready() -> void:
 	if !Engine.is_editor_hint():
 		grid_location = Grid.get_nearest_grid_location(global_position)
-		EntityRepository.register_entity(self, grid_location)
+		GridState.register_residency(grid_residency, grid_location)

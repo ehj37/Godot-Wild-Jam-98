@@ -4,8 +4,8 @@ class_name Frog
 
 extends GridEntity
 
-enum Direction { UP, DOWN, LEFT, RIGHT }
-enum OnCollideBehavior { TURN_CW, TURN_CCW, FLIP, STOP }
+enum Direction { UP, RIGHT, DOWN, LEFT }
+enum OnBlockedBehavior { TURN_CW, TURN_CCW, FLIP, STOP }
 
 const DIRECTION_TO_GRID_LOCATION_OFFSET: Dictionary = {
 	Direction.UP: Vector2i.UP,
@@ -18,17 +18,37 @@ const DIRECTION_TO_GRID_LOCATION_OFFSET: Dictionary = {
 	set(new_value):
 		direction = new_value
 		_set_sprite_from_direction()
-@export var on_collide_behavior: OnCollideBehavior
+@export var on_blocked_behavior: OnBlockedBehavior
+
+@onready var _number_label: Label = $NumberLabel
 
 
 func get_next_grid_location() -> Vector2i:
 	return grid_location + DIRECTION_TO_GRID_LOCATION_OFFSET.get(direction)
 
 
+func get_next_direction() -> Direction:
+	match on_blocked_behavior:
+		OnBlockedBehavior.TURN_CW:
+			return wrapi(direction + 1, 0, Direction.values().size()) as Direction
+		OnBlockedBehavior.TURN_CCW:
+			return wrapi(direction - 1, 0, Direction.values().size()) as Direction
+		OnBlockedBehavior.FLIP:
+			return wrapi(direction + 2, 0, Direction.values().size()) as Direction
+		OnBlockedBehavior.STOP:
+			# TODO: Hm
+			pass
+
+	assert(false, "Unhandled OnBlockedBehavior")
+	return Direction.UP
+
+
 func _ready() -> void:
 	super()
 
 	if !Engine.is_editor_hint():
+		var frog_number: int = GridState.get_num_frogs()
+		_number_label.text = str(frog_number)
 		_set_sprite_from_direction()
 
 

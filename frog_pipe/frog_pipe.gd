@@ -4,19 +4,13 @@ class_name FrogPipe
 
 extends GridEntity
 
+@export var disabled: bool = false
 @export var direction: Frog.Direction:
 	set(new_value):
 		direction = new_value
 		var sprite: Sprite2D = get_node("Sprite2D")
-		match direction:
-			Frog.Direction.UP:
-				sprite.rotation = 0
-			Frog.Direction.DOWN:
-				sprite.rotation = PI
-			Frog.Direction.LEFT:
-				sprite.rotation = 1.5 * PI
-			Frog.Direction.RIGHT:
-				sprite.rotation = PI / 2
+		sprite.rotation = direction * PI / 2.0
+@export var on_blocked_behavior: Frog.OnBlockedBehavior
 
 
 func get_spawn_location() -> Vector2i:
