@@ -1,10 +1,13 @@
 [gd_scene format=4 uid="uid://coil6jaqwwyf3"]
 
+[ext_resource type="Script" uid="uid://cl7j1nby0at7k" path="res://frog_pipe/frog_pipe.gd" id="1_f5mxp"]
+
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_4p3nq"]
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABgAAAAUklGRlgAAABXRUJQVlA4TEsAAAAvH8AHEB8gJCBTZtkhi5j/QDWwjWxbyY0pUHNKInc7TVASBdjNcPKI/itM24bJbk/RZRa7bU9Bsdj2HLwfygFCKQNIdBAtQKr/vgEA")
 size_override = Vector2(32, 32)
 
-[node name="FrogPipe" type="Node2D" unique_id=852955402]
+[node name="FrogPipe" type="Node2D" unique_id=852955402 groups=["frog_pipe"]]
+script = ExtResource("1_f5mxp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1595138800]
 texture_filter = 1

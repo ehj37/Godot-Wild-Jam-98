@@ -14,7 +14,7 @@ size_override = Vector2(32, 32)
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABiAAAAUklGRloAAABXRUJQVlA4TE4AAAAvH8AHECcgECB0+H+TYUMgkCSxv98UAoEUBzPO8x9gBssPagIAaXAEkJGABjaY/UttL96I/k8AWFH1LCEiuh954hNcnhRBrPEEyhgRjAo=")
 size_override = Vector2(32, 32)
 
-[node name="Frog" type="Node2D" unique_id=1005689057]
+[node name="Frog" type="Node2D" unique_id=1005689057 groups=["frog"]]
 script = ExtResource("1_e7v6w")
 
 [node name="SpriteSide" type="Sprite2D" parent="." unique_id=1980519305]

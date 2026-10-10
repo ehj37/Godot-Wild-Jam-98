@@ -20,6 +20,10 @@ static func get_global_position_center(grid_position: Vector2i) -> Vector2:
 	return global_position_upper_left + center_offset
 
 
+static func get_nearest_grid_location(global_pos: Vector2) -> Vector2i:
+	return Vector2i(floori(global_pos.x / SQUARE_SIDE_DIM), floori(global_pos.y / SQUARE_SIDE_DIM))
+
+
 static func is_in_bounds(grid_position: Vector2i) -> bool:
 	return (
 		grid_position.x >= 0

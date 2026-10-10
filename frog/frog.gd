@@ -2,7 +2,7 @@
 
 class_name Frog
 
-extends Node2D
+extends GridEntity
 
 enum Direction { UP, DOWN, LEFT, RIGHT }
 enum OnCollideBehavior { TURN_CW, TURN_CCW, FLIP, STOP }
@@ -18,12 +18,7 @@ const DIRECTION_TO_GRID_LOCATION_OFFSET: Dictionary = {
 	set(new_value):
 		direction = new_value
 		_set_sprite_from_direction()
-
 @export var on_collide_behavior: OnCollideBehavior
-@export var grid_location: Vector2i:
-	set(new_value):
-		grid_location = new_value
-		global_position = Grid.get_global_position_center(grid_location)
 
 
 func get_next_grid_location() -> Vector2i:
@@ -31,11 +26,10 @@ func get_next_grid_location() -> Vector2i:
 
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
-		return
+	super()
 
-	_set_sprite_from_direction()
-	FrogRepository.register_frog(self)
+	if !Engine.is_editor_hint():
+		_set_sprite_from_direction()
 
 
 func _set_sprite_from_direction() -> void:
