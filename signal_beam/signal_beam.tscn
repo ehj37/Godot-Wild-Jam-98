@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://2ahqli5fghs6"]
 
 [ext_resource type="Script" uid="uid://bd1juh7uw4a30" path="res://signal_beam/signal_beam.gd" id="1_41q74"]
+[ext_resource type="PackedScene" uid="uid://dnswgncfyvj0n" path="res://config_panel/config_panel.tscn" id="2_3ip1k"]
 
-[node name="SignalBeam" type="Node2D" unique_id=459733674 groups=["signal_emitter"]]
+[node name="SignalBeam" type="Node2D" unique_id=459733674 node_paths=PackedStringArray("config_panel") groups=["signal_emitter"]]
 script = ExtResource("1_41q74")
+config_panel = NodePath("ConfigPanel")
+power_on = null
+instruction = null
+power_button_stuck = null
+instruction_button_stuck = null
 grid_residency = 3
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=559946615]
@@ -11,3 +17,9 @@ offset_left = -16.0
 offset_top = -16.0
 offset_right = 16.0
 offset_bottom = 16.0
+
+[node name="ConfigPanel" parent="." unique_id=1312905126 instance=ExtResource("2_3ip1k")]
+offset_left = 31.0
+offset_top = -31.0
+offset_right = 31.0
+offset_bottom = -31.0

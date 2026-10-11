@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://coil6jaqwwyf3"]
 
 [ext_resource type="Script" uid="uid://cl7j1nby0at7k" path="res://frog_pipe/frog_pipe.gd" id="1_f5mxp"]
+[ext_resource type="PackedScene" uid="uid://dnswgncfyvj0n" path="res://config_panel/config_panel.tscn" id="2_25iq8"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_f5mxp"]
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAAB4AAAAUklGRnAAAABXRUJQVlA4TGMAAAAvH8AHEDdAJECa5AbdbHaMkzVZ8x+gDIZDMDCKJEnRaDgHG+MAHEytA3Bw/k0wfyP6rzBtGya7PUWupyW0Po9eIVTEAmofc2+Q+gUhxXxFnUREijoAuC1hmQARq/B1+KH4vzcA")
@@ -8,6 +9,7 @@ size_override = Vector2(32, 32)
 
 [node name="FrogPipe" type="Node2D" unique_id=852955402 groups=["frog_pipe"]]
 script = ExtResource("1_f5mxp")
+on_blocked_behavior = 0
 grid_residency = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1595138800]
@@ -35,3 +37,9 @@ metadata/_aseprite_wizard_config_ = {
 "source_uid": 9074651925626536974
 }
 metadata/_aseprite_wizard_source_file_hash_ = "475e304b8cb104cb756fed7e07d47216"
+
+[node name="ConfigPanel" parent="." unique_id=1312905126 instance=ExtResource("2_25iq8")]
+offset_left = 25.0
+offset_top = -21.0
+offset_right = 25.0
+offset_bottom = -21.0

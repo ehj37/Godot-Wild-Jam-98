@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wu3t8s3ue7ar" path="res://frog/frog.gd" id="1_e7v6w"]
 [ext_resource type="PackedScene" uid="uid://cjuq3prfitu4k" path="res://frog/on_blocked_indicator/on_blocked_indicator.tscn" id="2_88uyt"]
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme.tres" id="2_j225e"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_e7v6w"]
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABuAAAAUklGRmYAAABXRUJQVlA4TFkAAAAvH8AHEC9AkG2zadyf7RrTIMi22SDm73eJCwRSHMw4z38Aoeey0gZGkWw1IgoYggEKAWGNZP9itupduUb0fwLMJg6sNnKDpnXoygFglfxDOStcRv6+L2o7CQA=")
@@ -101,7 +102,10 @@ metadata/_aseprite_wizard_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "205facced276d3e51249321c2801ef84"
 
 [node name="NumberLabel" type="Label" parent="." unique_id=279380440]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 48.0
+offset_bottom = 30.0
+theme = ExtResource("2_j225e")
 
 [node name="OnBlockedIndicator" parent="." unique_id=2130203110 instance=ExtResource("2_88uyt")]

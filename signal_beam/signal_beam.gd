@@ -97,6 +97,9 @@ func _get_unblocked_beam_range() -> BeamRange:
 
 
 func _draw() -> void:
+	if Engine.is_editor_hint() || !power_on:
+		return
+
 	var effected_grid_locations: Array[Vector2i] = get_effected_grid_locations()
 	for effected_grid_location: Vector2i in effected_grid_locations:
 		var center_global_pos: Vector2 = Grid.get_global_position_center(effected_grid_location)

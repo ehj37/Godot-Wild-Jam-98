@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://s5aaltkvvxil"]
 
 [ext_resource type="Script" uid="uid://cs13rdspnhhbs" path="res://signal_tower/signal_tower.gd" id="1_hpco0"]
+[ext_resource type="PackedScene" uid="uid://dnswgncfyvj0n" path="res://config_panel/config_panel.tscn" id="2_d5s1v"]
 
-[node name="SignalTower" type="Node2D" unique_id=990745098 groups=["signal_emitter"]]
+[node name="SignalTower" type="Node2D" unique_id=990745098 node_paths=PackedStringArray("config_panel") groups=["signal_emitter"]]
 script = ExtResource("1_hpco0")
+config_panel = NodePath("ConfigPanel")
+instruction = null
 grid_residency = 3
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1792023108]
@@ -12,3 +15,9 @@ offset_top = -16.0
 offset_right = 16.0
 offset_bottom = 16.0
 color = Color(0.19215687, 1, 1, 1)
+
+[node name="ConfigPanel" parent="." unique_id=1312905126 instance=ExtResource("2_d5s1v")]
+offset_left = 26.0
+offset_top = -22.0
+offset_right = 26.0
+offset_bottom = -22.0

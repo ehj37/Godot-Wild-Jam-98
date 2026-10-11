@@ -19,7 +19,6 @@ script = ExtResource("1_ig7tw")
 position = Vector2(16, 80)
 disabled = true
 direction = 1
-on_blocked_behavior = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=898425967]
 position = Vector2(320, 464)
@@ -42,8 +41,8 @@ direction = 1
 
 [node name="FrogPipe5" parent="." unique_id=204364806 instance=ExtResource("4_1bvp3")]
 position = Vector2(16, 368)
+instruction = 1
 direction = 1
-on_blocked_behavior = 1
 
 [node name="FrogPipe6" parent="." unique_id=1376943342 instance=ExtResource("4_1bvp3")]
 position = Vector2(336, 400)
@@ -55,21 +54,35 @@ tile_map_data = PackedByteArray("AAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAA
 
 [node name="SignalBeam" parent="." unique_id=459733674 instance=ExtResource("6_7mycd")]
 position = Vector2(432, 464)
-on_blocked_behavior = 2
+power_on = true
+instruction = 2
+power_button_stuck = false
+instruction_button_stuck = false
 
 [node name="SignalBeam2" parent="." unique_id=702519854 instance=ExtResource("6_7mycd")]
 position = Vector2(624, 432)
 direction = 1
+power_on = true
+instruction = 0
+power_button_stuck = false
+instruction_button_stuck = false
 
 [node name="SignalBeam3" parent="." unique_id=10304098 instance=ExtResource("6_7mycd")]
 position = Vector2(560, 528)
 direction = 2
-on_blocked_behavior = 2
+power_on = true
+instruction = 0
+power_button_stuck = false
+instruction_button_stuck = false
 
 [node name="SignalBeam4" parent="." unique_id=927557942 instance=ExtResource("6_7mycd")]
 position = Vector2(336, 592)
 direction = 3
-on_blocked_behavior = 1
+power_on = true
+instruction = 0
+power_button_stuck = false
+instruction_button_stuck = false
 
 [node name="SignalTower" parent="." unique_id=990745098 instance=ExtResource("7_272bh")]
 position = Vector2(112, 528)
+instruction = 0

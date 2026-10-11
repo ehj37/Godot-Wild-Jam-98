@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dnswgncfyvj0n"]
+
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme.tres" id="1_0rura"]
+[ext_resource type="Script" uid="uid://dq6jscpfe0yde" path="res://config_panel/config_panel.gd" id="1_lhwt3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rura"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="ConfigPanel" type="Control" unique_id=1312905126]
+modulate = Color(1, 1, 1, 0.2509804)
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_0rura")
+script = ExtResource("1_lhwt3")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=813455804]
+custom_minimum_size = Vector2(110, 50)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0rura")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=991833594]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=644974764]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=119232356]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=348848692]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "POWER: "
+
+[node name="PowerButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=783683065]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+focus_mode = 0
+text = "ON"
+
+[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1579190044]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1926876688]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=932941572]
+layout_mode = 2
+text = "INSTRUCTION"
+horizontal_alignment = 1
+
+[node name="InstructionButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=260574986]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+focus_mode = 0
+text = "CLOCKWISE"
+autowrap_mode = 2
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PowerButton" to="." method="_on_power_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/InstructionButton" to="." method="_on_instruction_button_pressed"]

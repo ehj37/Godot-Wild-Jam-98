@@ -60,7 +60,7 @@ func _process(_delta: float) -> void:
 				new_frog.grid_residency = GridState.Residency.FROG
 				new_frog.grid_location = spawn_location
 				new_frog.direction = pipe.direction
-				new_frog.on_blocked_behavior = pipe.on_blocked_behavior
+				new_frog.on_blocked_behavior = pipe.instruction
 				var signal_blocked_behavior: Frog.OnBlockedBehavior = _get_signal_behavior_at(
 					new_frog.grid_location,
 					signal_emitters,
@@ -74,6 +74,14 @@ func _process(_delta: float) -> void:
 				await get_tree().create_timer(0.0).timeout
 
 		_turn_in_progress = false
+
+
+func _ready() -> void:
+	var signal_emitters: Array[SignalEmitter] = _get_signal_emitters()
+	for signal_emitter: SignalEmitter in signal_emitters:
+		signal_emitter.options_changed.connect(
+			func() -> void: _on_signal_emitter_options_changed(signal_emitter)
+		)
 
 
 func _get_frogs() -> Array[Frog]:
@@ -104,7 +112,18 @@ func _get_signal_behavior_at(
 			signal_emitter_to_effected_grid_locations.get(signal_emitter)
 		)
 		if effected_grid_locations.has(grid_location):
-			return signal_emitter.on_blocked_behavior
+			return signal_emitter.instruction
 
 	@warning_ignore("int_as_enum_without_cast", "int_as_enum_without_match")
 	return -1
+
+
+func _on_signal_emitter_options_changed(signal_emitter: SignalEmitter) -> void:
+	if !signal_emitter.power_on:
+		return
+
+	var effected_grid_locations: Array[Vector2i] = signal_emitter.get_effected_grid_locations()
+	# Note: Ugly, should prob maintain a location -> frog mapping
+	for frog: Frog in _get_frogs():
+		if effected_grid_locations.has(frog.grid_location):
+			frog.on_blocked_behavior = signal_emitter.instruction
