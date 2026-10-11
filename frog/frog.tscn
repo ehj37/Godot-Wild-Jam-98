@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dwk3a5y3tst4v"]
 
 [ext_resource type="Script" uid="uid://wu3t8s3ue7ar" path="res://frog/frog.gd" id="1_e7v6w"]
+[ext_resource type="PackedScene" uid="uid://cjuq3prfitu4k" path="res://frog/on_blocked_indicator/on_blocked_indicator.tscn" id="2_88uyt"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_e7v6w"]
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABuAAAAUklGRmYAAABXRUJQVlA4TFkAAAAvH8AHEC9AkG2zadyf7RrTIMi22SDm73eJCwRSHMw4z38Aoeey0gZGkWw1IgoYggEKAWGNZP9itupduUb0fwLMJg6sNnKDpnXoygFglfxDOStcRv6+L2o7CQA=")
@@ -16,7 +17,6 @@ size_override = Vector2(32, 32)
 
 [node name="Frog" type="Node2D" unique_id=1005689057 groups=["frog"]]
 script = ExtResource("1_e7v6w")
-on_blocked_behavior = null
 
 [node name="SpriteSide" type="Sprite2D" parent="." unique_id=1980519305]
 texture_filter = 1
@@ -103,3 +103,5 @@ metadata/_aseprite_wizard_source_file_hash_ = "205facced276d3e51249321c2801ef84"
 [node name="NumberLabel" type="Label" parent="." unique_id=279380440]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="OnBlockedIndicator" parent="." unique_id=2130203110 instance=ExtResource("2_88uyt")]

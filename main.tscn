@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://2ahqli5fghs6" path="res://signal_beam/signal_beam.tscn" id="6_7mycd"]
 
 [node name="Main" type="Node2D" unique_id=967149725]
 script = ExtResource("1_ig7tw")
@@ -44,9 +45,26 @@ direction = 1
 on_blocked_behavior = 1
 
 [node name="FrogPipe6" parent="." unique_id=1376943342 instance=ExtResource("4_1bvp3")]
-position = Vector2(464, 240)
-disabled = true
-direction = 3
+position = Vector2(336, 400)
+direction = 1
 
 [node name="Block" parent="." unique_id=770176600 instance=ExtResource("5_lquwl")]
-tile_map_data = PackedByteArray("AAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAAAABMAAAAAAAAAAAABABMAAAAAAAAAAAACABMAAAAAAAAAAAADABMAAAAAAAAAAAADAAsAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAAAABMAAAAAAAAAAAABABMAAAAAAAAAAAACABMAAAAAAAAAAAADABMAAAAAAAAAAAADAAsAAAAAAAAAAAARAAwAAAAAAAAAAAANAAkAAAAAAAAAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAJAA8AAAAAAAAAAAAJABAAAAAAAAAAAAAJABEAAAAAAAAAAAAJABIAAAAAAAAAAAAJABMAAAAAAAAAAAAJABQAAAAAAAAAAAAJABUAAAAAAAAAAAA=")
+
+[node name="SignalBeam" parent="." unique_id=459733674 instance=ExtResource("6_7mycd")]
+position = Vector2(432, 464)
+on_blocked_behavior = 2
+
+[node name="SignalBeam2" parent="." unique_id=702519854 instance=ExtResource("6_7mycd")]
+position = Vector2(624, 432)
+direction = 1
+
+[node name="SignalBeam3" parent="." unique_id=10304098 instance=ExtResource("6_7mycd")]
+position = Vector2(560, 528)
+direction = 2
+on_blocked_behavior = 2
+
+[node name="SignalBeam4" parent="." unique_id=927557942 instance=ExtResource("6_7mycd")]
+position = Vector2(336, 592)
+direction = 3
+on_blocked_behavior = 1

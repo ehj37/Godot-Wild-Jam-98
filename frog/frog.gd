@@ -18,7 +18,11 @@ const DIRECTION_TO_GRID_LOCATION_OFFSET: Dictionary = {
 	set(new_value):
 		direction = new_value
 		_set_sprite_from_direction()
-@export var on_blocked_behavior: OnBlockedBehavior
+		_update_on_blocked_indicator()
+@export var on_blocked_behavior: OnBlockedBehavior:
+	set(new_value):
+		on_blocked_behavior = new_value
+		_update_on_blocked_indicator()
 
 @onready var _number_label: Label = $NumberLabel
 
@@ -50,6 +54,7 @@ func _ready() -> void:
 		var frog_number: int = GridState.get_num_frogs()
 		_number_label.text = str(frog_number)
 		_set_sprite_from_direction()
+		_update_on_blocked_indicator()
 
 
 func _set_sprite_from_direction() -> void:
@@ -60,3 +65,9 @@ func _set_sprite_from_direction() -> void:
 	sprite_down.visible = direction == Direction.DOWN
 	sprite_side.visible = direction == Direction.LEFT || direction == Direction.RIGHT
 	sprite_side.flip_h = direction == Direction.LEFT
+
+
+func _update_on_blocked_indicator() -> void:
+	var on_blocked_indicator: OnBlockedIndicator = get_node("OnBlockedIndicator")
+	on_blocked_indicator.direction = direction
+	on_blocked_indicator.on_blocked_behavior = on_blocked_behavior

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bsl4vofmp8fpb"
+path="res://.godot/imported/on_blocked_clockwise.aseprite-fcdea5f3dc17cbaf9402bef782759a61.res"
+
+[deps]
+
+source_file="res://frog/on_blocked_indicator/on_blocked_clockwise.aseprite"
+dest_files=["res://.godot/imported/on_blocked_clockwise.aseprite-fcdea5f3dc17cbaf9402bef782759a61.res"]
+
+[params]
+
