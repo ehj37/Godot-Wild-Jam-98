@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bd1juh7uw4a30" path="res://signal_beam/signal_beam.gd" id="1_41q74"]
 
-[node name="SignalBeam" type="Node2D" unique_id=459733674 groups=["signal_beam"]]
+[node name="SignalBeam" type="Node2D" unique_id=459733674 groups=["signal_emitter"]]
 script = ExtResource("1_41q74")
 grid_residency = 3
 

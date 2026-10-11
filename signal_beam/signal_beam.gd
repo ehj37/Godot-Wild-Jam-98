@@ -2,12 +2,11 @@
 
 class_name SignalBeam
 
-extends GridEntity
+extends SignalEmitter
 
 enum Direction { UP, DOWN, LEFT, RIGHT }
 
 @export var direction: Direction
-@export var on_blocked_behavior: Frog.OnBlockedBehavior
 
 
 class BeamRange:

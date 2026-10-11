@@ -43,7 +43,7 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
 frog=""
 frog_pipe=""
-signal_beam=""
+signal_emitter=""
 
 [input]
 

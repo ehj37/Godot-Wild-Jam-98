@@ -14,15 +14,15 @@ func _process(_delta: float) -> void:
 	if !_turn_in_progress && Input.is_action_just_pressed("test"):
 		_turn_in_progress = true
 
-		var signal_beams: Array[SignalBeam] = _get_signal_beams()
+		var signal_emitters: Array[SignalEmitter] = _get_signal_emitters()
 		# NOTE: Currently, there's no reason why this would change as the frogs
 		# move. If a moving, non-frog, signal-beam-blocking entity came into
 		# being, this would potentially need recomputing (depending on when
 		# said entity would move relative to the frogs).
-		var signal_beam_to_effected_grid_locations: Dictionary
-		for signal_beam: SignalBeam in signal_beams:
-			signal_beam_to_effected_grid_locations.set(
-				signal_beam, signal_beam.get_effected_grid_locations()
+		var signal_emitter_to_effected_grid_locations: Dictionary
+		for signal_emitter: SignalEmitter in signal_emitters:
+			signal_emitter_to_effected_grid_locations.set(
+				signal_emitter, signal_emitter.get_effected_grid_locations()
 			)
 
 		var frogs: Array[Frog] = _get_frogs()
@@ -41,12 +41,11 @@ func _process(_delta: float) -> void:
 				)
 				frog.grid_location = next_grid_location
 
-				for signal_beam: SignalBeam in signal_beams:
-					var effected_grid_locations: Array[Vector2i] = (
-						signal_beam_to_effected_grid_locations.get(signal_beam)
-					)
-					if effected_grid_locations.has(frog.grid_location):
-						frog.on_blocked_behavior = signal_beam.on_blocked_behavior
+				var signal_blocked_behavior: Frog.OnBlockedBehavior = _get_signal_behavior_at(
+					frog.grid_location, signal_emitters, signal_emitter_to_effected_grid_locations
+				)
+				if signal_blocked_behavior != -1:
+					frog.on_blocked_behavior = signal_blocked_behavior
 
 			await get_tree().create_timer(0.0).timeout
 
@@ -62,12 +61,14 @@ func _process(_delta: float) -> void:
 				new_frog.grid_location = spawn_location
 				new_frog.direction = pipe.direction
 				new_frog.on_blocked_behavior = pipe.on_blocked_behavior
-				for signal_beam: SignalBeam in signal_beams:
-					var effected_grid_locations: Array[Vector2i] = (
-						signal_beam_to_effected_grid_locations.get(signal_beam)
-					)
-					if effected_grid_locations.has(new_frog.grid_location):
-						new_frog.on_blocked_behavior = signal_beam.on_blocked_behavior
+				var signal_blocked_behavior: Frog.OnBlockedBehavior = _get_signal_behavior_at(
+					new_frog.grid_location,
+					signal_emitters,
+					signal_emitter_to_effected_grid_locations
+				)
+				if signal_blocked_behavior != -1:
+					new_frog.on_blocked_behavior = signal_blocked_behavior
+
 				add_child(new_frog)
 				new_frog.name = "Frog"
 				await get_tree().create_timer(0.0).timeout
@@ -87,7 +88,23 @@ func _get_pipes() -> Array[FrogPipe]:
 	return result
 
 
-func _get_signal_beams() -> Array[SignalBeam]:
-	var result: Array[SignalBeam]
-	result.assign(get_tree().get_nodes_in_group("signal_beam"))
+func _get_signal_emitters() -> Array[SignalEmitter]:
+	var result: Array[SignalEmitter]
+	result.assign(get_tree().get_nodes_in_group("signal_emitter"))
 	return result
+
+
+func _get_signal_behavior_at(
+	grid_location: Vector2i,
+	signal_emitters: Array[SignalEmitter],
+	signal_emitter_to_effected_grid_locations: Dictionary
+) -> Frog.OnBlockedBehavior:
+	for signal_emitter: SignalEmitter in signal_emitters:
+		var effected_grid_locations: Array[Vector2i] = (
+			signal_emitter_to_effected_grid_locations.get(signal_emitter)
+		)
+		if effected_grid_locations.has(grid_location):
+			return signal_emitter.on_blocked_behavior
+
+	@warning_ignore("int_as_enum_without_cast", "int_as_enum_without_match")
+	return -1
