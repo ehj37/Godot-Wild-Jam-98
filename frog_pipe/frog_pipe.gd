@@ -4,15 +4,25 @@ class_name FrogPipe
 
 extends GridEntity
 
-@export var disabled: bool = false
-@export var instruction: Frog.OnBlockedBehavior
+@export var config_panel: ConfigPanel
+@export var disabled: bool = false:
+	set(new_value):
+		disabled = new_value
+		# For restoring from the undo action
+		if !Engine.is_editor_hint() && config_panel.power_on == disabled:
+			config_panel.power_on = !disabled
+@export var instruction: Frog.OnBlockedBehavior:
+	set(new_value):
+		instruction = new_value
+		# For restoring from the undo action
+		if !Engine.is_editor_hint() && config_panel.instruction != instruction:
+			config_panel.instruction = instruction
+
 @export var direction: Frog.Direction:
 	set(new_value):
 		direction = new_value
 		var sprite: Sprite2D = get_node("Sprite2D")
 		sprite.rotation = direction * PI / 2.0
-
-@onready var _config_panel: ConfigPanel = $ConfigPanel
 
 
 func get_spawn_location() -> Vector2i:
@@ -23,12 +33,12 @@ func _ready() -> void:
 	super()
 
 	if !Engine.is_editor_hint():
-		_config_panel.power_on = !disabled
-		_config_panel.instruction = instruction
+		config_panel.power_on = !disabled
+		config_panel.instruction = instruction
 
-		_config_panel.power_on_changed.connect(
+		config_panel.power_on_changed.connect(
 			func(new_power_on: bool) -> void: disabled = !new_power_on
 		)
-		_config_panel.instruction_changed.connect(
+		config_panel.instruction_changed.connect(
 			func(new_instruction: Frog.OnBlockedBehavior) -> void: instruction = new_instruction
 		)

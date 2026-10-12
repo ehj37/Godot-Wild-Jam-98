@@ -42,7 +42,6 @@ func get_next_direction() -> Direction:
 		OnBlockedBehavior.STOP:
 			# TODO: Hm
 			pass
-
 	assert(false, "Unhandled OnBlockedBehavior")
 	return Direction.UP
 

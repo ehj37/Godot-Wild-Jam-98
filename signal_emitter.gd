@@ -7,8 +7,19 @@ extends GridEntity
 signal options_changed
 
 @export var config_panel: ConfigPanel
-@export var power_on: bool = true
-@export var instruction: Frog.OnBlockedBehavior
+@export var power_on: bool = true:
+	set(new_value):
+		power_on = new_value
+		# For restoring from the undo action
+		if !Engine.is_editor_hint() && config_panel.power_on != power_on:
+			config_panel.power_on = power_on
+@export var instruction: Frog.OnBlockedBehavior:
+	set(new_value):
+		instruction = new_value
+		# For restoring from the undo action
+		if !Engine.is_editor_hint() && config_panel.instruction != instruction:
+			config_panel.instruction = instruction
+
 # TODO: Implement stuck/locked buttons
 @export var power_button_stuck: bool = false
 @export var instruction_button_stuck: bool = false

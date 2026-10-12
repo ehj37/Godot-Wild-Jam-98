@@ -7,8 +7,9 @@
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAAB4AAAAUklGRnAAAABXRUJQVlA4TGQAAAAvH8AHEDdAJECa5AbdbHaMkzVZ8x+gDIZDMDCKJEnRaDgHG+MAHEytA3Bw/k0wfyP6rzBtGya7PUWupyW0Po9eIVTEAmofc2+Q+gUhxXxFnUREijpQwW0Jy6RBxCp8HX4o/u8N")
 size_override = Vector2(32, 32)
 
-[node name="FrogPipe" type="Node2D" unique_id=852955402 groups=["frog_pipe"]]
+[node name="FrogPipe" type="Node2D" unique_id=852955402 node_paths=PackedStringArray("config_panel") groups=["frog_pipe"]]
 script = ExtResource("1_f5mxp")
+config_panel = NodePath("ConfigPanel")
 grid_residency = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1595138800]
