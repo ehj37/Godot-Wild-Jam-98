@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cltppsygx8kua"
+path="res://.godot/imported/pipe_tile.aseprite-be4906aa05ec9fd1d1481c11b75d282f.res"
+
+[deps]
+
+source_file="res://pipe_tile/pipe_tile.aseprite"
+dest_files=["res://.godot/imported/pipe_tile.aseprite-be4906aa05ec9fd1d1481c11b75d282f.res"]
+
+[params]
+

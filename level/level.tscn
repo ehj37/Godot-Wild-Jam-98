@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://cgfem2fmlv3l7"]
+
+[ext_resource type="Script" uid="uid://c5fglonfx4x5p" path="res://level/level.gd" id="1_7lnir"]
+[ext_resource type="Script" uid="uid://pxvc0b7dh75h" path="res://grid/grid.gd" id="2_5gx2l"]
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme.tres" id="3_qohg2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkbyq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="Level" type="Node2D" unique_id=1715959814]
+script = ExtResource("1_7lnir")
+
+[node name="Grid" type="Node2D" parent="." unique_id=587360364]
+script = ExtResource("2_5gx2l")
+metadata/_custom_type_script = "uid://pxvc0b7dh75h"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1322793330]
+position = Vector2(320, 176)
+
+[node name="LetterBoxing" type="CanvasLayer" parent="." unique_id=381364310]
+
+[node name="ColorRect" type="ColorRect" parent="LetterBoxing" unique_id=1959861226]
+custom_minimum_size = Vector2(640, 0)
+offset_right = 640.0
+offset_bottom = 4.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="LetterBoxing" unique_id=1638834191]
+custom_minimum_size = Vector2(640, 0)
+offset_top = 356.0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="RightPanel" type="CanvasLayer" parent="." unique_id=542433888]
+
+[node name="Control" type="Control" parent="RightPanel" unique_id=1461293621]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+theme = ExtResource("3_qohg2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RightPanel/Control" unique_id=1374048129]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="RightPanel/Control/HBoxContainer" unique_id=1443261919]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_272bh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPanel/Control/HBoxContainer/PanelContainer" unique_id=7479180]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1556262510]
+layout_mode = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=420295370]
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="Button2" type="Button" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=760217416]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1541529214]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2" unique_id=1264137437]
+layout_mode = 2
+text = "CURRENT SPEED: 2x"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2" unique_id=836584802]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1189542628]
+layout_mode = 2
+text = "<<"
+alignment = 0
+
+[node name="Label" type="Label" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1177366044]
+layout_mode = 2
+text = "SPEED"
+
+[node name="Button2" type="Button" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=819065068]
+layout_mode = 2
+text = ">>"
+alignment = 2
+
+[node name="Button" type="Button" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2" unique_id=1544303288]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 12
+text = "SKIP"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1888939195]
+layout_mode = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1293621351]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "RESET"
+
+[node name="MarginContainer" type="MarginContainer" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=708618605]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MarginContainer" unique_id=1604791295]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vkbyq")
+
+[node name="MarginContainer" type="MarginContainer" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/PanelContainer" unique_id=277720263]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=1867931447]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="RightPanel/Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2073689170]
+layout_mode = 2
+text = "THE FROGS ARE MOVIN'"
+horizontal_alignment = 1
+autowrap_mode = 2

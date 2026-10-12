@@ -1,9 +1,10 @@
 [gd_scene format=4 uid="uid://dc7gm3ywju780"]
 
-[ext_resource type="Script" uid="uid://c5fglonfx4x5p" path="res://level.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://c5fglonfx4x5p" path="res://level/level.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://drtiyvlkp552e" path="res://background/background.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://beq4k33ne1p2k" path="res://pipe_tile/pipe_tile.tscn" id="5_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://2ahqli5fghs6" path="res://signal_beam/signal_beam.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://s5aaltkvvxil" path="res://signal_tower/signal_tower.tscn" id="7_272bh"]
@@ -20,9 +21,11 @@ position = Vector2(16, 80)
 disabled = true
 direction = 1
 
+[node name="PipeTile" parent="." unique_id=1835997044 instance=ExtResource("5_5vw27")]
+tile_map_data = PackedByteArray("AAAJAAwAAAAAAAAAAAAJAA0AAAAAAAEAAAAJAA4AAAAAAAEAAAA=")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=898425967]
 position = Vector2(320, 464)
-zoom = Vector2(2, 2)
 
 [node name="FrogPipe2" parent="." unique_id=396493087 instance=ExtResource("4_1bvp3")]
 position = Vector2(272, 80)
@@ -50,7 +53,7 @@ disabled = true
 direction = 1
 
 [node name="Block" parent="." unique_id=770176600 instance=ExtResource("5_lquwl")]
-tile_map_data = PackedByteArray("AAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAAAABMAAAAAAAAAAAABABMAAAAAAAAAAAACABMAAAAAAAAAAAADABMAAAAAAAAAAAADAAsAAAAAAAAAAAARAAwAAAAAAAAAAAANAAkAAAAAAAAAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAJAA8AAAAAAAAAAAAJABAAAAAAAAAAAAAJABEAAAAAAAAAAAAJABIAAAAAAAAAAAAJABMAAAAAAAAAAAAJABQAAAAAAAAAAAAJABUAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAAAABMAAAAAAAAAAAABABMAAAAAAAAAAAACABMAAAAAAAAAAAADABMAAAAAAAAAAAADAAsAAAAAAAAAAAARAAwAAAAAAAAAAAANAAkAAAAAAAAAAAAJABQAAAAAAAAAAAAJABMAAAAAAAAAAAAJABIAAAAAAAAAAAAJABEAAAAAAAAAAAAJABAAAAAAAAAAAAAJAA8AAAAAAAAAAAA=")
 
 [node name="SignalBeam" parent="." unique_id=459733674 instance=ExtResource("6_7mycd")]
 position = Vector2(432, 464)

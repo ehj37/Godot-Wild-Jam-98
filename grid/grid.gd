@@ -6,8 +6,8 @@ extends Node2D
 
 const SQUARE_SIDE_DIM: int = 32
 const SQUARE_DIM: Vector2i = Vector2i(Grid.SQUARE_SIDE_DIM, Grid.SQUARE_SIDE_DIM)
-const NUM_GRID_SQUARES_X: int = 40
-const NUM_GRID_SQUARES_Y: int = 22
+const NUM_GRID_SQUARES_X: int = 16
+const NUM_GRID_SQUARES_Y: int = 11
 
 
 static func get_global_position_upper_left(grid_position: Vector2i) -> Vector2:

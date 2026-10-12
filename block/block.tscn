@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bfqrqebtbkat1"]
 
 [ext_resource type="Texture2D" uid="uid://do8himg1bac4i" path="res://block/block.png" id="1_ov5y0"]
-[ext_resource type="Script" uid="uid://bighv5pn0ehkg" path="res://block/block.gd" id="2_p2cip"]
+[ext_resource type="Script" uid="uid://bighv5pn0ehkg" path="res://grid_tile.gd" id="2_p2cip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p2cip"]
 texture = ExtResource("1_ov5y0")
