@@ -6,7 +6,7 @@ extends GridEntity
 
 signal options_changed
 
-@export var config_panel: ConfigPanel
+@export var config_panel: MiniConfigPanel
 @export var power_on: bool = true:
 	set(new_value):
 		power_on = new_value

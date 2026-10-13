@@ -4,7 +4,7 @@ class_name FrogPipe
 
 extends GridEntity
 
-@export var config_panel: ConfigPanel
+@export var config_panel: MiniConfigPanel
 @export var disabled: bool = false:
 	set(new_value):
 		disabled = new_value

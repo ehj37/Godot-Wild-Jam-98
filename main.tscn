@@ -62,35 +62,19 @@ tile_map_data = PackedByteArray("AAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAA
 
 [node name="SignalBeam" parent="." unique_id=459733674 instance=ExtResource("6_7mycd")]
 position = Vector2(432, 464)
-power_on = true
 instruction = 2
-power_button_stuck = false
-instruction_button_stuck = false
 
 [node name="SignalBeam2" parent="." unique_id=702519854 instance=ExtResource("6_7mycd")]
 position = Vector2(624, 432)
 direction = 1
-power_on = true
-instruction = 0
-power_button_stuck = false
-instruction_button_stuck = false
 
 [node name="SignalBeam3" parent="." unique_id=10304098 instance=ExtResource("6_7mycd")]
 position = Vector2(560, 528)
 direction = 2
-power_on = true
-instruction = 0
-power_button_stuck = false
-instruction_button_stuck = false
 
 [node name="SignalBeam4" parent="." unique_id=927557942 instance=ExtResource("6_7mycd")]
 position = Vector2(336, 592)
 direction = 3
-power_on = true
-instruction = 0
-power_button_stuck = false
-instruction_button_stuck = false
 
 [node name="SignalTower" parent="." unique_id=990745098 instance=ExtResource("7_272bh")]
 position = Vector2(112, 528)
-instruction = 0

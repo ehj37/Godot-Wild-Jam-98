@@ -1,0 +1,60 @@
+[gd_scene format=4 uid="uid://dc32mcbeab5q6"]
+
+[ext_resource type="Theme" uid="uid://cg76s14434nia" path="res://mini_config_panel/mini_button.tres" id="1_jx43y"]
+[ext_resource type="Script" uid="uid://b7c67jknu77s0" path="res://mini_config_panel/power_button/power_button.gd" id="1_xtbfc"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ck4ml"]
+_data = PackedByteArray("AAADAAUAAAABAAAACQAAAAoAAAA4AAAAUklGRjAAAABXRUJQVlA4TCMAAAAvCEACEA8w//M///Mf8DDMRlIRlnkRDu5w7ncOEf0PYo2+AwA=")
+size_override = Vector2(9, 10)
+
+[node name="PowerButton" type="Control" unique_id=192255413]
+custom_minimum_size = Vector2(11, 12)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 11.0
+offset_bottom = 11.0
+mouse_filter = 1
+script = ExtResource("1_xtbfc")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=942853696]
+layout_mode = 0
+offset_right = 11.0
+offset_bottom = 12.0
+
+[node name="Button" type="Button" parent="CenterContainer" unique_id=25530947]
+custom_minimum_size = Vector2(11, 12)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("1_jx43y")
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=1141322702]
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("PortableCompressedTexture2D_ck4ml")
+stretch_mode = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://mini_config_panel/power_button/power_icon.aseprite",
+"source_uid": 8995035458538744244
+}
+metadata/_aseprite_wizard_source_file_hash_ = "904062b4629501151f23b2f4c07dc49d"
+
+[connection signal="pressed" from="CenterContainer/Button" to="." method="_on_button_pressed"]

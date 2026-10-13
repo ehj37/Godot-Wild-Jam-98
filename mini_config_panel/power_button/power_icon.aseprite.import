@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://d1fi6jkitbhc3"
+path="res://.godot/imported/power_icon.aseprite-4c74d61ecd38996f75856711f25e492d.res"
+
+[deps]
+
+source_file="res://mini_config_panel/power_button/power_icon.aseprite"
+dest_files=["res://.godot/imported/power_icon.aseprite-4c74d61ecd38996f75856711f25e492d.res"]
+
+[params]
+

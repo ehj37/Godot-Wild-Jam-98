@@ -37,6 +37,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 360.0
+mouse_filter = 2
 theme = ExtResource("1_p3jfd")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1216339393]
@@ -46,6 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer" unique_id=2074462499]
@@ -56,17 +58,24 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_272bh")
 [node name="TopContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer" unique_id=1925451912]
 layout_mode = 2
 
-[node name="TopBar" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer" unique_id=2059559375]
+[node name="TopBarContainer" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer" unique_id=2000386992]
 layout_mode = 2
-alignment = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
-[node name="Button" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/TopBar" unique_id=1475621163]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/TopBarContainer" unique_id=2059559375]
 layout_mode = 2
-text = "OPTIONS"
+alignment = 1
 
-[node name="Button2" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/TopBar" unique_id=1854534143]
+[node name="MainMenuButton" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/TopBarContainer/HBoxContainer" unique_id=1854534143]
 layout_mode = 2
 text = "MAIN MENU"
+
+[node name="OptionsButton" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/TopBarContainer/HBoxContainer" unique_id=1475621163]
+layout_mode = 2
+text = "OPTIONS"
 
 [node name="TurnControlContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer" unique_id=1650504044]
 visible = false
@@ -112,11 +121,21 @@ alignment = 1
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer" unique_id=22386173]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2" unique_id=320864191]
+[node name="TurnContainer" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2" unique_id=1774069070]
+layout_mode = 2
+alignment = 1
+
+[node name="TurnLabel" type="Label" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2/TurnContainer" unique_id=320864191]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
-text = "TURN: 5"
+text = "TURN:"
 horizontal_alignment = 1
+
+[node name="TurnNumberLabel" type="Label" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2/TurnContainer" unique_id=1481766369]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "999"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2" unique_id=1697227467]
 layout_mode = 2
@@ -125,12 +144,8 @@ alignment = 1
 [node name="UndoButton" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2/HBoxContainer" unique_id=264488340]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 0
 text = "UNDO"
-
-[node name="RedoButton" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2/HBoxContainer" unique_id=1494241781]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "REDO"
 
 [node name="Divider" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer" unique_id=1040736990]
 layout_mode = 2
@@ -165,6 +180,7 @@ alignment = 2
 [node name="ResetButton" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer" unique_id=87724634]
 layout_mode = 2
 size_flags_horizontal = 8
+focus_mode = 0
 text = "RESET"
 
 [node name="MovinContainer" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer" unique_id=684619639]
@@ -226,7 +242,7 @@ text = "HOVER A PIPE OR SIGNAL BLOCK TO CONFIGURE"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="RadiosSyncedPopup" type="CenterContainer" parent="Control" unique_id=362769260]
+[node name="RadioSyncStatusPopup" type="CenterContainer" parent="Control" unique_id=362769260]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -235,27 +251,29 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/RadiosSyncedPopup" unique_id=1048640184]
+[node name="MarginContainer" type="MarginContainer" parent="Control/RadioSyncStatusPopup" unique_id=1048640184]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/RadiosSyncedPopup/MarginContainer" unique_id=1689494632]
+[node name="PanelContainer" type="PanelContainer" parent="Control/RadioSyncStatusPopup/MarginContainer" unique_id=1689494632]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/RadiosSyncedPopup/MarginContainer/PanelContainer" unique_id=443091967]
+[node name="MarginContainer" type="MarginContainer" parent="Control/RadioSyncStatusPopup/MarginContainer/PanelContainer" unique_id=443091967]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="Label" type="Label" parent="Control/RadiosSyncedPopup/MarginContainer/PanelContainer/MarginContainer" unique_id=1181732676]
+[node name="Label" type="Label" parent="Control/RadioSyncStatusPopup/MarginContainer/PanelContainer/MarginContainer" unique_id=1181732676]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "RADIOS SYNCED!"
 horizontal_alignment = 1
 
+[connection signal="pressed" from="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2/HBoxContainer/UndoButton" to="." method="_on_undo_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer/SyncButton" to="." method="_on_sync_button_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer/ResetButton" to="." method="_on_reset_button_pressed"]

@@ -32,5 +32,3 @@ func _update() -> void:
 				sprite_flip_vertical.rotation = 0
 
 			sprite_cw.visible = false
-		Frog.OnBlockedBehavior.STOP:
-			pass

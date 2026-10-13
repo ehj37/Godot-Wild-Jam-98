@@ -5,7 +5,7 @@ class_name Frog
 extends GridEntity
 
 enum Direction { UP, RIGHT, DOWN, LEFT }
-enum OnBlockedBehavior { TURN_CW, TURN_CCW, FLIP, STOP }
+enum OnBlockedBehavior { TURN_CW, TURN_CCW, FLIP }
 
 const DIRECTION_TO_GRID_LOCATION_OFFSET: Dictionary = {
 	Direction.UP: Vector2i.UP,
@@ -43,9 +43,7 @@ func get_next_direction() -> Direction:
 			return wrapi(direction - 1, 0, Direction.values().size()) as Direction
 		OnBlockedBehavior.FLIP:
 			return wrapi(direction + 2, 0, Direction.values().size()) as Direction
-		OnBlockedBehavior.STOP:
-			# TODO: Hm
-			pass
+
 	assert(false, "Unhandled OnBlockedBehavior")
 	return Direction.UP
 

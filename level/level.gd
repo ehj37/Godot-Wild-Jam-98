@@ -77,53 +77,8 @@ func _process(_delta: float) -> void:
 	if Engine.is_editor_hint() || _level_won:
 		return
 
-	if Input.is_action_just_pressed("undo") && _level_snapshots.size() > 0:
-		var snapshot_to_restore: LevelSnapshot = _level_snapshots.pop_back()
-		var frogs: Array[Frog] = _get_frogs()
-		for frog: Frog in frogs:
-			_remove_frog(frog)
-		for frog_snapshot: FrogSnapshot in snapshot_to_restore.frog_snapshots:
-			_add_frog(
-				frog_snapshot.grid_location,
-				frog_snapshot.direction,
-				frog_snapshot.on_blocked_behavior
-			)
-
-		var signal_emitters: Array[SignalEmitter] = _get_signal_emitters()
-		var signal_emitter_snapshot_by_grid_location: Dictionary
-		for signal_emitter_snapshot: SignalEmitterSnapshot in (
-			snapshot_to_restore.signal_emitter_snapshots
-		):
-			signal_emitter_snapshot_by_grid_location.set(
-				signal_emitter_snapshot.grid_location, signal_emitter_snapshot
-			)
-		for signal_emitter: SignalEmitter in signal_emitters:
-			var signal_emitter_snapshot: SignalEmitterSnapshot = (
-				signal_emitter_snapshot_by_grid_location.get(signal_emitter.grid_location)
-			)
-			assert(
-				signal_emitter_snapshot,
-				"Not expected that signal emitters can come into or out of being and/or move."
-			)
-			signal_emitter.power_on = signal_emitter_snapshot.power_on
-			signal_emitter.instruction = signal_emitter_snapshot.instruction
-
-		var pipes: Array[FrogPipe] = _get_pipes()
-		var frog_pipe_snapshot_by_grid_location: Dictionary
-		for frog_pipe_snapshot: FrogPipeSnapshot in snapshot_to_restore.frog_pipe_snapshots:
-			frog_pipe_snapshot_by_grid_location.set(
-				frog_pipe_snapshot.grid_location, frog_pipe_snapshot
-			)
-		for pipe: FrogPipe in pipes:
-			var frog_pipe_snapshot: FrogPipeSnapshot = frog_pipe_snapshot_by_grid_location.get(
-				pipe.grid_location
-			)
-			assert(
-				frog_pipe_snapshot,
-				"Not expected that frog pipes can come into or out of being and/or move."
-			)
-			pipe.disabled = frog_pipe_snapshot.disabled
-			pipe.instruction = frog_pipe_snapshot.instruction
+	if Input.is_action_just_pressed("undo"):
+		_undo()
 
 	if !_turn_in_progress && Input.is_action_just_pressed("test"):
 		_turn_in_progress = true
@@ -211,14 +166,13 @@ func _process(_delta: float) -> void:
 
 				await get_tree().create_timer(0.0).timeout
 
-		if grid.win_condition_met():
-			UILayer.display_win_popup()
-			_level_won = true
-
 		_turn_in_progress = false
 
 
 func _ready() -> void:
+	UILayer.sync_button_pressed.connect(_on_sync_button_pressed)
+	UILayer.undo_button_pressed.connect(_undo)
+
 	var radio_tile_maps: Array[GridTileMap] = _get_radio_tile_maps()
 	for radio_tile_map: GridTileMap in radio_tile_maps:
 		var grid_tile_locations: Array[Vector2i] = radio_tile_map.get_tile_grid_locations()
@@ -321,3 +275,61 @@ func _on_signal_emitter_options_changed(signal_emitter: SignalEmitter) -> void:
 	for frog: Frog in _get_frogs():
 		if effected_grid_locations.has(frog.grid_location):
 			frog.on_blocked_behavior = signal_emitter.instruction
+
+
+func _undo() -> void:
+	if _level_snapshots.size() == 0:
+		return
+
+	var snapshot_to_restore: LevelSnapshot = _level_snapshots.pop_back()
+	var frogs: Array[Frog] = _get_frogs()
+	for frog: Frog in frogs:
+		_remove_frog(frog)
+	for frog_snapshot: FrogSnapshot in snapshot_to_restore.frog_snapshots:
+		_add_frog(
+			frog_snapshot.grid_location, frog_snapshot.direction, frog_snapshot.on_blocked_behavior
+		)
+
+	var signal_emitters: Array[SignalEmitter] = _get_signal_emitters()
+	var signal_emitter_snapshot_by_grid_location: Dictionary
+	for signal_emitter_snapshot: SignalEmitterSnapshot in (
+		snapshot_to_restore.signal_emitter_snapshots
+	):
+		signal_emitter_snapshot_by_grid_location.set(
+			signal_emitter_snapshot.grid_location, signal_emitter_snapshot
+		)
+	for signal_emitter: SignalEmitter in signal_emitters:
+		var signal_emitter_snapshot: SignalEmitterSnapshot = (
+			signal_emitter_snapshot_by_grid_location.get(signal_emitter.grid_location)
+		)
+		assert(
+			signal_emitter_snapshot,
+			"Not expected that signal emitters can come into or out of being and/or move."
+		)
+		signal_emitter.power_on = signal_emitter_snapshot.power_on
+		signal_emitter.instruction = signal_emitter_snapshot.instruction
+
+	var pipes: Array[FrogPipe] = _get_pipes()
+	var frog_pipe_snapshot_by_grid_location: Dictionary
+	for frog_pipe_snapshot: FrogPipeSnapshot in snapshot_to_restore.frog_pipe_snapshots:
+		frog_pipe_snapshot_by_grid_location.set(
+			frog_pipe_snapshot.grid_location, frog_pipe_snapshot
+		)
+	for pipe: FrogPipe in pipes:
+		var frog_pipe_snapshot: FrogPipeSnapshot = frog_pipe_snapshot_by_grid_location.get(
+			pipe.grid_location
+		)
+		assert(
+			frog_pipe_snapshot,
+			"Not expected that frog pipes can come into or out of being and/or move."
+		)
+		pipe.disabled = frog_pipe_snapshot.disabled
+		pipe.instruction = frog_pipe_snapshot.instruction
+
+
+func _on_sync_button_pressed() -> void:
+	if grid.win_condition_met():
+		_level_won = true
+		UILayer.on_level_won()
+	else:
+		pass

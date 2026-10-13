@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://etidnmm1e360"]
+
+[ext_resource type="Script" uid="uid://dq6jscpfe0yde" path="res://mini_config_panel/mini_config_panel.gd" id="1_vf0pt"]
+[ext_resource type="PackedScene" uid="uid://dc32mcbeab5q6" path="res://mini_config_panel/power_button/power_button.tscn" id="2_0tcov"]
+[ext_resource type="PackedScene" uid="uid://dtq50ls8vg55c" path="res://mini_config_panel/instruction_button/instruction_button.tscn" id="3_wfsq8"]
+
+[node name="MiniConfigPanel" type="BoxContainer" unique_id=900294459]
+custom_minimum_size = Vector2(40, 30)
+alignment = 1
+script = ExtResource("1_vf0pt")
+
+[node name="PowerButton" parent="." unique_id=202279930 instance=ExtResource("2_0tcov")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="InstructionButton" parent="." unique_id=389154378 instance=ExtResource("3_wfsq8")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
