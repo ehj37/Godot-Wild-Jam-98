@@ -24,10 +24,15 @@ signal options_changed
 @export var power_button_stuck: bool = false
 @export var instruction_button_stuck: bool = false
 
+var _effected_grid_locations: Array[Vector2i]
 
-func get_effected_grid_locations() -> Array[Vector2i]:
+
+func get_effected_grid_locations(_grid: Grid) -> Array[Vector2i]:
+	return _effected_grid_locations
+
+
+func update(_grid: Grid) -> void:
 	assert(false, "Override me!")
-	return []
 
 
 func _ready() -> void:

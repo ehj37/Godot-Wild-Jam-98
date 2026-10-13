@@ -39,8 +39,9 @@ class BeamRange:
 		return Vector2i(x_step, y_step)
 
 
-func get_effected_grid_locations() -> Array[Vector2i]:
-	var result: Array[Vector2i]
+func update(grid: Grid) -> void:
+	_effected_grid_locations.clear()
+
 	var unblocked_beam_range: BeamRange = _get_unblocked_beam_range()
 	var iteration_step: Vector2i = unblocked_beam_range.iteration_step()
 	for i: int in range(
@@ -54,15 +55,11 @@ func get_effected_grid_locations() -> Array[Vector2i]:
 			iteration_step.y
 		):
 			var test_location: Vector2i = Vector2i(i, j)
-			var test_location_residency: GridState.Residency = GridState.get_residency_at(
-				test_location
-			)
-			if test_location_residency != -1 && test_location_residency != GridState.Residency.FROG:
-				return result
+			var test_location_residency: Grid.Residency = grid.get_residency_at(test_location)
+			if test_location_residency != -1 && test_location_residency != Grid.Residency.FROG:
+				return
 
-			result.append(Vector2i(i, j))
-
-	return result
+			_effected_grid_locations.append(Vector2i(i, j))
 
 
 func _get_unblocked_beam_range() -> BeamRange:
@@ -100,8 +97,7 @@ func _draw() -> void:
 	if Engine.is_editor_hint() || !power_on:
 		return
 
-	var effected_grid_locations: Array[Vector2i] = get_effected_grid_locations()
-	for effected_grid_location: Vector2i in effected_grid_locations:
+	for effected_grid_location: Vector2i in _effected_grid_locations:
 		var center_global_pos: Vector2 = Grid.get_global_position_center(effected_grid_location)
 		var beam_relative_pos: Vector2 = center_global_pos - global_position
 		var signal_rect: Rect2 = Rect2(beam_relative_pos.x - 10, beam_relative_pos.y - 10, 20, 20)

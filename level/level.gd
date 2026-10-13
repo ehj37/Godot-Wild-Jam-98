@@ -1,8 +1,9 @@
 extends Node2D
 
-@export var frog_pipes: Array[FrogPipe]
+@export var grid: Grid
 
 var _turn_in_progress: bool = false
+var _level_won: bool = false
 var _level_snapshots: Array[LevelSnapshot]
 
 @onready var _frog_packed_scene: PackedScene = preload("res://frog/frog.tscn")
@@ -73,7 +74,7 @@ class LevelSnapshot:
 
 
 func _process(_delta: float) -> void:
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() || _level_won:
 		return
 
 	if Input.is_action_just_pressed("undo") && _level_snapshots.size() > 0:
@@ -169,22 +170,20 @@ func _process(_delta: float) -> void:
 		var signal_emitter_to_effected_grid_locations: Dictionary
 		for signal_emitter: SignalEmitter in signal_emitters:
 			signal_emitter_to_effected_grid_locations.set(
-				signal_emitter, signal_emitter.get_effected_grid_locations()
+				signal_emitter, signal_emitter.get_effected_grid_locations(grid)
 			)
 
 		for frog: Frog in frogs:
 			var next_grid_location: Vector2i = frog.get_next_grid_location()
-			if !GridState.is_empty(next_grid_location):
+			if !grid.is_empty(next_grid_location):
 				var next_direction: Frog.Direction = frog.get_next_direction()
 				frog.direction = next_direction
 				# Only do one next grid location check here - interesting if a frog
 				# gets into a nook and needs multiple turns to do a 270 deg turn.
 				next_grid_location = frog.get_next_grid_location()
 
-			if GridState.is_empty(next_grid_location):
-				GridState.update_residency(
-					GridState.Residency.FROG, frog.grid_location, next_grid_location
-				)
+			if grid.is_empty(next_grid_location):
+				grid.update_residency(grid.Residency.FROG, frog.grid_location, next_grid_location)
 				frog.grid_location = next_grid_location
 
 				var signal_blocked_behavior: Frog.OnBlockedBehavior = _get_signal_behavior_at(
@@ -200,7 +199,7 @@ func _process(_delta: float) -> void:
 				continue
 
 			var spawn_location: Vector2i = pipe.get_spawn_location()
-			if GridState.is_empty(spawn_location):
+			if grid.is_empty(spawn_location):
 				var new_frog: Frog = _add_frog(spawn_location, pipe.direction, pipe.instruction)
 				var signal_blocked_behavior: Frog.OnBlockedBehavior = _get_signal_behavior_at(
 					new_frog.grid_location,
@@ -212,15 +211,39 @@ func _process(_delta: float) -> void:
 
 				await get_tree().create_timer(0.0).timeout
 
+		if grid.win_condition_met():
+			UILayer.display_win_popup()
+			_level_won = true
+
 		_turn_in_progress = false
 
 
 func _ready() -> void:
+	var radio_tile_maps: Array[GridTileMap] = _get_radio_tile_maps()
+	for radio_tile_map: GridTileMap in radio_tile_maps:
+		var grid_tile_locations: Array[Vector2i] = radio_tile_map.get_tile_grid_locations()
+		for grid_tile_location: Vector2i in grid_tile_locations:
+			grid.register_radio_tile(grid_tile_location)
+
+	for pipe: FrogPipe in _get_pipes():
+		grid.register_residency(Grid.Residency.PIPE, pipe.grid_location)
+
+	var block_tile_maps: Array[GridTileMap] = _get_block_tile_maps()
+	for block_tile_map: GridTileMap in block_tile_maps:
+		var grid_tile_locations: Array[Vector2i] = block_tile_map.get_tile_grid_locations()
+		for grid_tile_location: Vector2i in grid_tile_locations:
+			grid.register_residency(Grid.Residency.TILE, grid_tile_location)
+
 	var signal_emitters: Array[SignalEmitter] = _get_signal_emitters()
 	for signal_emitter: SignalEmitter in signal_emitters:
 		signal_emitter.options_changed.connect(
 			func() -> void: _on_signal_emitter_options_changed(signal_emitter)
 		)
+		grid.register_residency(Grid.Residency.SIGNAL_EMITTER, signal_emitter.grid_location)
+	# NOTE: This needs to come last since signal emitters may be blocked by
+	# other entities.
+	for signal_emitter: SignalEmitter in signal_emitters:
+		signal_emitter.update(grid)
 
 
 func _get_frogs() -> Array[Frog]:
@@ -232,18 +255,20 @@ func _get_frogs() -> Array[Frog]:
 func _add_frog(
 	spawn_location: Vector2i, direction: Frog.Direction, on_blocked_behavior: Frog.OnBlockedBehavior
 ) -> Frog:
+	grid.register_residency(Grid.Residency.FROG, spawn_location)
 	var new_frog: Frog = _frog_packed_scene.instantiate()
-	new_frog.grid_residency = GridState.Residency.FROG
+	new_frog.grid_residency = Grid.Residency.FROG
 	new_frog.grid_location = spawn_location
 	new_frog.direction = direction
 	new_frog.on_blocked_behavior = on_blocked_behavior
+	new_frog.number = grid.get_num_frogs()
 	add_child(new_frog)
 	new_frog.name = "Frog"
 	return new_frog
 
 
 func _remove_frog(frog: Frog) -> void:
-	GridState.unregister_residency(GridState.Residency.FROG, frog.grid_location)
+	grid.unregister_residency(grid.Residency.FROG, frog.grid_location)
 	frog.queue_free()
 
 
@@ -256,6 +281,18 @@ func _get_pipes() -> Array[FrogPipe]:
 func _get_signal_emitters() -> Array[SignalEmitter]:
 	var result: Array[SignalEmitter]
 	result.assign(get_tree().get_nodes_in_group("signal_emitter"))
+	return result
+
+
+func _get_block_tile_maps() -> Array[GridTileMap]:
+	var result: Array[GridTileMap]
+	result.assign(get_tree().get_nodes_in_group("block_tile_map"))
+	return result
+
+
+func _get_radio_tile_maps() -> Array[GridTileMap]:
+	var result: Array[GridTileMap]
+	result.assign(get_tree().get_nodes_in_group("radio_tile_map"))
 	return result
 
 
@@ -279,7 +316,7 @@ func _on_signal_emitter_options_changed(signal_emitter: SignalEmitter) -> void:
 	if !signal_emitter.power_on:
 		return
 
-	var effected_grid_locations: Array[Vector2i] = signal_emitter.get_effected_grid_locations()
+	var effected_grid_locations: Array[Vector2i] = signal_emitter.get_effected_grid_locations(grid)
 	# Note: Ugly, should prob maintain a location -> frog mapping
 	for frog: Frog in _get_frogs():
 		if effected_grid_locations.has(frog.grid_location):

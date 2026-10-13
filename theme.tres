@@ -2,8 +2,16 @@
 
 [ext_resource type="FontFile" uid="uid://1xi01klxvv54" path="res://arne.png" id="1_e1x85"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsh5d"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
 [resource]
 Button/font_sizes/font_size = 6
 Button/fonts/font = ExtResource("1_e1x85")
 Label/font_sizes/font_size = 6
 Label/fonts/font = ExtResource("1_e1x85")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_fsh5d")

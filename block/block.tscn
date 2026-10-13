@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bfqrqebtbkat1"]
 
 [ext_resource type="Texture2D" uid="uid://do8himg1bac4i" path="res://block/block.png" id="1_ov5y0"]
-[ext_resource type="Script" uid="uid://bighv5pn0ehkg" path="res://grid_tile.gd" id="2_p2cip"]
+[ext_resource type="Script" uid="uid://bighv5pn0ehkg" path="res://grid_tile_map.gd" id="2_p2cip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p2cip"]
 texture = ExtResource("1_ov5y0")
@@ -12,6 +12,6 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_p2cip")
 
-[node name="Block" type="TileMapLayer" unique_id=770176600]
+[node name="Block" type="TileMapLayer" unique_id=770176600 groups=["block_tile_map"]]
 tile_set = SubResource("TileSet_07jjg")
 script = ExtResource("2_p2cip")

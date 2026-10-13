@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b86xbs7hq3pqm"
-path="res://.godot/imported/pipe_tile.png-193c5d9a5a4dee39373851e8bed768ef.ctex"
+uid="uid://b4lvl6bf2h5um"
+path="res://.godot/imported/radio_tile.png-6572de8e7449bccd943df59f3bb2a0fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pipe_tile/pipe_tile.png"
-dest_files=["res://.godot/imported/pipe_tile.png-193c5d9a5a4dee39373851e8bed768ef.ctex"]
+source_file="res://radio_tile/radio_tile.png"
+dest_files=["res://.godot/imported/radio_tile.png-6572de8e7449bccd943df59f3bb2a0fe.ctex"]
 
 [params]
 

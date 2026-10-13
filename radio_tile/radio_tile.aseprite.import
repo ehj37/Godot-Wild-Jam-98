@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c7qwb4s3j6yfm"
+path="res://.godot/imported/radio_tile.aseprite-e807dff2c1816ae4d7589caa09464725.res"
+
+[deps]
+
+source_file="res://radio_tile/radio_tile.aseprite"
+dest_files=["res://.godot/imported/radio_tile.aseprite-e807dff2c1816ae4d7589caa09464725.res"]
+
+[params]
+

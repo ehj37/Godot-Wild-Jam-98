@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://beq4k33ne1p2k"]
 
-[ext_resource type="Texture2D" uid="uid://b86xbs7hq3pqm" path="res://pipe_tile/pipe_tile.png" id="1_7plhl"]
-[ext_resource type="Script" uid="uid://bighv5pn0ehkg" path="res://grid_tile.gd" id="2_33roy"]
+[ext_resource type="Texture2D" uid="uid://b86xbs7hq3pqm" path="res://pipe_block/pipe_block.png" id="1_7plhl"]
+[ext_resource type="Script" uid="uid://bighv5pn0ehkg" path="res://grid_tile_map.gd" id="2_33roy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bp60c"]
 texture = ExtResource("1_7plhl")
@@ -14,6 +14,6 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_bp60c")
 
-[node name="PipeTile" type="TileMapLayer" unique_id=1835997044]
+[node name="PipeBlock" type="TileMapLayer" unique_id=1835997044 groups=["block_tile_map"]]
 tile_set = SubResource("TileSet_2eudg")
 script = ExtResource("2_33roy")

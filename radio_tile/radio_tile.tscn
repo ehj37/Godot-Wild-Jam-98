@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://hqflrt1or3t2"]
+
+[ext_resource type="Texture2D" uid="uid://b4lvl6bf2h5um" path="res://radio_tile/radio_tile.png" id="1_t0d7m"]
+[ext_resource type="Script" uid="uid://bighv5pn0ehkg" path="res://grid_tile_map.gd" id="2_t0d7m"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7tqoc"]
+texture = ExtResource("1_t0d7m")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 6
+0:0/animation_frame_0/duration = 0.2
+0:0/animation_frame_1/duration = 0.1
+0:0/animation_frame_2/duration = 0.1
+0:0/animation_frame_3/duration = 0.1
+0:0/animation_frame_4/duration = 0.1
+0:0/animation_frame_5/duration = 0.1
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vx612"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_7tqoc")
+
+[node name="RadioTile" type="TileMapLayer" unique_id=622849264 groups=["radio_tile_map"]]
+tile_set = SubResource("TileSet_vx612")
+script = ExtResource("2_t0d7m")

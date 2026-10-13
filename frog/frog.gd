@@ -24,7 +24,11 @@ const DIRECTION_TO_GRID_LOCATION_OFFSET: Dictionary = {
 		on_blocked_behavior = new_value
 		_update_on_blocked_indicator()
 
-@onready var _number_label: Label = $NumberLabel
+var number: int:
+	set(new_value):
+		number = new_value
+		var number_label: Label = $NumberLabel
+		number_label.text = str(new_value)
 
 
 func get_next_grid_location() -> Vector2i:
@@ -50,8 +54,6 @@ func _ready() -> void:
 	super()
 
 	if !Engine.is_editor_hint():
-		var frog_number: int = GridState.get_num_frogs()
-		_number_label.text = str(frog_number)
 		_set_sprite_from_direction()
 		_update_on_blocked_indicator()
 
