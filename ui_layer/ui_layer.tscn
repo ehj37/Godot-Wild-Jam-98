@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://da1so604ihmpq" path="res://ui_layer/ui_layer.gd" id="1_0ed5o"]
 [ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme.tres" id="1_p3jfd"]
+[ext_resource type="PackedScene" uid="uid://cyknpxclq7eih" path="res://ui_layer/undo_icon/undo_icon.tscn" id="3_rbe85"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
 bg_color = Color(0, 0, 0, 1)
@@ -55,135 +56,140 @@ custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_272bh")
 
-[node name="TopContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer" unique_id=1925451912]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer" unique_id=1925451912]
 layout_mode = 2
 
-[node name="TopBarContainer" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer" unique_id=2000386992]
+[node name="TopBarContainer" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer" unique_id=2000386992]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/TopBarContainer" unique_id=2059559375]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TopBarContainer" unique_id=2059559375]
 layout_mode = 2
 alignment = 1
 
-[node name="MainMenuButton" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/TopBarContainer/HBoxContainer" unique_id=1854534143]
+[node name="MainMenuButton" type="Button" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TopBarContainer/HBoxContainer" unique_id=1854534143]
 layout_mode = 2
 text = "MAIN MENU"
 
-[node name="OptionsButton" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/TopBarContainer/HBoxContainer" unique_id=1475621163]
+[node name="OptionsButton" type="Button" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TopBarContainer/HBoxContainer" unique_id=1475621163]
 layout_mode = 2
 text = "OPTIONS"
 
-[node name="TurnControlContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer" unique_id=1650504044]
-visible = false
+[node name="Divider2" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer" unique_id=157493241]
 layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/PanelContainer/TopContainer/TurnControlContainer" unique_id=757368662]
+[node name="Panel" type="Panel" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/Divider2" unique_id=1519349625]
+custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
-text = "CURRENT SPEED: 2x"
-horizontal_alignment = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_fsh5d")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/TurnControlContainer" unique_id=321968416]
+[node name="TurnContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1230160849]
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/TurnControlContainer/HBoxContainer" unique_id=1645080278]
-layout_mode = 2
-text = "<<"
-alignment = 0
-
-[node name="Label" type="Label" parent="Control/HBoxContainer/PanelContainer/TopContainer/TurnControlContainer/HBoxContainer" unique_id=845845037]
-layout_mode = 2
-text = "SPEED"
-
-[node name="Button2" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/TurnControlContainer/HBoxContainer" unique_id=2093092187]
-layout_mode = 2
-text = ">>"
-alignment = 2
-
-[node name="Button" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/TurnControlContainer" unique_id=1167426404]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 12
-text = "SKIP"
-
-[node name="PreTurnContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer" unique_id=1230160849]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer" unique_id=22386173]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer" unique_id=22386173]
 layout_mode = 2
 
-[node name="TurnContainer" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2" unique_id=1774069070]
+[node name="TurnContainer" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2" unique_id=1774069070]
 layout_mode = 2
 alignment = 1
 
-[node name="TurnLabel" type="Label" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2/TurnContainer" unique_id=320864191]
+[node name="TurnLabel" type="Label" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnContainer" unique_id=320864191]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "TURN:"
 horizontal_alignment = 1
 
-[node name="TurnNumberLabel" type="Label" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2/TurnContainer" unique_id=1481766369]
+[node name="TurnNumberLabel" type="Label" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnContainer" unique_id=1481766369]
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "999"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2" unique_id=1697227467]
+[node name="TurnSpeedContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2" unique_id=947829768]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer" unique_id=747346528]
+layout_mode = 2
+text = "TURN SPEED"
+horizontal_alignment = 1
+
+[node name="SpeedButtonContainer" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer" unique_id=201906557]
 layout_mode = 2
 alignment = 1
 
-[node name="UndoButton" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2/HBoxContainer" unique_id=264488340]
+[node name="TenthSpeedButton" type="Button" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/SpeedButtonContainer" unique_id=1559070178]
+layout_mode = 2
+text = "0.1x"
+
+[node name="NormalSpeedButton" type="Button" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/SpeedButtonContainer" unique_id=724080413]
+layout_mode = 2
+disabled = true
+text = "1x"
+
+[node name="DoubleSpeedButton" type="Button" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/SpeedButtonContainer" unique_id=1540247956]
+layout_mode = 2
+text = "2x"
+
+[node name="InstantButton" type="Button" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer" unique_id=1832418107]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "INSTANT"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2" unique_id=1697227467]
+layout_mode = 2
+alignment = 2
+
+[node name="UndoIcon" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer" unique_id=1490511450 instance=ExtResource("3_rbe85")]
+layout_mode = 2
+
+[node name="UndoButton" type="Button" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer" unique_id=264488340]
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
 text = "UNDO"
 
-[node name="Divider" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer" unique_id=1040736990]
+[node name="Divider" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1040736990]
 layout_mode = 2
-theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Panel" type="Panel" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/Divider" unique_id=792186256]
+[node name="Panel" type="Panel" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/Divider" unique_id=792186256]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fsh5d")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer" unique_id=723430059]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer" unique_id=723430059]
 layout_mode = 2
+alignment = 1
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer" unique_id=371204205]
+[node name="Label" type="Label" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=371204205]
 layout_mode = 2
 text = "X TOWERS TO SYNC"
 horizontal_alignment = 1
 
-[node name="SyncButton" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer" unique_id=1637591274]
+[node name="SyncButton" type="Button" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1637591274]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 0
 theme_override_font_sizes/font_size = 12
 text = "ATTEMPT SYNC"
 autowrap_mode = 2
 
-[node name="BottomContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer" unique_id=1816734504]
+[node name="BottomContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1816734504]
 layout_mode = 2
 alignment = 2
 
-[node name="ResetButton" type="Button" parent="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer" unique_id=87724634]
+[node name="ResetButton" type="Button" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/BottomContainer" unique_id=87724634]
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
 text = "RESET"
 
-[node name="MovinContainer" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer" unique_id=684619639]
+[node name="MovinContainer" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/BottomContainer" unique_id=684619639]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 2
@@ -191,52 +197,53 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer/MovinContainer" unique_id=812416876]
+[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/BottomContainer/MovinContainer" unique_id=812416876]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vkbyq")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer/MovinContainer/PanelContainer" unique_id=2144028276]
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/BottomContainer/MovinContainer/PanelContainer" unique_id=2144028276]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer/MovinContainer/PanelContainer/MarginContainer" unique_id=938062029]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/BottomContainer/MovinContainer/PanelContainer/MarginContainer" unique_id=938062029]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer/MovinContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1149864425]
+[node name="Label" type="Label" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/BottomContainer/MovinContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1149864425]
 layout_mode = 2
 text = "THE FROGS ARE MOVIN'"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="PreviewContainer" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer" unique_id=1925623346]
+[node name="PreviewContainer" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/BottomContainer" unique_id=1925623346]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer/PreviewContainer" unique_id=924988947]
+[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/BottomContainer/PreviewContainer" unique_id=924988947]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vkbyq")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer/PreviewContainer/PanelContainer" unique_id=554210519]
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/BottomContainer/PreviewContainer/PanelContainer" unique_id=554210519]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer/PreviewContainer/PanelContainer/MarginContainer" unique_id=308340833]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/BottomContainer/PreviewContainer/PanelContainer/MarginContainer" unique_id=308340833]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer/PreviewContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1900265757]
+[node name="Label" type="Label" parent="Control/HBoxContainer/PanelContainer/VBoxContainer/BottomContainer/PreviewContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1900265757]
 layout_mode = 2
 text = "HOVER A PIPE OR SIGNAL BLOCK TO CONFIGURE"
 horizontal_alignment = 1
@@ -274,6 +281,10 @@ theme_override_font_sizes/font_size = 12
 text = "RADIOS SYNCED!"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer2/HBoxContainer/UndoButton" to="." method="_on_undo_button_pressed"]
-[connection signal="pressed" from="Control/HBoxContainer/PanelContainer/TopContainer/PreTurnContainer/VBoxContainer/SyncButton" to="." method="_on_sync_button_pressed"]
-[connection signal="pressed" from="Control/HBoxContainer/PanelContainer/TopContainer/BottomContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/SpeedButtonContainer/TenthSpeedButton" to="." method="_on_tenth_speed_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/SpeedButtonContainer/NormalSpeedButton" to="." method="_on_normal_speed_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/SpeedButtonContainer/DoubleSpeedButton" to="." method="_on_double_speed_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/InstantButton" to="." method="_on_instant_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer/UndoButton" to="." method="_on_undo_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/SyncButton" to="." method="_on_sync_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/PanelContainer/VBoxContainer/BottomContainer/ResetButton" to="." method="_on_reset_button_pressed"]

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c6bvympqg30oj"
+path="res://.godot/imported/undo_icon.aseprite-78c32a49cabad56b27bc45b031bc7bf8.res"
+
+[deps]
+
+source_file="res://ui_layer/undo_icon/undo_icon.aseprite"
+dest_files=["res://.godot/imported/undo_icon.aseprite-78c32a49cabad56b27bc45b031bc7bf8.res"]
+
+[params]
+

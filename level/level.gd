@@ -2,6 +2,10 @@ class_name Level
 
 extends Node2D
 
+signal action_finished
+
+const _FROG_ACTION_DURATION: float = 0.1
+
 @export var grid: Grid
 @export var level_name: String
 @export_multiline var explanation: String
@@ -9,6 +13,10 @@ extends Node2D
 var _turn_in_progress: bool = false
 var _level_won: bool = false
 var _level_snapshots: Array[LevelSnapshot]
+
+var _frog_move_tween: Tween
+var _new_frog_fade_tween: Tween
+var _frog_rotate_timer: Timer
 
 @onready var _frog_packed_scene: PackedScene = preload("res://frog/frog.tscn")
 
@@ -86,6 +94,7 @@ func _process(_delta: float) -> void:
 
 	if !_turn_in_progress && Input.is_action_just_pressed("test"):
 		_turn_in_progress = true
+		_apply_turn_speed()
 
 		# CAPTURE A SNAPSHOT
 		# TODO: Be smarter about only recording a snapshot if current snapshot
@@ -140,8 +149,30 @@ func _process(_delta: float) -> void:
 				# Only do one next grid location check here - interesting if a frog
 				# gets into a nook and needs multiple turns to do a 270 deg turn.
 				next_grid_location = frog.get_next_grid_location()
+				if TurnConfig.get_current_turn_speed() != TurnConfig.TurnSpeed.INSTANT:
+					_frog_rotate_timer.start()
+					await action_finished
 
 			if grid.is_empty(next_grid_location):
+				var next_grid_location_global_position: Vector2 = Grid.get_global_position_center(
+					next_grid_location
+				)
+				if TurnConfig.get_current_turn_speed() != TurnConfig.TurnSpeed.INSTANT:
+					_frog_move_tween = get_tree().create_tween()
+					_frog_move_tween.tween_property(
+						frog,
+						"global_position",
+						next_grid_location_global_position,
+						_FROG_ACTION_DURATION
+					)
+					_frog_move_tween.finished.connect(action_finished.emit)
+					await action_finished
+
+					# NOTE: Don't quite understand what's up with this, but
+					# without this, weird warping behavior can occur.
+					if _frog_move_tween.is_valid():
+						_frog_move_tween.kill()
+
 				grid.update_residency(grid.Residency.FROG, frog.grid_location, next_grid_location)
 				frog.grid_location = next_grid_location
 
@@ -151,8 +182,6 @@ func _process(_delta: float) -> void:
 				if signal_blocked_behavior != -1:
 					frog.on_blocked_behavior = signal_blocked_behavior
 
-			await get_tree().create_timer(0.0).timeout
-
 		for pipe: FrogPipe in pipes:
 			if pipe.disabled:
 				continue
@@ -160,6 +189,18 @@ func _process(_delta: float) -> void:
 			var spawn_location: Vector2i = pipe.get_spawn_location()
 			if grid.is_empty(spawn_location):
 				var new_frog: Frog = _add_frog(spawn_location, pipe.direction, pipe.instruction)
+				if TurnConfig.get_current_turn_speed() != TurnConfig.TurnSpeed.INSTANT:
+					new_frog.modulate.a = 0.0
+					_new_frog_fade_tween = get_tree().create_tween()
+					_new_frog_fade_tween.tween_property(
+						new_frog, "modulate:a", 1.0, _FROG_ACTION_DURATION
+					)
+					_new_frog_fade_tween.finished.connect(action_finished.emit)
+					await action_finished
+
+					if _new_frog_fade_tween.is_valid():
+						_new_frog_fade_tween.kill()
+
 				var signal_blocked_behavior: Frog.OnBlockedBehavior = _get_signal_behavior_at(
 					new_frog.grid_location,
 					signal_emitters,
@@ -168,14 +209,21 @@ func _process(_delta: float) -> void:
 				if signal_blocked_behavior != -1:
 					new_frog.on_blocked_behavior = signal_blocked_behavior
 
-				await get_tree().create_timer(0.0).timeout
-
+		_return_to_normal_time_scale()
 		_turn_in_progress = false
 
 
 func _ready() -> void:
+	_frog_rotate_timer = Timer.new()
+	_frog_rotate_timer.wait_time = _FROG_ACTION_DURATION
+	_frog_rotate_timer.timeout.connect(action_finished.emit)
+	add_child(_frog_rotate_timer)
+
 	UILayer.sync_button_pressed.connect(_on_sync_button_pressed)
+	# TODO: Undo should work during a turn. Should skip to the end and instantly
+	# revert.
 	UILayer.undo_button_pressed.connect(_undo)
+	TurnConfig.turn_speed_changed.connect(_on_turn_speed_changed)
 
 	var radio_tile_maps: Array[GridTileMap] = _get_radio_tile_maps()
 	for radio_tile_map: GridTileMap in radio_tile_maps:
@@ -222,6 +270,7 @@ func _add_frog(
 	new_frog.number = grid.get_num_frogs()
 	add_child(new_frog)
 	new_frog.name = "Frog"
+
 	return new_frog
 
 
@@ -282,7 +331,7 @@ func _on_signal_emitter_options_changed(signal_emitter: SignalEmitter) -> void:
 
 
 func _undo() -> void:
-	if _level_snapshots.size() == 0:
+	if _level_snapshots.size() == 0 || _turn_in_progress:
 		return
 
 	var snapshot_to_restore: LevelSnapshot = _level_snapshots.pop_back()
@@ -337,3 +386,31 @@ func _on_sync_button_pressed() -> void:
 		UILayer.on_level_won()
 	else:
 		pass
+
+
+func _apply_turn_speed() -> void:
+	var turn_speed: TurnConfig.TurnSpeed = TurnConfig.get_current_turn_speed()
+	match turn_speed:
+		TurnConfig.TurnSpeed.TENTH:
+			Engine.time_scale = 0.1
+		TurnConfig.TurnSpeed.NORMAL:
+			Engine.time_scale = 1.0
+		TurnConfig.TurnSpeed.DOUBLE:
+			Engine.time_scale = 2.0
+		TurnConfig.TurnSpeed.INSTANT:
+			# NOTE: The tween killing should be handled up above, so this
+			# shouldn't be strictly necessary.
+			for tween: Tween in [_frog_move_tween, _new_frog_fade_tween]:
+				if tween && tween.is_valid():
+					tween.kill()
+			_frog_rotate_timer.stop()
+			action_finished.emit()
+
+
+func _return_to_normal_time_scale() -> void:
+	Engine.time_scale = 1.0
+
+
+func _on_turn_speed_changed(_new_turn_speed: TurnConfig.TurnSpeed) -> void:
+	if _turn_in_progress:
+		_apply_turn_speed()

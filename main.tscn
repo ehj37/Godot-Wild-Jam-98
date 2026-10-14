@@ -18,63 +18,43 @@ grid = NodePath("Grid")
 
 [node name="Grid" parent="." unique_id=393757855 instance=ExtResource("3_h2yge")]
 
-[node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("4_1bvp3")]
-position = Vector2(16, 80)
-disabled = true
-direction = 1
-
 [node name="RadioTile" parent="." unique_id=622849264 instance=ExtResource("5_kek77")]
-tile_map_data = PackedByteArray("AAAIAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAA=")
 
 [node name="PipeTile" parent="." unique_id=1835997044 instance=ExtResource("5_5vw27")]
-tile_map_data = PackedByteArray("AAAJAAwAAAAAAAAAAAAJAA0AAAAAAAEAAAAJAA4AAAAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAAJAAMAAAAAAAAAAAAJAAQAAAAAAAEAAAAJAAUAAAAAAAEAAAA=")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=898425967]
-position = Vector2(320, 464)
-
-[node name="FrogPipe2" parent="." unique_id=396493087 instance=ExtResource("4_1bvp3")]
-position = Vector2(272, 80)
-disabled = true
-direction = 3
-
-[node name="FrogPipe3" parent="." unique_id=285109988 instance=ExtResource("4_1bvp3")]
-position = Vector2(272, 176)
-disabled = true
-direction = 3
-
-[node name="FrogPipe4" parent="." unique_id=1846293321 instance=ExtResource("4_1bvp3")]
-position = Vector2(16, 176)
-disabled = true
-direction = 1
+position = Vector2(320, 176)
 
 [node name="FrogPipe5" parent="." unique_id=204364806 instance=ExtResource("4_1bvp3")]
-position = Vector2(16, 368)
+position = Vector2(16, 80)
 instruction = 1
 direction = 1
 
 [node name="FrogPipe6" parent="." unique_id=1376943342 instance=ExtResource("4_1bvp3")]
-position = Vector2(336, 400)
+position = Vector2(336, 112)
 disabled = true
 direction = 1
 
 [node name="Block" parent="." unique_id=770176600 instance=ExtResource("5_lquwl")]
-tile_map_data = PackedByteArray("AAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAAAABMAAAAAAAAAAAABABMAAAAAAAAAAAACABMAAAAAAAAAAAADABMAAAAAAAAAAAADAAsAAAAAAAAAAAARAAwAAAAAAAAAAAANAAkAAAAAAAAAAAAJABQAAAAAAAAAAAAJABMAAAAAAAAAAAAJABIAAAAAAAAAAAAJABEAAAAAAAAAAAAJABAAAAAAAAAAAAAJAA8AAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAABAAAAAAAAAAAAAAABAAoAAAAAAAAAAAACAAAAAAAAAAAAAAACAAoAAAAAAAAAAAADAAAAAAAAAAAAAAADAAoAAAAAAAAAAAAJAAYAAAAAAAAAAAANAAAAAAAAAAAAAAARAAMAAAAAAAAAAAA=")
 
 [node name="SignalBeam" parent="." unique_id=459733674 instance=ExtResource("6_7mycd")]
-position = Vector2(432, 464)
+position = Vector2(432, 176)
 instruction = 2
 
 [node name="SignalBeam2" parent="." unique_id=702519854 instance=ExtResource("6_7mycd")]
-position = Vector2(624, 432)
+position = Vector2(624, 144)
 direction = 1
 
 [node name="SignalBeam3" parent="." unique_id=10304098 instance=ExtResource("6_7mycd")]
-position = Vector2(560, 528)
+position = Vector2(560, 240)
 direction = 2
 
 [node name="SignalBeam4" parent="." unique_id=927557942 instance=ExtResource("6_7mycd")]
-position = Vector2(336, 592)
+position = Vector2(336, 304)
 direction = 3
 
 [node name="SignalTower" parent="." unique_id=990745098 instance=ExtResource("7_272bh")]
-position = Vector2(112, 528)
+position = Vector2(112, 240)

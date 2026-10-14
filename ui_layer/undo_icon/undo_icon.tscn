@@ -1,0 +1,32 @@
+[gd_scene format=4 uid="uid://cyknpxclq7eih"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_22u2v"]
+_data = PackedByteArray("AAADAAUAAAABAAAACgAAAAoAAAA4AAAAUklGRjAAAABXRUJQVlA4TCQAAAAvCUACEA8ws/M/KPMf8DDLSNIgfPnAB/Dlwx5IRP+DseqdiAI=")
+size_override = Vector2(10, 10)
+
+[node name="UndoIcon" type="TextureRect" unique_id=1490511450]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_22u2v")
+stretch_mode = 5
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://ui_layer/undo_icon/undo_icon.aseprite",
+"source_uid": 6952078468009461705
+}
+metadata/_aseprite_wizard_source_file_hash_ = "b2902f0a4bc20f88839ed4306509cb17"
