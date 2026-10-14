@@ -1,6 +1,10 @@
+class_name Level
+
 extends Node2D
 
 @export var grid: Grid
+@export var level_name: String
+@export_multiline var explanation: String
 
 var _turn_in_progress: bool = false
 var _level_won: bool = false

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ybyw8l30ynr"]
+
+[ext_resource type="Script" uid="uid://c5fglonfx4x5p" path="res://level/level.gd" id="1_laqcf"]
+[ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="2_xca3m"]
+[ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="3_ia8fj"]
+[ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="4_6mop0"]
+[ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="5_64t55"]
+[ext_resource type="PackedScene" uid="uid://2ahqli5fghs6" path="res://signal_beam/signal_beam.tscn" id="6_xca3m"]
+
+[node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
+script = ExtResource("1_laqcf")
+grid = NodePath("Grid")
+explanation = "Pipes are locked as flip instructions, so the signal beam is the only way to change an instruction.
+The pipe spawn order isn't controllable by the player, so they have to disable the left pipe (which spawns frogs before the right pipe) to spawn an initial frog from the right.
+
+
+For the contrived solution, the first frog going through the beam twice feels unnecessary."
+metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_xca3m")]
+
+[node name="RadioTile" parent="." unique_id=622849264 instance=ExtResource("3_ia8fj")]
+tile_map_data = PackedByteArray(0, 0, 2, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="Block" parent="." unique_id=770176600 instance=ExtResource("4_6mop0")]
+tile_map_data = PackedByteArray(0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("5_64t55")]
+position = Vector2(48, 112)
+instruction = 2
+direction = 1
+
+[node name="SignalBeam" parent="." unique_id=459733674 instance=ExtResource("6_xca3m")]
+position = Vector2(272, 16)
+direction = 1
+
+[node name="FrogPipe2" parent="." unique_id=1917919032 instance=ExtResource("5_64t55")]
+position = Vector2(496, 112)
+instruction = 2
+direction = 3

@@ -1,0 +1,37 @@
+[gd_scene format=4 uid="uid://dwwapqkpsei7g"]
+
+[ext_resource type="Script" uid="uid://c5fglonfx4x5p" path="res://level/level.gd" id="1_cksrc"]
+[ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="2_whljl"]
+[ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="3_llawm"]
+[ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="3_tls41"]
+[ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="4_tls41"]
+
+[node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
+script = ExtResource("1_cksrc")
+grid = NodePath("Grid")
+explanation = "Three of the four pipes (2, 3, and 4) are red herrings. The way to do it is to set all of those to off, and to set pipe 1 to CCW. A spiral forms, every frog turns three times, then the spiral bursts outwards."
+metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_whljl")]
+
+[node name="RadioTile" parent="." unique_id=622849264 instance=ExtResource("3_tls41")]
+tile_map_data = PackedByteArray("AAAFAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAAKAAMAAAAAAAAAAAA=")
+
+[node name="Block" parent="." unique_id=770176600 instance=ExtResource("4_tls41")]
+tile_map_data = PackedByteArray("AAAHAAEAAAAAAAAAAAAJAAYAAAAAAAAAAAADAAYAAAAAAAAAAAACAAMAAAAAAAAAAAA=")
+
+[node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("3_llawm")]
+position = Vector2(144, 208)
+direction = 1
+
+[node name="FrogPipe2" parent="." unique_id=1279208053 instance=ExtResource("3_llawm")]
+position = Vector2(272, 208)
+direction = 3
+
+[node name="FrogPipe3" parent="." unique_id=242907715 instance=ExtResource("3_llawm")]
+position = Vector2(240, 80)
+direction = 2
+
+[node name="FrogPipe4" parent="." unique_id=1047964939 instance=ExtResource("3_llawm")]
+position = Vector2(112, 112)
+direction = 1

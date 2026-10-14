@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bmgc6an01kvpd"]
+
+[ext_resource type="Script" uid="uid://c5fglonfx4x5p" path="res://level/level.gd" id="1_vccx4"]
+[ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="2_qweda"]
+[ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="3_6kup0"]
+[ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="3_r5uy3"]
+[ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="4_r5uy3"]
+
+[node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
+script = ExtResource("1_vccx4")
+grid = NodePath("Grid")
+metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_qweda")]
+
+[node name="RadioTile" parent="." unique_id=622849264 instance=ExtResource("3_r5uy3")]
+
+[node name="Block" parent="." unique_id=770176600 instance=ExtResource("3_6kup0")]
+
+[node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("4_r5uy3")]
+position = Vector2(16, 16)
