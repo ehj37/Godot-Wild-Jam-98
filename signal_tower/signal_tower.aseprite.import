@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://doly351e3fk4s"
+path="res://.godot/imported/signal_tower.aseprite-e04b6c63b698b8303ca595721b6b6657.res"
+
+[deps]
+
+source_file="res://signal_tower/signal_tower.aseprite"
+dest_files=["res://.godot/imported/signal_tower.aseprite-e04b6c63b698b8303ca595721b6b6657.res"]
+
+[params]
+

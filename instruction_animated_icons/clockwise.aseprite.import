@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bahu7fxr3wc64"
+path="res://.godot/imported/clockwise.aseprite-966d9acc9a60f3034635c94345ff3c85.res"
+
+[deps]
+
+source_file="res://instruction_animated_icons/clockwise.aseprite"
+dest_files=["res://.godot/imported/clockwise.aseprite-966d9acc9a60f3034635c94345ff3c85.res"]
+
+[params]
+

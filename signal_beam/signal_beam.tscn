@@ -1,18 +1,71 @@
-[gd_scene format=3 uid="uid://2ahqli5fghs6"]
+[gd_scene format=4 uid="uid://2ahqli5fghs6"]
 
 [ext_resource type="Script" uid="uid://bd1juh7uw4a30" path="res://signal_beam/signal_beam.gd" id="1_41q74"]
 [ext_resource type="PackedScene" uid="uid://etidnmm1e360" path="res://mini_config_panel/mini_config_panel.tscn" id="2_3ip1k"]
+[ext_resource type="PackedScene" uid="uid://niucl2e1jqwn" path="res://signal_particles/signal_particles.tscn" id="3_h0mar"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h0mar"]
+resource_local_to_scene = true
+particles_animation = true
+particles_anim_h_frames = 16
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_i3sko"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_i3sko"]
+curve = SubResource("Curve_i3sko")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gk70j"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(48, 48, 1)
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_i3sko")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_3ip1k"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAADEAAAAUklGRrwAAABXRUJQVlA4TK8AAAAvH8AHAC9AJEDCDczO8n92jpoASBhqwE30oTHJBCxWY24tpdRo/gNQKoq69vcMXMW2GzejCYFuCJTRv2TXAELBC38wel4RRPRfYdu2DQgk6R5ntKkUUUBZbnYhRFDSRc4Cbpfl+3P/8HI6Co+zQXcf+mWDbkb9MiHEKMtrIgtN7Aeehtc00PHA++9eD90/Lvxziijg0iw37hdgGy3pImfhcZbl+3M6D/PuhWUot5kGAA==")
+size_override = Vector2(32, 32)
 
 [node name="SignalBeam" type="Node2D" unique_id=459733674 node_paths=PackedStringArray("config_panel") groups=["signal_emitter"]]
 script = ExtResource("1_41q74")
 config_panel = NodePath("MiniConfigPanel")
 grid_residency = 3
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=559946615]
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+[node name="SignalParticles" parent="." unique_id=994365525 instance=ExtResource("3_h0mar")]
+material = SubResource("CanvasItemMaterial_h0mar")
+process_material = SubResource("ParticleProcessMaterial_gk70j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1222491125]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_3ip1k")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://signal_beam/signal_beam.aseprite",
+"source_uid": 6924164301238596353
+}
+metadata/_aseprite_wizard_source_file_hash_ = "8846f7837ec93c7182abcec372ee9b0d"
 
 [node name="MiniConfigPanel" parent="." unique_id=900294459 instance=ExtResource("2_3ip1k")]
 offset_left = -20.0

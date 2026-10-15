@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://niucl2e1jqwn"]
+
+[ext_resource type="Texture2D" uid="uid://ctcs1hh5d21gt" path="res://instruction_animated_icons/counterclockwise.png" id="1_ghdx2"]
+[ext_resource type="Script" uid="uid://rr8k2i86l4ja" path="res://signal_particles/signal_particles.gd" id="2_ghdx2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ghdx2"]
+resource_local_to_scene = true
+particles_animation = true
+particles_anim_h_frames = 16
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_i3sko"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_i3sko"]
+curve = SubResource("Curve_i3sko")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d5s1v"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(48, 48, 1)
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_i3sko")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+
+[node name="SignalParticles" type="GPUParticles2D" unique_id=994365525]
+modulate = Color(1, 1, 1, 0.49803922)
+material = SubResource("CanvasItemMaterial_ghdx2")
+amount = 50
+texture = ExtResource("1_ghdx2")
+preprocess = 1.0
+process_material = SubResource("ParticleProcessMaterial_d5s1v")
+script = ExtResource("2_ghdx2")

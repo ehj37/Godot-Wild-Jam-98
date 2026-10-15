@@ -215,6 +215,7 @@ func _process(_delta: float) -> void:
 
 func _ready() -> void:
 	_frog_rotate_timer = Timer.new()
+	_frog_rotate_timer.one_shot = true
 	_frog_rotate_timer.wait_time = _FROG_ACTION_DURATION
 	_frog_rotate_timer.timeout.connect(action_finished.emit)
 	add_child(_frog_rotate_timer)
@@ -385,7 +386,7 @@ func _on_sync_button_pressed() -> void:
 		_level_won = true
 		UILayer.on_level_won()
 	else:
-		pass
+		UILayer.on_sync_failed()
 
 
 func _apply_turn_speed() -> void:

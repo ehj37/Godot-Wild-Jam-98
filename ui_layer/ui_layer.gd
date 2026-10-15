@@ -8,22 +8,26 @@ var _selected_turn_speed_button: Button
 @onready var _radio_sync_status_popup: CenterContainer = $Control/RadioSyncStatusPopup
 # gdlint: disable=max-line-length
 @onready var _tenth_speed_button: Button = get_node(
-	"Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/SpeedButtonContainer/TenthSpeedButton"
+	"Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/SpeedButtonContainer/TenthSpeedButton"
 )
 @onready var _normal_speed_button: Button = get_node(
-	"Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/SpeedButtonContainer/NormalSpeedButton"
+	"Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/SpeedButtonContainer/NormalSpeedButton"
 )
 @onready var _double_speed_button: Button = get_node(
-	"Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/SpeedButtonContainer/DoubleSpeedButton"
+	"Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/SpeedButtonContainer/DoubleSpeedButton"
 )
 @onready var _instant_button: Button = get_node(
-	"Control/HBoxContainer/PanelContainer/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/InstantButton"
+	"Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/InstantButton"
 )
 # gdlint: enable=max-line-length
 
 
 func on_level_won() -> void:
 	_radio_sync_status_popup.visible = true
+
+
+func on_sync_failed() -> void:
+	pass
 
 
 func _ready() -> void:

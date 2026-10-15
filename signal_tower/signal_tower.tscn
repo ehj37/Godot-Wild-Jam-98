@@ -1,19 +1,46 @@
-[gd_scene format=3 uid="uid://s5aaltkvvxil"]
+[gd_scene format=4 uid="uid://s5aaltkvvxil"]
 
 [ext_resource type="Script" uid="uid://cs13rdspnhhbs" path="res://signal_tower/signal_tower.gd" id="1_hpco0"]
+[ext_resource type="PackedScene" uid="uid://niucl2e1jqwn" path="res://signal_particles/signal_particles.tscn" id="2_i3sko"]
 [ext_resource type="PackedScene" uid="uid://etidnmm1e360" path="res://mini_config_panel/mini_config_panel.tscn" id="3_i3sko"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_d5s1v"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAAB0AAAAUklGRmwAAABXRUJQVlA4TGAAAAAvH8AHACdAkG0zjY32yMchyLaZxsZ/nEORSdvURmt1uvfPfwBVlf2+AaO2kSRpGVwIphUCQyEa/rTy3G9E/5fgJCbICrKDfEHeIBM8iTvIFfy/TmKCrCA7yBfkDTLBkwA=")
+size_override = Vector2(32, 32)
 
 [node name="SignalTower" type="Node2D" unique_id=990745098 node_paths=PackedStringArray("config_panel") groups=["signal_emitter"]]
 script = ExtResource("1_hpco0")
 config_panel = NodePath("MiniConfigPanel")
 grid_residency = 3
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1792023108]
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-color = Color(0.19215687, 1, 1, 1)
+[node name="SignalParticles" parent="." unique_id=994365525 instance=ExtResource("2_i3sko")]
+amount = 75
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=708052867]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_d5s1v")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://signal_tower/signal_tower.aseprite",
+"source_uid": 8166122843446933628
+}
+metadata/_aseprite_wizard_source_file_hash_ = "ebcd638da1a5b1acc4a7dc38b0152bcb"
 
 [node name="MiniConfigPanel" parent="." unique_id=900294459 instance=ExtResource("3_i3sko")]
 offset_left = -20.0

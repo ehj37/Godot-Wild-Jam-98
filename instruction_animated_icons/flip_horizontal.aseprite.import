@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ld3bv17uhfro"
+path="res://.godot/imported/flip_horizontal.aseprite-bedb2de19a177cd518eb837752cb76d9.res"
+
+[deps]
+
+source_file="res://instruction_animated_icons/flip_horizontal.aseprite"
+dest_files=["res://.godot/imported/flip_horizontal.aseprite-bedb2de19a177cd518eb837752cb76d9.res"]
+
+[params]
+

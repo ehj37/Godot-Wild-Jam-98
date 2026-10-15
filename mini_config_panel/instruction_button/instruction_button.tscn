@@ -63,15 +63,15 @@ region = Rect2(0, 24, 8, 8)
 atlas = SubResource("PortableCompressedTexture2D_x6ed1")
 region = Rect2(8, 24, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xucke"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_82t0i"]
 atlas = SubResource("PortableCompressedTexture2D_x6ed1")
 region = Rect2(16, 24, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_well5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xucke"]
 atlas = SubResource("PortableCompressedTexture2D_x6ed1")
 region = Rect2(24, 24, 8, 8)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_s6ksp"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_well5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -117,10 +117,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_3bxgb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xucke")
+"texture": SubResource("AtlasTexture_82t0i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_well5")
+"texture": SubResource("AtlasTexture_xucke")
 }],
 "loop": 1,
 "name": &"default",
@@ -220,7 +220,7 @@ theme = ExtResource("1_px8tr")
 [node name="SpriteClockwise" type="AnimatedSprite2D" parent="CenterContainer" unique_id=2044511858]
 texture_filter = 1
 position = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_s6ksp")
+sprite_frames = SubResource("SpriteFrames_well5")
 autoplay = "default"
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
@@ -236,7 +236,7 @@ metadata/_aseprite_wizard_config_ = {
 "scale": "1.0",
 "should_round_fps": true,
 "slice": "",
-"source": "res://mini_config_panel/instruction_button/clockwise.aseprite",
+"source": "res://instruction_animated_icons/clockwise.aseprite",
 "source_uid": 2402143112189745427
 }
 metadata/_aseprite_wizard_source_file_hash_ = "b2e992f2e8c18d6f5216bdd5c73a6613"
@@ -261,7 +261,7 @@ metadata/_aseprite_wizard_config_ = {
 "scale": "1.0",
 "should_round_fps": true,
 "slice": "",
-"source": "res://mini_config_panel/instruction_button/flip_horizontal.aseprite",
+"source": "res://instruction_animated_icons/flip_horizontal.aseprite",
 "source_uid": 779973419508111068
 }
 metadata/_aseprite_wizard_source_file_hash_ = "59e8325739068b5855971d91aa68e152"

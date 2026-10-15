@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c5wd8eoe63ns0"
+path="res://.godot/imported/signal_beam.aseprite-cc98a55415b985ebfe3bdd8c374819a6.res"
+
+[deps]
+
+source_file="res://signal_beam/signal_beam.aseprite"
+dest_files=["res://.godot/imported/signal_beam.aseprite-cc98a55415b985ebfe3bdd8c374819a6.res"]
+
+[params]
+

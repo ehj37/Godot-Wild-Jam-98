@@ -8,6 +8,8 @@ enum Direction { UP, DOWN, LEFT, RIGHT }
 
 @export var direction: Direction
 
+@onready var _signal_particles: SignalParticles = $SignalParticles
+
 
 class BeamRange:
 	var x_start: int
@@ -44,6 +46,7 @@ func update(grid: Grid) -> void:
 
 	var unblocked_beam_range: BeamRange = _get_unblocked_beam_range()
 	var iteration_step: Vector2i = unblocked_beam_range.iteration_step()
+	var block_hit: bool = false
 	for i: int in range(
 		unblocked_beam_range.x_start,
 		unblocked_beam_range.x_end + iteration_step.x,
@@ -57,9 +60,51 @@ func update(grid: Grid) -> void:
 			var test_location: Vector2i = Vector2i(i, j)
 			var test_location_residency: Grid.Residency = grid.get_residency_at(test_location)
 			if test_location_residency != -1 && test_location_residency != Grid.Residency.FROG:
-				return
+				block_hit = true
+				break
 
 			_effected_grid_locations.append(Vector2i(i, j))
+
+		if block_hit:
+			break
+
+	var beam_start_global: Vector2 = _get_beam_start_global_position()
+	var beam_end_global: Vector2 = _get_beam_end_global_position()
+	var beam_mid_point_global: Vector2 = (
+		beam_start_global + (beam_end_global - beam_start_global) / 2
+	)
+	_signal_particles.global_position = beam_mid_point_global
+
+	var beam_grid_length: int = _get_beam_grid_length()
+	if beam_grid_length == 0:
+		_signal_particles.visible = false
+		return
+
+	_signal_particles.visible = true
+
+	var signal_particles_particle_process_material: ParticleProcessMaterial = (
+		_signal_particles.process_material
+	)
+	var beam_direction: Vector2 = _get_beam_direction()
+	if beam_direction.x != 0:
+		signal_particles_particle_process_material.emission_box_extents.y = 8
+		signal_particles_particle_process_material.emission_box_extents.x = (
+			0.5 * beam_grid_length * Grid.SQUARE_SIDE_DIM
+		)
+	else:
+		signal_particles_particle_process_material.emission_box_extents.x = 8
+		signal_particles_particle_process_material.emission_box_extents.y = (
+			0.5 * beam_grid_length * Grid.SQUARE_SIDE_DIM
+		)
+
+	_signal_particles.amount = beam_grid_length * 10
+
+
+func _ready() -> void:
+	super()
+
+	_signal_particles.instruction = instruction
+	_signal_particles.visible = power_on
 
 
 func _get_unblocked_beam_range() -> BeamRange:
@@ -93,12 +138,57 @@ func _get_unblocked_beam_range() -> BeamRange:
 	return BeamRange.new(x_start, x_end, y_start, y_end)
 
 
+func _get_beam_grid_length() -> int:
+	if _effected_grid_locations.size() == 0:
+		return 0
+
+	var beam_start_grid_location: Vector2 = _effected_grid_locations.front()
+	var beam_end_grid_location: Vector2 = _effected_grid_locations.back()
+	var beam_grid_location_delta: Vector2 = beam_end_grid_location - beam_start_grid_location
+	return max(abs(beam_grid_location_delta.x), abs(beam_grid_location_delta.y)) + 1
+
+
+func _get_beam_direction() -> Vector2:
+	if _effected_grid_locations.size() == 0:
+		return Vector2.ZERO
+
+	var beam_end_grid_location: Vector2 = _effected_grid_locations.back()
+	var beam_end_global_position_center: Vector2 = Grid.get_global_position_center(
+		beam_end_grid_location
+	)
+	return (beam_end_global_position_center - global_position).normalized()
+
+
+func _get_beam_start_global_position() -> Vector2:
+	var beam_direction: Vector2 = _get_beam_direction()
+	return global_position + 0.5 * beam_direction * Grid.SQUARE_SIDE_DIM
+
+
+func _get_beam_end_global_position() -> Vector2:
+	var beam_grid_length: int = _get_beam_grid_length()
+	var beam_direction: Vector2 = _get_beam_direction()
+	var beam_start_global_position: Vector2 = _get_beam_start_global_position()
+	return beam_start_global_position + beam_direction * beam_grid_length * Grid.SQUARE_SIDE_DIM
+
+
+func _on_instruction_changed() -> void:
+	super()
+
+	if is_node_ready():
+		_signal_particles.instruction = instruction
+
+
+func _on_power_on_changed() -> void:
+	super()
+
+	if is_node_ready():
+		_signal_particles.visible = power_on
+
+
 func _draw() -> void:
 	if Engine.is_editor_hint() || !power_on:
 		return
 
-	for effected_grid_location: Vector2i in _effected_grid_locations:
-		var center_global_pos: Vector2 = Grid.get_global_position_center(effected_grid_location)
-		var beam_relative_pos: Vector2 = center_global_pos - global_position
-		var signal_rect: Rect2 = Rect2(beam_relative_pos.x - 10, beam_relative_pos.y - 10, 20, 20)
-		draw_rect(signal_rect, Color.FUCHSIA, true)
+	var beam_start_local: Vector2 = to_local(_get_beam_start_global_position())
+	var beam_end_local: Vector2 = to_local(_get_beam_end_global_position())
+	draw_line(beam_start_local, beam_end_local, Color("ebeb00"), 4)
