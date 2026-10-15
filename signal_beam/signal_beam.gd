@@ -6,8 +6,13 @@ extends SignalEmitter
 
 enum Direction { UP, DOWN, LEFT, RIGHT }
 
-@export var direction: Direction
+@export var direction: Direction:
+	set(new_value):
+		direction = new_value
+		if is_node_ready():
+			_update_direction_related_visuals()
 
+@onready var _sprite: Sprite2D = $Sprite2D
 @onready var _signal_particles: SignalParticles = $SignalParticles
 
 
@@ -68,6 +73,39 @@ func update(grid: Grid) -> void:
 		if block_hit:
 			break
 
+	_update_particles()
+
+
+func _ready() -> void:
+	super()
+
+	_signal_particles.instruction = instruction
+	_signal_particles.visible = power_on
+
+	_update_direction_related_visuals()
+
+
+func _update_direction_related_visuals() -> void:
+	match direction:
+		Direction.UP:
+			_sprite.rotation = -PI / 2
+			config_panel.orientation = MiniConfigPanel.ButtonOrientation.POWER_BOTTOM
+		Direction.DOWN:
+			_sprite.rotation = PI / 2
+			config_panel.orientation = MiniConfigPanel.ButtonOrientation.POWER_TOP
+		Direction.LEFT:
+			_sprite.rotation = PI
+			config_panel.orientation = MiniConfigPanel.ButtonOrientation.POWER_RIGHT
+		Direction.RIGHT:
+			_sprite.rotation = 0
+			config_panel.orientation = MiniConfigPanel.ButtonOrientation.POWER_LEFT
+
+
+func _update_particles() -> void:
+	if !power_on:
+		_signal_particles.visible = false
+		return
+
 	var beam_start_global: Vector2 = _get_beam_start_global_position()
 	var beam_end_global: Vector2 = _get_beam_end_global_position()
 	var beam_mid_point_global: Vector2 = (
@@ -76,7 +114,7 @@ func update(grid: Grid) -> void:
 	_signal_particles.global_position = beam_mid_point_global
 
 	var beam_grid_length: int = _get_beam_grid_length()
-	if beam_grid_length == 0:
+	if beam_grid_length == 0 || !power_on:
 		_signal_particles.visible = false
 		return
 
@@ -98,13 +136,6 @@ func update(grid: Grid) -> void:
 		)
 
 	_signal_particles.amount = beam_grid_length * 10
-
-
-func _ready() -> void:
-	super()
-
-	_signal_particles.instruction = instruction
-	_signal_particles.visible = power_on
 
 
 func _get_unblocked_beam_range() -> BeamRange:
@@ -181,8 +212,7 @@ func _on_instruction_changed() -> void:
 func _on_power_on_changed() -> void:
 	super()
 
-	if is_node_ready():
-		_signal_particles.visible = power_on
+	_update_particles()
 
 
 func _draw() -> void:

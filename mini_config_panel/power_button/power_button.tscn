@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://b7c67jknu77s0" path="res://mini_config_panel/power_button/power_button.gd" id="1_xtbfc"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ck4ml"]
-_data = PackedByteArray("AAADAAUAAAABAAAACQAAAAoAAAA4AAAAUklGRjAAAABXRUJQVlA4TCMAAAAvCEACEA8w//M///Mf8DDMRlIRlnkRDu5w7ncOEf0PYo2+AwA=")
-size_override = Vector2(9, 10)
+_data = PackedByteArray("AAADAAUAAAABAAAACgAAAAoAAAA4AAAAUklGRjAAAABXRUJQVlA4TCMAAAAvCUACEA8w//M///Mf8DDTtk1SRNXAD96+cYjof0BZx7wTAAA=")
+size_override = Vector2(10, 10)
 
 [node name="PowerButton" type="Control" unique_id=192255413]
-custom_minimum_size = Vector2(11, 12)
+custom_minimum_size = Vector2(12, 12)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 11.0
@@ -22,13 +22,14 @@ offset_right = 11.0
 offset_bottom = 12.0
 
 [node name="Button" type="Button" parent="CenterContainer" unique_id=25530947]
-custom_minimum_size = Vector2(11, 12)
+custom_minimum_size = Vector2(12, 12)
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("1_jx43y")
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=1141322702]
+modulate = Color(0, 1, 0, 1)
 texture_filter = 1
 layout_mode = 2
 mouse_filter = 2
@@ -55,6 +56,6 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://mini_config_panel/power_button/power_icon.aseprite",
 "source_uid": 8995035458538744244
 }
-metadata/_aseprite_wizard_source_file_hash_ = "904062b4629501151f23b2f4c07dc49d"
+metadata/_aseprite_wizard_source_file_hash_ = "31a49354889b6fa7a012cf020924488f"
 
 [connection signal="pressed" from="CenterContainer/Button" to="." method="_on_button_pressed"]

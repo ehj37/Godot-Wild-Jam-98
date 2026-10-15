@@ -1,3 +1,5 @@
+@tool
+
 class_name SignalParticles
 
 extends GPUParticles2D

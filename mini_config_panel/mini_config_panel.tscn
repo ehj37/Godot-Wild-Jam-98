@@ -11,10 +11,12 @@ script = ExtResource("1_vf0pt")
 
 [node name="PowerButton" parent="." unique_id=202279930 instance=ExtResource("2_0tcov")]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="InstructionButton" parent="." unique_id=389154378 instance=ExtResource("3_wfsq8")]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

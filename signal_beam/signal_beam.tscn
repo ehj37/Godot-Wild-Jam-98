@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bd1juh7uw4a30" path="res://signal_beam/signal_beam.gd" id="1_41q74"]
 [ext_resource type="PackedScene" uid="uid://etidnmm1e360" path="res://mini_config_panel/mini_config_panel.tscn" id="2_3ip1k"]
+[ext_resource type="Texture2D" uid="uid://xjkigq1i5mqa" path="res://instruction_animated_icons/clockwise.png" id="3_gk70j"]
 [ext_resource type="PackedScene" uid="uid://niucl2e1jqwn" path="res://signal_particles/signal_particles.tscn" id="3_h0mar"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h0mar"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v6jhd"]
 resource_local_to_scene = true
 particles_animation = true
 particles_anim_h_frames = 16
@@ -18,7 +19,7 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_i3sko"]
 curve = SubResource("Curve_i3sko")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gk70j"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_17knq"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
 emission_shape = 3
@@ -32,17 +33,18 @@ anim_speed_max = 2.0
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAADEAAAAUklGRrwAAABXRUJQVlA4TK8AAAAvH8AHAC9AJEDCDczO8n92jpoASBhqwE30oTHJBCxWY24tpdRo/gNQKoq69vcMXMW2GzejCYFuCJTRv2TXAELBC38wel4RRPRfYdu2DQgk6R5ntKkUUUBZbnYhRFDSRc4Cbpfl+3P/8HI6Co+zQXcf+mWDbkb9MiHEKMtrIgtN7Aeehtc00PHA++9eD90/Lvxziijg0iw37hdgGy3pImfhcZbl+3M6D/PuhWUot5kGAA==")
 size_override = Vector2(32, 32)
 
-[node name="SignalBeam" type="Node2D" unique_id=459733674 node_paths=PackedStringArray("config_panel") groups=["signal_emitter"]]
+[node name="SignalBeam" type="Node2D" unique_id=459733674 groups=["signal_emitter"]]
 script = ExtResource("1_41q74")
-config_panel = NodePath("MiniConfigPanel")
 grid_residency = 3
 
 [node name="SignalParticles" parent="." unique_id=994365525 instance=ExtResource("3_h0mar")]
-material = SubResource("CanvasItemMaterial_h0mar")
-process_material = SubResource("ParticleProcessMaterial_gk70j")
+material = SubResource("CanvasItemMaterial_v6jhd")
+texture = ExtResource("3_gk70j")
+process_material = SubResource("ParticleProcessMaterial_17knq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1222491125]
 texture_filter = 1
+rotation = -1.5707964
 texture = SubResource("PortableCompressedTexture2D_3ip1k")
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
@@ -68,7 +70,9 @@ metadata/_aseprite_wizard_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "8846f7837ec93c7182abcec372ee9b0d"
 
 [node name="MiniConfigPanel" parent="." unique_id=900294459 instance=ExtResource("2_3ip1k")]
+modulate = Color(1, 1, 1, 0.6)
 offset_left = -20.0
 offset_top = -15.0
 offset_right = 20.0
 offset_bottom = 15.0
+vertical = true
