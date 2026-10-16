@@ -14,6 +14,16 @@ extends GridEntity
 		instruction = new_value
 		if is_node_ready():
 			_update_visuals()
+@export var power_button_stuck: bool:
+	set(new_value):
+		power_button_stuck = new_value
+		if is_node_ready():
+			_config_panel.power_button_stuck = new_value
+@export var instruction_button_stuck: bool:
+	set(new_value):
+		instruction_button_stuck = new_value
+		if is_node_ready():
+			_config_panel.instruction_button_stuck = new_value
 
 @export var direction: Frog.Direction:
 	set(new_value):
@@ -45,8 +55,12 @@ func _ready() -> void:
 func _update_visuals() -> void:
 	_sprite.rotation = direction * PI / 2.0
 
+	_config_panel.power_button_stuck = power_button_stuck
+	_config_panel.instruction_button_stuck = instruction_button_stuck
 	if _config_panel.power_on == disabled:
 		_config_panel.power_on = !disabled
+	if _config_panel.instruction != instruction:
+		_config_panel.instruction = instruction
 
 	match direction:
 		Frog.Direction.UP:

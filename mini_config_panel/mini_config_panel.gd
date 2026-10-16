@@ -15,21 +15,30 @@ const _MOUSE_EXITED_ALPHA: float = 0.6
 var orientation: ButtonOrientation:
 	set(new_value):
 		orientation = new_value
-		if self.is_node_ready():
+		if is_node_ready():
 			_update_buttons()
-
 var power_on: bool = true:
 	set(new_value):
 		power_on = new_value
-		if self.is_node_ready():
+		power_on_changed.emit(power_on)
+		if is_node_ready():
 			_update_buttons()
 
-		power_on_changed.emit(power_on)
 var instruction: Frog.OnBlockedBehavior:
 	set(new_value):
 		instruction = new_value
 		instruction_changed.emit(instruction)
-		if self.is_node_ready():
+		if is_node_ready():
+			_update_buttons()
+var power_button_stuck: bool:
+	set(new_value):
+		power_button_stuck = new_value
+		if is_node_ready():
+			_update_buttons()
+var instruction_button_stuck: bool:
+	set(new_value):
+		instruction_button_stuck = new_value
+		if is_node_ready():
 			_update_buttons()
 
 @onready var _power_button: PowerButton = $PowerButton
@@ -52,6 +61,8 @@ func _ready() -> void:
 func _update_buttons() -> void:
 	_power_button.power_on = power_on
 	_instruction_button.instruction = instruction
+	_power_button.stuck = power_button_stuck
+	_instruction_button.stuck = instruction_button_stuck
 	if power_on:
 		_instruction_button.start()
 	else:

@@ -30,6 +30,7 @@ position = Vector2(320, 176)
 [node name="FrogPipe5" parent="." unique_id=204364806 instance=ExtResource("4_1bvp3")]
 position = Vector2(16, 80)
 instruction = 1
+power_button_stuck = true
 direction = 1
 
 [node name="FrogPipe6" parent="." unique_id=1376943342 instance=ExtResource("4_1bvp3")]
@@ -61,3 +62,4 @@ power_on = false
 
 [node name="SignalTower" parent="." unique_id=990745098 instance=ExtResource("7_272bh")]
 position = Vector2(112, 240)
+power_button_stuck = true

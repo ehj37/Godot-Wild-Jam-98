@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cbno18pox8p12" path="res://mini_config_panel/instruction_button/instruction_button.gd" id="2_4qejt"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_x6ed1"]
-_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABOAAAAUklGRkYAAABXRUJQVlA4TDoAAAAvH8AHEA8wpfMf8x842ESSFauLKyRGzkpBAv5z/uEgov8rAGXMVQrFV2eHxN0vQUL2Wb4olKIUcxQA")
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABQAAAAUklGRkgAAABXRUJQVlA4TDsAAAAvH8AHEA8w//M///Mf8GATSVasLq6QGDkrBQn4z/mHg4j+rwCUMVcpFF+dHRJ3vwQJ2Wf5olCKUsxRAAA=")
 size_override = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_70jxx"]
@@ -128,7 +128,7 @@ animations = [{
 }]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_4qejt"]
-_data = PackedByteArray("AAADAAUAAAABAAAAGAAAABgAAABEAAAAUklGRjwAAABXRUJQVlA4TDAAAAAvF8AFEA8wpfMf8x841ESSFDVveApOCCFSkIB/Aachov+Jvo+y7wP8+5T/PiBDnQE=")
+_data = PackedByteArray("AAADAAUAAAABAAAAGAAAABgAAABGAAAAUklGRj4AAABXRUJQVlA4TDIAAAAvF8AFEA8w//M///Mf8FATSVI090CIAoQQIgUJ+I/vsRDR/1UAdB6yuvz7CNqyF1FZAA==")
 size_override = Vector2(24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x6ed1"]
@@ -216,6 +216,7 @@ layout_mode = 2
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("1_px8tr")
+disabled = true
 
 [node name="SpriteClockwise" type="AnimatedSprite2D" parent="CenterContainer" unique_id=2044511858]
 texture_filter = 1
@@ -239,7 +240,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://instruction_animated_icons/clockwise.aseprite",
 "source_uid": 2402143112189745427
 }
-metadata/_aseprite_wizard_source_file_hash_ = "b2e992f2e8c18d6f5216bdd5c73a6613"
+metadata/_aseprite_wizard_source_file_hash_ = "9859a4bbb742a0227c849336fa713a74"
 
 [node name="SpriteFlipHorizontal" type="AnimatedSprite2D" parent="CenterContainer" unique_id=298656017]
 visible = false
@@ -264,6 +265,6 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://instruction_animated_icons/flip_horizontal.aseprite",
 "source_uid": 779973419508111068
 }
-metadata/_aseprite_wizard_source_file_hash_ = "59e8325739068b5855971d91aa68e152"
+metadata/_aseprite_wizard_source_file_hash_ = "9ee71e29116b0730cfa36d2a2516400e"
 
 [connection signal="pressed" from="CenterContainer/Button" to="." method="_on_button_pressed"]

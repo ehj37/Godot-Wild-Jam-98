@@ -16,10 +16,16 @@ signal options_changed
 		instruction = new_value
 		if is_node_ready():
 			_on_instruction_changed()
-
-# TODO: Implement stuck/locked buttons
-@export var power_button_stuck: bool = false
-@export var instruction_button_stuck: bool = false
+@export var power_button_stuck: bool = false:
+	set(new_value):
+		power_button_stuck = new_value
+		if is_node_ready():
+			config_panel.power_button_stuck = new_value
+@export var instruction_button_stuck: bool = false:
+	set(new_value):
+		instruction_button_stuck = new_value
+		if is_node_ready():
+			config_panel.instruction_button_stuck = new_value
 
 var _effected_grid_locations: Array[Vector2i]
 
