@@ -6,6 +6,12 @@ signal undo_button_pressed
 var _selected_turn_speed_button: Button
 
 @onready var _radio_sync_status_popup: CenterContainer = $Control/RadioSyncStatusPopup
+@onready var _sync_successful_label: Label = get_node(
+	"Control/RadioSyncStatusPopup/PanelContainer/MarginContainer/RadiosSyncedLabel"
+)
+@onready var _sync_unsuccessful_label: Label = get_node(
+	"Control/RadioSyncStatusPopup/PanelContainer/MarginContainer/SyncUnsuccessfulLabel"
+)
 # gdlint: disable=max-line-length
 @onready var _tenth_speed_button: Button = get_node(
 	"Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/TurnSpeedContainer/SpeedButtonContainer/TenthSpeedButton"
@@ -24,10 +30,18 @@ var _selected_turn_speed_button: Button
 
 func on_level_won() -> void:
 	_radio_sync_status_popup.visible = true
+	_sync_successful_label.visible = true
+	_sync_unsuccessful_label.visible = false
 
 
 func on_sync_failed() -> void:
-	pass
+	_radio_sync_status_popup.visible = true
+	_sync_successful_label.visible = false
+	_sync_unsuccessful_label.visible = true
+	# TODO: Prevent additional sync attempts while this popup is shown.
+	await get_tree().create_timer(1.0).timeout
+
+	_radio_sync_status_popup.visible = false
 
 
 func _ready() -> void:

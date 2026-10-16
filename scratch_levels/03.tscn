@@ -13,14 +13,15 @@ grid = NodePath("Grid")
 explanation = "Pipes are locked as flip instructions, so the signal beam is the only way to change an instruction.
 The pipe spawn order isn't controllable by the player, so they have to disable the left pipe (which spawns frogs before the right pipe) to spawn an initial frog from the right.
 
+For the contrived solution, the first frog going through the beam twice feels unnecessary.
 
-For the contrived solution, the first frog going through the beam twice feels unnecessary."
+A frog limit of 3 sort of makes this level work."
 metadata/_custom_type_script = "uid://c5fglonfx4x5p"
 
 [node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_xca3m")]
 
 [node name="RadioTile" parent="." unique_id=622849264 instance=ExtResource("3_ia8fj")]
-tile_map_data = PackedByteArray(0, 0, 2, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 2, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [node name="Block" parent="." unique_id=770176600 instance=ExtResource("4_6mop0")]
 tile_map_data = PackedByteArray(0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -28,6 +29,7 @@ tile_map_data = PackedByteArray(0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 [node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("5_64t55")]
 position = Vector2(48, 112)
 instruction = 2
+instruction_button_stuck = true
 direction = 1
 
 [node name="SignalBeam" parent="." unique_id=459733674 instance=ExtResource("6_xca3m")]
@@ -37,4 +39,5 @@ direction = 1
 [node name="FrogPipe2" parent="." unique_id=1917919032 instance=ExtResource("5_64t55")]
 position = Vector2(496, 112)
 instruction = 2
+instruction_button_stuck = true
 direction = 3

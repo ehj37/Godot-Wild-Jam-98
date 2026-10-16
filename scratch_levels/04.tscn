@@ -10,21 +10,23 @@
 [node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_61hl3")
 grid = NodePath("Grid")
-explanation = "Pipe is stuck to clockwise. Pop out one frog, set the beam to flip, and then the one frog will rebound off of the wall. This allows the player to spawn a second frog that collides with the first and makes the second frog go downwards towards the radio."
+explanation = "Pipe is stuck to clockwise. Pop out one frog, set the beam to flip, and then the one frog will rebound off of the wall. This allows the player to spawn a second frog that collides with the first and makes the second frog go downwards towards the radio.
+Addition of making the first frog need to change to CW after flipping to go up after colliding with the second frog."
 metadata/_custom_type_script = "uid://c5fglonfx4x5p"
 
 [node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_a2j3o")]
 
 [node name="RadioTile" parent="." unique_id=622849264 instance=ExtResource("3_niseg")]
-tile_map_data = PackedByteArray(0, 0, 2, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [node name="Block" parent="." unique_id=770176600 instance=ExtResource("4_p7vei")]
-tile_map_data = PackedByteArray(0, 0, 15, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 10, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("5_iufce")]
 position = Vector2(16, 176)
+instruction_button_stuck = true
 direction = 1
 
 [node name="SignalBeam" parent="." unique_id=459733674 instance=ExtResource("6_a2j3o")]
-position = Vector2(464, 16)
+position = Vector2(208, 16)
 direction = 1
