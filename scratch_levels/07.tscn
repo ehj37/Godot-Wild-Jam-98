@@ -10,7 +10,9 @@
 [node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_3afjl")
 grid = NodePath("Grid")
-explanation = "No frog limit, top pipe could be locked to on. Set tower to flip, then to clockwise. Tower could be locked to on as well."
+explanation = "No frog limit, top pipe could be locked to on. Set tower to flip, then to clockwise. Tower could be locked to on as well.
+
+Maybe make this require an additional tower action after changing to CW? Just to reinforce why a tower is different than a beam."
 metadata/_custom_type_script = "uid://c5fglonfx4x5p"
 
 [node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_cphj8")]

@@ -13,6 +13,7 @@ const _FROG_ACTION_DURATION: float = 0.1
 var _turn_in_progress: bool = false
 var _level_won: bool = false
 var _level_snapshots: Array[LevelSnapshot]
+var _current_snapshot_cursor: int = 0
 
 var _frog_move_tween: Tween
 var _new_frog_fade_tween: Tween
@@ -92,55 +93,25 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("undo"):
 		_undo()
 
+	if Input.is_action_just_pressed("redo"):
+		_redo()
+
 	if !_turn_in_progress && Input.is_action_just_pressed("test"):
 		_turn_in_progress = true
 		_apply_turn_speed()
-
-		# CAPTURE A SNAPSHOT
-		# TODO: Be smarter about only recording a snapshot if current snapshot
-		# differs from the previous one. May be the case that there are no frogs
-		# and all signal emitters are the same as they were before.
-		var frog_snapshots: Array[FrogSnapshot]
-		var frogs: Array[Frog] = _get_frogs()
-		# NOTE: Frog number is baked into the order of the snapshots, just as it
-		# is currently baked into the order from _get_frogs.
-		for frog: Frog in frogs:
-			var frog_snapshot: FrogSnapshot = FrogSnapshot.new(
-				frog.grid_location, frog.direction, frog.on_blocked_behavior
-			)
-			frog_snapshots.append(frog_snapshot)
-
-		var signal_emitter_snapshots: Array[SignalEmitterSnapshot]
-		var signal_emitters: Array[SignalEmitter] = _get_signal_emitters()
-		for signal_emitter: SignalEmitter in signal_emitters:
-			var signal_emitter_snapshot: SignalEmitterSnapshot = SignalEmitterSnapshot.new(
-				signal_emitter.grid_location, signal_emitter.power_on, signal_emitter.instruction
-			)
-			signal_emitter_snapshots.append(signal_emitter_snapshot)
-
-		var frog_pipe_snapshots: Array[FrogPipeSnapshot]
-		var pipes: Array[FrogPipe] = _get_pipes()
-		for pipe: FrogPipe in pipes:
-			var frog_pipe_snapshot: FrogPipeSnapshot = FrogPipeSnapshot.new(
-				pipe.grid_location, pipe.disabled, pipe.instruction
-			)
-			frog_pipe_snapshots.append(frog_pipe_snapshot)
-
-		var level_snapshot: LevelSnapshot = LevelSnapshot.new(
-			frog_snapshots, signal_emitter_snapshots, frog_pipe_snapshots
-		)
-		_level_snapshots.append(level_snapshot)
 
 		# NOTE: Currently, there's no reason why this would change as the frogs
 		# move. If a moving, non-frog, signal-beam-blocking entity came into
 		# being, this would potentially need recomputing (depending on when
 		# said entity would move relative to the frogs).
 		var signal_emitter_to_effected_grid_locations: Dictionary
+		var signal_emitters: Array[SignalEmitter] = _get_signal_emitters()
 		for signal_emitter: SignalEmitter in signal_emitters:
 			signal_emitter_to_effected_grid_locations.set(
 				signal_emitter, signal_emitter.get_effected_grid_locations(grid)
 			)
 
+		var frogs: Array[Frog] = _get_frogs()
 		for frog: Frog in frogs:
 			var next_grid_location: Vector2i = frog.get_next_grid_location()
 			if !grid.is_empty(next_grid_location):
@@ -182,6 +153,7 @@ func _process(_delta: float) -> void:
 				if signal_blocked_behavior != -1:
 					frog.on_blocked_behavior = signal_blocked_behavior
 
+		var pipes: Array[FrogPipe] = _get_pipes()
 		for pipe: FrogPipe in pipes:
 			if pipe.disabled:
 				continue
@@ -210,10 +182,19 @@ func _process(_delta: float) -> void:
 					new_frog.on_blocked_behavior = signal_blocked_behavior
 
 		_return_to_normal_time_scale()
+		# NOTE: All redo history after the current cursor gets wiped.
+		_level_snapshots.resize(_current_snapshot_cursor + 1)
+		_capture_snapshot()
+		_current_snapshot_cursor += 1
+		UILayer.on_snapshot_update(_level_snapshots.size(), _current_snapshot_cursor)
 		_turn_in_progress = false
 
 
 func _ready() -> void:
+	_capture_snapshot()
+	_current_snapshot_cursor = 0
+	UILayer.on_snapshot_update(_level_snapshots.size(), _current_snapshot_cursor)
+
 	_frog_rotate_timer = Timer.new()
 	_frog_rotate_timer.one_shot = true
 	_frog_rotate_timer.wait_time = _FROG_ACTION_DURATION
@@ -224,6 +205,8 @@ func _ready() -> void:
 	# TODO: Undo should work during a turn. Should skip to the end and instantly
 	# revert.
 	UILayer.undo_button_pressed.connect(_undo)
+	UILayer.redo_button_pressed.connect(_redo)
+	UILayer.reset_button_pressed.connect(_reset)
 	TurnConfig.turn_speed_changed.connect(_on_turn_speed_changed)
 
 	var radio_tile_maps: Array[GridTileMap] = _get_radio_tile_maps()
@@ -331,11 +314,43 @@ func _on_signal_emitter_options_changed(signal_emitter: SignalEmitter) -> void:
 			frog.on_blocked_behavior = signal_emitter.instruction
 
 
-func _undo() -> void:
-	if _level_snapshots.size() == 0 || _turn_in_progress:
-		return
+# NOTE: I'm not being smart about only recording a snapshot if current snapshot
+# differs from the previous one. May be the case that there are no frogs and all
+# signal emitters are the same as they were before.
+func _capture_snapshot() -> void:
+	var frog_snapshots: Array[FrogSnapshot]
+	var frogs: Array[Frog] = _get_frogs()
+	# NOTE: Frog number is baked into the order of the snapshots, just as it
+	# is currently baked into the order from _get_frogs.
+	for frog: Frog in frogs:
+		var frog_snapshot: FrogSnapshot = FrogSnapshot.new(
+			frog.grid_location, frog.direction, frog.on_blocked_behavior
+		)
+		frog_snapshots.append(frog_snapshot)
 
-	var snapshot_to_restore: LevelSnapshot = _level_snapshots.pop_back()
+	var signal_emitter_snapshots: Array[SignalEmitterSnapshot]
+	var signal_emitters: Array[SignalEmitter] = _get_signal_emitters()
+	for signal_emitter: SignalEmitter in signal_emitters:
+		var signal_emitter_snapshot: SignalEmitterSnapshot = SignalEmitterSnapshot.new(
+			signal_emitter.grid_location, signal_emitter.power_on, signal_emitter.instruction
+		)
+		signal_emitter_snapshots.append(signal_emitter_snapshot)
+
+	var frog_pipe_snapshots: Array[FrogPipeSnapshot]
+	var pipes: Array[FrogPipe] = _get_pipes()
+	for pipe: FrogPipe in pipes:
+		var frog_pipe_snapshot: FrogPipeSnapshot = FrogPipeSnapshot.new(
+			pipe.grid_location, pipe.disabled, pipe.instruction
+		)
+		frog_pipe_snapshots.append(frog_pipe_snapshot)
+
+	var level_snapshot: LevelSnapshot = LevelSnapshot.new(
+		frog_snapshots, signal_emitter_snapshots, frog_pipe_snapshots
+	)
+	_level_snapshots.append(level_snapshot)
+
+
+func _restore_state_from_snapshot(snapshot_to_restore: LevelSnapshot) -> void:
 	var frogs: Array[Frog] = _get_frogs()
 	for frog: Frog in frogs:
 		_remove_frog(frog)
@@ -379,6 +394,33 @@ func _undo() -> void:
 		)
 		pipe.disabled = frog_pipe_snapshot.disabled
 		pipe.instruction = frog_pipe_snapshot.instruction
+
+
+func _undo() -> void:
+	if _current_snapshot_cursor == 0 || _turn_in_progress:
+		return
+
+	_current_snapshot_cursor -= 1
+	var snapshot_to_restore: LevelSnapshot = _level_snapshots[_current_snapshot_cursor]
+	_restore_state_from_snapshot(snapshot_to_restore)
+	UILayer.on_snapshot_update(_level_snapshots.size(), _current_snapshot_cursor)
+
+
+func _redo() -> void:
+	if _current_snapshot_cursor == _level_snapshots.size() - 1 || _turn_in_progress:
+		return
+
+	_current_snapshot_cursor += 1
+	var snapshot_to_restore: LevelSnapshot = _level_snapshots[_current_snapshot_cursor]
+	_restore_state_from_snapshot(snapshot_to_restore)
+	UILayer.on_snapshot_update(_level_snapshots.size(), _current_snapshot_cursor)
+
+
+func _reset() -> void:
+	_level_snapshots.resize(1)
+	_current_snapshot_cursor = 0
+	_restore_state_from_snapshot(_level_snapshots[0])
+	UILayer.on_snapshot_update(_level_snapshots.size(), _current_snapshot_cursor)
 
 
 func _on_sync_button_pressed() -> void:
