@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://s8lq6cs0xjal" path="res://pause_layer/pause_layer.gd" id="1_xtfc5"]
 [ext_resource type="PackedScene" uid="uid://djqmdgah084rg" path="res://settings_section/settings_section.tscn" id="2_fk47h"]
-[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme.tres" id="2_gicyt"]
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme/theme.tres" id="2_gicyt"]
 [ext_resource type="PackedScene" uid="uid://p3dqfdy4qccc" path="res://clicky_button/clicky_button.tscn" id="4_52add"]
 
 [node name="PauseLayer" type="CanvasLayer" unique_id=1202856747]

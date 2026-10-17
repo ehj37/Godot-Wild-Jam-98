@@ -3,6 +3,12 @@ extends CanvasLayer
 var _selected_turn_speed_button: Button
 
 # gdlint: disable=max-line-length
+@onready var _level_name_container: MarginContainer = get_node(
+	"Control/HBoxContainer/LeftSectionContainer/LevelNameContainer"
+)
+@onready var _level_name_label: Label = get_node(
+	"Control/HBoxContainer/LeftSectionContainer/LevelNameContainer/VBoxContainer/LevelNameLabelContainer/MarginContainer/Label"
+)
 @onready var _undo_button: Button = get_node(
 	"Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer/UndoButton"
 )
@@ -38,11 +44,34 @@ var _selected_turn_speed_button: Button
 
 func _ready() -> void:
 	_radio_sync_status_popup.visible = false
+	_level_name_container.visible = false
 	_selected_turn_speed_button = _normal_speed_button
 
 	SignalBus.snapshots_updated.connect(_on_snapshot_update)
 	SignalBus.sync_successful.connect(_on_sync_successful)
 	SignalBus.sync_unsuccessful.connect(_on_sync_unsuccessful)
+	SignalBus.level_ready.connect(_on_level_ready)
+
+
+func _on_level_ready(level_name: String) -> void:
+	await get_tree().create_timer(1.0).timeout
+
+	_level_name_container.visible = true
+	_level_name_container.modulate.a = 0
+	_level_name_label.text = level_name
+
+	var fade_in_tween: Tween = get_tree().create_tween()
+	fade_in_tween.tween_property(_level_name_container, "modulate:a", 1.0, 1.5)
+
+	await fade_in_tween.finished
+
+	await get_tree().create_timer(1.5).timeout
+
+	var fade_out_tween: Tween = get_tree().create_tween()
+	fade_out_tween.tween_property(_level_name_container, "modulate:a", 0.0, 1.0)
+	await fade_out_tween.finished
+
+	_level_name_container.visible = false
 
 
 func _on_snapshot_update(num_level_snapshots: int, current_snapshot_cursor: int) -> void:
@@ -58,11 +87,16 @@ func _on_sync_successful() -> void:
 
 
 func _on_sync_unsuccessful() -> void:
+	_radio_sync_status_popup.modulate.a = 1.0
 	_radio_sync_status_popup.visible = true
 	_sync_successful_label.visible = false
 	_sync_unsuccessful_label.visible = true
 	# TODO: Prevent additional sync attempts while this popup is shown.
 	await get_tree().create_timer(1.0).timeout
+
+	# TODO: Spam clicking makes this a problem.
+	var fade_tween: Tween = get_tree().create_tween()
+	fade_tween.tween_property(_radio_sync_status_popup, "modulate:a", 0.0, 1.5)
 
 	_radio_sync_status_popup.visible = false
 

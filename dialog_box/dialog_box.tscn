@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b77132yy1hc1m"]
 
-[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme.tres" id="1_sr8h0"]
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme/theme.tres" id="1_sr8h0"]
 [ext_resource type="Script" uid="uid://dk21hq2saxjfj" path="res://dialog_box/dialog_box.gd" id="2_pn1ye"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_pn1ye"]

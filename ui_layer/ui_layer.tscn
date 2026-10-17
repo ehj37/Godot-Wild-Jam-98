@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://boj56712nlua5"]
 
 [ext_resource type="Script" uid="uid://da1so604ihmpq" path="res://ui_layer/ui_layer.gd" id="1_0ed5o"]
-[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme.tres" id="1_p3jfd"]
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme/theme.tres" id="1_p3jfd"]
 [ext_resource type="PackedScene" uid="uid://b77132yy1hc1m" path="res://dialog_box/dialog_box.tscn" id="3_1xlc3"]
 [ext_resource type="PackedScene" uid="uid://p3dqfdy4qccc" path="res://clicky_button/clicky_button.tscn" id="3_rbe85"]
 
@@ -57,6 +57,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="RadioSyncStatusPopup" type="CenterContainer" parent="Control/HBoxContainer/LeftSectionContainer" unique_id=362769260]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -85,6 +86,7 @@ text = "SYNC UNSUCCESSFUL"
 horizontal_alignment = 1
 
 [node name="DialogContainer" type="VBoxContainer" parent="Control/HBoxContainer/LeftSectionContainer" unique_id=165732341]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -92,6 +94,44 @@ alignment = 2
 
 [node name="DialogBox" parent="Control/HBoxContainer/LeftSectionContainer/DialogContainer" unique_id=992110468 instance=ExtResource("3_1xlc3")]
 layout_mode = 2
+
+[node name="LevelNameContainer" type="MarginContainer" parent="Control/HBoxContainer/LeftSectionContainer" unique_id=838921622]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/LeftSectionContainer/LevelNameContainer" unique_id=33321003]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer/LeftSectionContainer/LevelNameContainer/VBoxContainer" unique_id=998014312]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/LeftSectionContainer/LevelNameContainer/VBoxContainer/PanelContainer" unique_id=2021351629]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/LeftSectionContainer/LevelNameContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=1133841203]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "THE NAME OF THE LEVEL IS:"
+
+[node name="LevelNameLabelContainer" type="PanelContainer" parent="Control/HBoxContainer/LeftSectionContainer/LevelNameContainer/VBoxContainer" unique_id=1935284650]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/LeftSectionContainer/LevelNameContainer/VBoxContainer/LevelNameLabelContainer" unique_id=2019357122]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/LeftSectionContainer/LevelNameContainer/VBoxContainer/LevelNameLabelContainer/MarginContainer" unique_id=733113366]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "FEZ III, SECRET LEGEND II"
 
 [node name="RightPanel" type="PanelContainer" parent="Control/HBoxContainer" unique_id=2074462499]
 custom_minimum_size = Vector2(128, 0)

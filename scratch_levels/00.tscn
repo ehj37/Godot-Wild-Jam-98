@@ -12,6 +12,7 @@
 [node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_kqct8")
 grid = NodePath("Grid")
+level_name = "WELCOME TO FROG"
 explanation = "Intro level. Turn on the pipe, require a direction flip.
 
 Related idea: if you move the towers left by 1, then a different solution with a frog flip is necessary."

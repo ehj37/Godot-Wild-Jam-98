@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot Wild Jam 98"
-run/main_scene="uid://cjltbei0g4sf3"
+run/main_scene="uid://dl6oq10p5g33a"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 

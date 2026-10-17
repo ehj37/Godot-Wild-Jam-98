@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dk70sppu0flf6"
+path="res://.godot/imported/grabber.aseprite-5584c5db304e96129c224274a11bde9d.res"
+
+[deps]
+
+source_file="res://theme/grabber.aseprite"
+dest_files=["res://.godot/imported/grabber.aseprite-5584c5db304e96129c224274a11bde9d.res"]
+
+[params]
+

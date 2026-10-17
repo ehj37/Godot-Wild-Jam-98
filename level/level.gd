@@ -235,6 +235,9 @@ func _ready() -> void:
 	for signal_emitter: SignalEmitter in signal_emitters:
 		signal_emitter.update(grid)
 
+	if level_name.length() > 0:
+		SignalBus.level_ready.emit(level_name)
+
 
 func _get_frogs() -> Array[Frog]:
 	var result: Array[Frog]

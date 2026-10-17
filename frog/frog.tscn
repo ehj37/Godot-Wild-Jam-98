@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wu3t8s3ue7ar" path="res://frog/frog.gd" id="1_e7v6w"]
 [ext_resource type="PackedScene" uid="uid://cjuq3prfitu4k" path="res://frog/on_blocked_indicator/on_blocked_indicator.tscn" id="2_88uyt"]
-[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme.tres" id="2_j225e"]
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme/theme.tres" id="2_j225e"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_e7v6w"]
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABuAAAAUklGRmYAAABXRUJQVlA4TFkAAAAvH8AHEC9AkG2zadyf7RrTIMi22SDm73eJCwRSHMw4z38Aoeey0gZGkWw1IgoYggEKAWGNZP9itupduUb0fwLMJg6sNnKDpnXoygFglfxDOStcRv6+L2o7CQA=")

@@ -1,6 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://brsp0xkft6avc"]
 
-[ext_resource type="FontFile" uid="uid://1xi01klxvv54" path="res://arne.png" id="1_e1x85"]
+[ext_resource type="FontFile" uid="uid://1xi01klxvv54" path="res://arne.png" id="1_nrt0f"]
+[ext_resource type="Texture2D" uid="uid://bgu68a3m8dakj" path="res://theme/grabber_highlight.png" id="2_4yjuo"]
+[ext_resource type="Texture2D" uid="uid://dqobft7soxshd" path="res://theme/grabber.png" id="2_gco77"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg7ob"]
 content_margin_left = 4.0
@@ -80,6 +82,19 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6l1ye"]
+bg_color = Color(0.29411766, 0, 0.50980395, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ytkp"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yjuo"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.34117648, 0.34117648, 0.34117648, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsh5d"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 1
@@ -89,17 +104,22 @@ border_width_bottom = 1
 
 [resource]
 Button/font_sizes/font_size = 6
-Button/fonts/font = ExtResource("1_e1x85")
+Button/fonts/font = ExtResource("1_nrt0f")
 Button/styles/disabled = SubResource("StyleBoxFlat_lg7ob")
 Button/styles/focus = SubResource("StyleBoxFlat_0djke")
 Button/styles/hover = SubResource("StyleBoxFlat_sxyk4")
 Button/styles/normal = SubResource("StyleBoxFlat_tirik")
 Button/styles/pressed = SubResource("StyleBoxFlat_6ynvt")
+HSlider/icons/grabber = ExtResource("2_gco77")
+HSlider/icons/grabber_highlight = ExtResource("2_4yjuo")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_6l1ye")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_4ytkp")
+HSlider/styles/slider = SubResource("StyleBoxFlat_4yjuo")
 Label/font_sizes/font_size = 6
-Label/fonts/font = ExtResource("1_e1x85")
+Label/fonts/font = ExtResource("1_nrt0f")
 MarginContainer/constants/margin_bottom = 4
 MarginContainer/constants/margin_left = 4
 MarginContainer/constants/margin_right = 4
 MarginContainer/constants/margin_top = 4
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_fsh5d")
-RichTextLabel/fonts/normal_font = ExtResource("1_e1x85")
+RichTextLabel/fonts/normal_font = ExtResource("1_nrt0f")
