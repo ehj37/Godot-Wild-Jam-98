@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b8n2bis048ml3"]
+
+[ext_resource type="Script" uid="uid://s8lq6cs0xjal" path="res://pause_layer/pause_layer.gd" id="1_xtfc5"]
+[ext_resource type="PackedScene" uid="uid://djqmdgah084rg" path="res://settings_section/settings_section.tscn" id="2_fk47h"]
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme.tres" id="2_gicyt"]
+[ext_resource type="PackedScene" uid="uid://p3dqfdy4qccc" path="res://clicky_button/clicky_button.tscn" id="4_52add"]
+
+[node name="PauseLayer" type="CanvasLayer" unique_id=1202856747]
+process_mode = 3
+layer = 2
+script = ExtResource("1_xtfc5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1800384778]
+custom_minimum_size = Vector2(640, 360)
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.69803923)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2029137631]
+custom_minimum_size = Vector2(640, 360)
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_gicyt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=2086306297]
+layout_mode = 2
+
+[node name="SettingsSection" parent="CenterContainer/VBoxContainer" unique_id=1350010775 instance=ExtResource("2_fk47h")]
+layout_mode = 2
+
+[node name="Divider2" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=619321052]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/Divider2" unique_id=1762992926]
+layout_mode = 2
+
+[node name="ResumeButton" parent="CenterContainer/VBoxContainer" unique_id=1187957636 instance=ExtResource("4_52add")]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "RESUME"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

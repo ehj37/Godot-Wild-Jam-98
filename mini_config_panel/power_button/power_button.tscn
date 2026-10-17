@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cg76s14434nia" path="res://mini_config_panel/mini_button.tres" id="1_jx43y"]
 [ext_resource type="Script" uid="uid://b7c67jknu77s0" path="res://mini_config_panel/power_button/power_button.gd" id="1_xtbfc"]
+[ext_resource type="PackedScene" uid="uid://p3dqfdy4qccc" path="res://clicky_button/clicky_button.tscn" id="3_bk7wb"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ck4ml"]
 _data = PackedByteArray("AAADAAUAAAABAAAACgAAAAoAAAA4AAAAUklGRjAAAABXRUJQVlA4TCMAAAAvCUACEA8w//M///Mf8DDTtk1SRNXAD96+cYjof0BZx7wTAAA=")
@@ -21,10 +22,9 @@ layout_mode = 0
 offset_right = 11.0
 offset_bottom = 12.0
 
-[node name="Button" type="Button" parent="CenterContainer" unique_id=25530947]
+[node name="Button" parent="CenterContainer" unique_id=1187957636 instance=ExtResource("3_bk7wb")]
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 2
-focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("1_jx43y")
 

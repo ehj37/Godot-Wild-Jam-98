@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://da1so604ihmpq" path="res://ui_layer/ui_layer.gd" id="1_0ed5o"]
 [ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme.tres" id="1_p3jfd"]
-[ext_resource type="PackedScene" uid="uid://cyknpxclq7eih" path="res://ui_layer/undo_icon/undo_icon.tscn" id="3_rbe85"]
+[ext_resource type="PackedScene" uid="uid://p3dqfdy4qccc" path="res://clicky_button/clicky_button.tscn" id="3_rbe85"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
 bg_color = Color(0, 0, 0, 1)
@@ -10,6 +10,7 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsh5d"]
 
 [node name="UILayer" type="CanvasLayer" unique_id=624942462]
+process_mode = 3
 script = ExtResource("1_0ed5o")
 
 [node name="LetterBoxTop" type="ColorRect" parent="." unique_id=788960904]
@@ -88,19 +89,12 @@ text = "999"
 layout_mode = 2
 alignment = 1
 
-[node name="UndoIcon" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer" unique_id=1490511450 instance=ExtResource("3_rbe85")]
-visible = false
+[node name="UndoButton" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer" unique_id=1187957636 instance=ExtResource("3_rbe85")]
 layout_mode = 2
-
-[node name="UndoButton" type="Button" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer" unique_id=264488340]
-layout_mode = 2
-size_flags_horizontal = 4
-focus_mode = 0
 text = "UNDO"
 
-[node name="RedoButton" type="Button" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer" unique_id=528444331]
+[node name="RedoButton" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer" unique_id=342969833 instance=ExtResource("3_rbe85")]
 layout_mode = 2
-focus_mode = 0
 text = "REDO"
 
 [node name="Divider3" type="MarginContainer" parent="Control/HBoxContainer/RightPanel/VBoxContainer" unique_id=461402126]
@@ -125,20 +119,20 @@ horizontal_alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="TenthSpeedButton" type="Button" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnSpeedContainer/SpeedButtonContainer" unique_id=1559070178]
+[node name="TenthSpeedButton" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnSpeedContainer/SpeedButtonContainer" unique_id=1673166193 instance=ExtResource("3_rbe85")]
 layout_mode = 2
 text = "0.1x"
 
-[node name="NormalSpeedButton" type="Button" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnSpeedContainer/SpeedButtonContainer" unique_id=724080413]
+[node name="NormalSpeedButton" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnSpeedContainer/SpeedButtonContainer" unique_id=522295541 instance=ExtResource("3_rbe85")]
 layout_mode = 2
 disabled = true
 text = "1x"
 
-[node name="DoubleSpeedButton" type="Button" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnSpeedContainer/SpeedButtonContainer" unique_id=1540247956]
+[node name="DoubleSpeedButton" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnSpeedContainer/SpeedButtonContainer" unique_id=567536733 instance=ExtResource("3_rbe85")]
 layout_mode = 2
 text = "2x"
 
-[node name="InstantButton" type="Button" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnSpeedContainer" unique_id=1832418107]
+[node name="InstantButton" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnSpeedContainer" unique_id=2139902212 instance=ExtResource("3_rbe85")]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "INSTANT"
@@ -165,11 +159,10 @@ layout_mode = 2
 text = "X TOWERS TO SYNC"
 horizontal_alignment = 1
 
-[node name="SyncButton" type="Button" parent="Control/HBoxContainer/RightPanel/VBoxContainer/SyncContainer" unique_id=1637591274]
+[node name="SyncButton" parent="Control/HBoxContainer/RightPanel/VBoxContainer/SyncContainer" unique_id=474992046 instance=ExtResource("3_rbe85")]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-focus_mode = 0
 theme_override_font_sizes/font_size = 12
 text = "ATTEMPT SYNC"
 autowrap_mode = 2
@@ -196,18 +189,17 @@ layout_mode = 2
 mouse_filter = 2
 alignment = 2
 
-[node name="ResetButton" type="Button" parent="Control/HBoxContainer/RightPanel/MarginContainer/VBoxContainer" unique_id=87724634]
+[node name="ResetButton" parent="Control/HBoxContainer/RightPanel/MarginContainer/VBoxContainer" unique_id=862832878 instance=ExtResource("3_rbe85")]
 layout_mode = 2
 size_flags_horizontal = 8
-focus_mode = 0
 text = "RESET"
 
-[node name="OptionsButton" type="Button" parent="Control/HBoxContainer/RightPanel/MarginContainer/VBoxContainer" unique_id=1475621163]
+[node name="OptionsButton" parent="Control/HBoxContainer/RightPanel/MarginContainer/VBoxContainer" unique_id=1395536471 instance=ExtResource("3_rbe85")]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "OPTIONS"
 
-[node name="MainMenuButton" type="Button" parent="Control/HBoxContainer/RightPanel/MarginContainer/VBoxContainer" unique_id=1854534143]
+[node name="MainMenuButton" parent="Control/HBoxContainer/RightPanel/MarginContainer/VBoxContainer" unique_id=726021553 instance=ExtResource("3_rbe85")]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "MAIN MENU"
@@ -252,3 +244,4 @@ horizontal_alignment = 1
 [connection signal="pressed" from="Control/HBoxContainer/RightPanel/VBoxContainer/TurnSpeedContainer/InstantButton" to="." method="_on_instant_button_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/RightPanel/VBoxContainer/SyncContainer/SyncButton" to="." method="_on_sync_button_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/RightPanel/MarginContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/RightPanel/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

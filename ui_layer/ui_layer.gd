@@ -103,3 +103,7 @@ func _on_double_speed_button_pressed() -> void:
 
 func _on_instant_button_pressed() -> void:
 	_on_turn_speed_button_pressed(_instant_button, TurnConfig.TurnSpeed.INSTANT)
+
+
+func _on_options_button_pressed() -> void:
+	PauseLayer.show_pause_screen()

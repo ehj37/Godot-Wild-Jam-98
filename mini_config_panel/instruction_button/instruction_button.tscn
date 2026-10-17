@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cg76s14434nia" path="res://mini_config_panel/mini_button.tres" id="1_px8tr"]
 [ext_resource type="Script" uid="uid://cbno18pox8p12" path="res://mini_config_panel/instruction_button/instruction_button.gd" id="2_4qejt"]
+[ext_resource type="PackedScene" uid="uid://p3dqfdy4qccc" path="res://clicky_button/clicky_button.tscn" id="3_x6ed1"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_x6ed1"]
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABQAAAAUklGRkgAAABXRUJQVlA4TDsAAAAvH8AHEA8w//M///Mf8GATSVasLq6QGDkrBQn4z/mHg4j+rwCUMVcpFF+dHRJ3vwQJ2Wf5olCKUsxRAAA=")
@@ -210,15 +211,15 @@ layout_mode = 0
 offset_right = 10.0
 offset_bottom = 10.0
 
-[node name="Button" type="Button" parent="CenterContainer" unique_id=343598228]
+[node name="Button" parent="CenterContainer" unique_id=1187957636 instance=ExtResource("3_x6ed1")]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
-focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("1_px8tr")
 disabled = true
 
 [node name="SpriteClockwise" type="AnimatedSprite2D" parent="CenterContainer" unique_id=2044511858]
+modulate = Color(0.38039216, 0.24705882, 0, 1)
 texture_filter = 1
 position = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_well5")
@@ -244,6 +245,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "9859a4bbb742a0227c849336fa713a74"
 
 [node name="SpriteFlipHorizontal" type="AnimatedSprite2D" parent="CenterContainer" unique_id=298656017]
 visible = false
+modulate = Color(0.38039216, 0.24705882, 0, 1)
 texture_filter = 1
 position = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_82t0i")

@@ -102,3 +102,4 @@ MarginContainer/constants/margin_left = 4
 MarginContainer/constants/margin_right = 4
 MarginContainer/constants/margin_top = 4
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_fsh5d")
+RichTextLabel/fonts/normal_font = ExtResource("1_e1x85")

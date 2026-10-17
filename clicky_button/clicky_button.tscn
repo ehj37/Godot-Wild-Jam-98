@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://p3dqfdy4qccc"]
+
+[ext_resource type="Script" uid="uid://uijxtnq43iia" path="res://clicky_button/clicky_button.gd" id="1_lva5b"]
+
+[node name="ClickyButton" type="Button" unique_id=1187957636]
+focus_mode = 0
+script = ExtResource("1_lva5b")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

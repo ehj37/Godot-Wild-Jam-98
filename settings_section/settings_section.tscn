@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://djqmdgah084rg"]
+
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme.tres" id="1_mfeif"]
+[ext_resource type="Script" uid="uid://bbxpd3jbv10tt" path="res://settings_section/settings_section.gd" id="2_4f6sv"]
+[ext_resource type="PackedScene" uid="uid://p3dqfdy4qccc" path="res://clicky_button/clicky_button.tscn" id="3_46hsk"]
+
+[node name="SettingsSection" type="PanelContainer" unique_id=206500887]
+offset_right = 184.0
+offset_bottom = 174.0
+theme = ExtResource("1_mfeif")
+script = ExtResource("2_4f6sv")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=168808084]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=93895112]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=747683723]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Divider" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=973020507]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/Divider" unique_id=1031696713]
+layout_mode = 2
+
+[node name="MainVolumeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=459434125]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MainVolumeContainer" unique_id=101184747]
+layout_mode = 2
+text = "MAIN VOLUME"
+
+[node name="MainVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/MainVolumeContainer" unique_id=1562254788]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="SoundEffectVolumeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1368758305]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SoundEffectVolumeContainer" unique_id=950346063]
+layout_mode = 2
+text = "SOUND EFFECT VOLUME"
+
+[node name="SoundEffectVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/SoundEffectVolumeContainer" unique_id=746777402]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="MusicVolumeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=722438410]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MusicVolumeContainer" unique_id=2123644069]
+layout_mode = 2
+text = "MUSIC VOLUME"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/MusicVolumeContainer" unique_id=856307734]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="TextSpeedContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=930030500]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TextSpeedContainer" unique_id=1353386688]
+layout_mode = 2
+text = "TEXT SPEED"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TextSpeedContainer" unique_id=1816646343]
+layout_mode = 2
+alignment = 1
+
+[node name="SlowTextButton" parent="MarginContainer/VBoxContainer/TextSpeedContainer/HBoxContainer" unique_id=1187957636 instance=ExtResource("3_46hsk")]
+layout_mode = 2
+text = "SLOW"
+
+[node name="NormalTextButton" parent="MarginContainer/VBoxContainer/TextSpeedContainer/HBoxContainer" unique_id=858204817 instance=ExtResource("3_46hsk")]
+layout_mode = 2
+disabled = true
+text = "NORMAL"
+
+[node name="FastTextButton" parent="MarginContainer/VBoxContainer/TextSpeedContainer/HBoxContainer" unique_id=811378987 instance=ExtResource("3_46hsk")]
+layout_mode = 2
+text = "FAST"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/TextSpeedContainer" unique_id=565865395]
+layout_mode = 2
+text = "FROGS DON'T GROW ON TREES. DON'T ASK ME ABOUT TREE FROGS."
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/TextSpeedContainer" unique_id=520534975]
+layout_mode = 2
+text = "TODO: Add cycling dialog box"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/MainVolumeContainer/MainVolumeSlider" to="." method="_on_main_volume_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SoundEffectVolumeContainer/SoundEffectVolumeSlider" to="." method="_on_sound_effect_volume_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/MusicVolumeContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextSpeedContainer/HBoxContainer/SlowTextButton" to="." method="_on_slow_text_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextSpeedContainer/HBoxContainer/NormalTextButton" to="." method="_on_normal_text_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextSpeedContainer/HBoxContainer/FastTextButton" to="." method="_on_fast_text_button_pressed"]

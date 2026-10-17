@@ -1,0 +1,200 @@
+[gd_scene format=4 uid="uid://b77132yy1hc1m"]
+
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme.tres" id="1_sr8h0"]
+[ext_resource type="Script" uid="uid://dk21hq2saxjfj" path="res://dialog_box/dialog_box.gd" id="2_pn1ye"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_pn1ye"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAAA0AAAAUklGRiwAAABXRUJQVlA4TB8AAAAvH8AHAA8Q8Zz1+Y+BWDChnGSu/RH9J5ikqbZjoOp7AA==")
+size_override = Vector2(32, 32)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_piy01"]
+_data = PackedByteArray("AAADAAUAAAABAAAAYAAAAGAAAACMAgAAUklGRoQCAABXRUJQVlA4THcCAAAvX8AXEE9gIEAS1JrQ/3nN8IaRgGlGMnqQHo++vkAgCXntLeY/ALDA82LHHZg2ZJAj27bcVLozeFdNlVJO6Xc5HgCqkzj3CH7nYgLkPUrpudN9vk/PXCKyiP47cNvGkZRt1zl7v2i+SpM02vFgqhrpSOd7PJpKnOPk//7VOLWBjt97EohzJLhZJMzxAE7AUpS0cIzN0Q6bmffCkR7MO0apOZYVxy8AS5E+mHeoNBVHrnQAuCpKZt5RLtqsdI2rDt4U7mIVPO1y647rUdYcM28Kt9kWwOyqOWTVQd4uKr7JOTaZ9THHoIWD8I7mQ46Z7ArHFiEOclc2hTvg17GTWAc+wcFBohw81J6RfZiDOclRJcpBtE3KsY9xFAAlewlwfCUmad3x0R5MVeuOj7jT+R6PplJ3HO8++b9/NU5t3VF3r/R7TwJt1XG8O8HNMtYdR7sfwAlYFqk5jnBLcc9t5oF1hGMR7/Dugp0e7BcK1rrD5R3ePTqWPpgBuHKtOnzO4d3qV2F2iDe5cd3hKx24Ke6hV8++NcdKxTVPO5/ZFgB5e3hcdSxj6Zi5WWkq06pjGWXNsZEiOjY71Zrj0v8PRriGxrf1jF1XdyQV7yjcRVNRnAPevZNYBz7BwUGiHDzUnpF9mIM5yVElykG0Tcqxj3EUACV7CXB85UY1uGSmeQJ7uPhuW0Lizr8v/s8E2rhw8X0CVOIe4zBxTye1mYBeLkEHfbBfnHC1LGPQbma/AORdQverqL0xMwDgTSdNVNvczNOuCWsCQG4kLCK4LdxjDk1Ukz/vurDgDzuJDZ8QB4mKh9ozsg+LOclRJSqibRIZdll8n5K9hNQAAA==")
+size_override = Vector2(96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td55x"]
+atlas = SubResource("PortableCompressedTexture2D_piy01")
+region = Rect2(64, 32, 32, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guj6r"]
+atlas = SubResource("PortableCompressedTexture2D_piy01")
+region = Rect2(0, 0, 32, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y47xn"]
+atlas = SubResource("PortableCompressedTexture2D_piy01")
+region = Rect2(32, 0, 32, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5m85"]
+atlas = SubResource("PortableCompressedTexture2D_piy01")
+region = Rect2(64, 0, 32, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqo1l"]
+atlas = SubResource("PortableCompressedTexture2D_piy01")
+region = Rect2(0, 32, 32, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyyv1"]
+atlas = SubResource("PortableCompressedTexture2D_piy01")
+region = Rect2(32, 32, 32, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4a5g"]
+atlas = SubResource("PortableCompressedTexture2D_piy01")
+region = Rect2(0, 32, 32, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb7np"]
+atlas = SubResource("PortableCompressedTexture2D_piy01")
+region = Rect2(64, 0, 32, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1rk0"]
+atlas = SubResource("PortableCompressedTexture2D_piy01")
+region = Rect2(32, 0, 32, 32)
+filter_clip = true
+
+[sub_resource type="Animation" id="Animation_u4a5g"]
+length = 1.7000000000000002
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/PanelContainer/FrogTextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.7, 0.8, 1, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("AtlasTexture_guj6r"), SubResource("AtlasTexture_y47xn"), SubResource("AtlasTexture_e5m85"), SubResource("AtlasTexture_cqo1l"), SubResource("AtlasTexture_jyyv1"), SubResource("AtlasTexture_u4a5g"), SubResource("AtlasTexture_nb7np"), SubResource("AtlasTexture_l1rk0")]
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8t0j"]
+atlas = SubResource("PortableCompressedTexture2D_piy01")
+region = Rect2(0, 64, 32, 32)
+filter_clip = true
+
+[sub_resource type="Animation" id="Animation_td55x"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/PanelContainer/FrogTextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("AtlasTexture_td55x"), SubResource("AtlasTexture_t8t0j")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t8t0j"]
+_data = {
+&"idle": SubResource("Animation_u4a5g"),
+&"yap": SubResource("Animation_td55x")
+}
+
+[node name="DialogBox" type="PanelContainer" unique_id=992110468]
+offset_right = 540.0
+offset_bottom = 76.0
+theme = ExtResource("1_sr8h0")
+script = ExtResource("2_pn1ye")
+dialog = "YOU KNOW THE WAY IT IS.
+EVEN THE EARTH WILL PERISH AND THE UNIVERSE WILL GIVE WAY."
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1587521640]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1358438603]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=1468063041]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/PanelContainer" unique_id=199306744]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("PortableCompressedTexture2D_pn1ye")
+stretch_mode = 4
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://dialog_box/dialog_frog_background.aseprite",
+"source_uid": 6416943715113223185
+}
+metadata/_aseprite_wizard_source_file_hash_ = "cff4b05697b89dfcc8c0a4638b6215fd"
+
+[node name="FrogTextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/PanelContainer" unique_id=1398649367]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = SubResource("AtlasTexture_td55x")
+stretch_mode = 4
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {},
+"slice_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://dialog_box/dialog_frog.aseprite",
+"source_uid": 2331644394074000040
+}
+metadata/_aseprite_wizard_source_file_hash_ = "1b9452b61d24b186841b838ecfd86962"
+
+[node name="Divider" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1616238843]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/Divider" unique_id=1797874190]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer" unique_id=1141508798]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "YOU KNOW THE WAY IT IS.
+EVEN THE EARTH WILL PERISH AND THE UNIVERSE WILL GIVE WAY."
+scroll_active = false
+autowrap_mode = 2
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1439944758]
+libraries/ = SubResource("AnimationLibrary_t8t0j")
