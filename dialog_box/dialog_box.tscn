@@ -7,52 +7,47 @@
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAAA0AAAAUklGRiwAAABXRUJQVlA4TB8AAAAvH8AHAA8Q8Zz1+Y+BWDChnGSu/RH9J5ikqbZjoOp7AA==")
 size_override = Vector2(32, 32)
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_piy01"]
-_data = PackedByteArray("AAADAAUAAAABAAAAYAAAAGAAAACMAgAAUklGRoQCAABXRUJQVlA4THcCAAAvX8AXEE9gIEAS1JrQ/3nN8IaRgGlGMnqQHo++vkAgCXntLeY/ALDA82LHHZg2ZJAj27bcVLozeFdNlVJO6Xc5HgCqkzj3CH7nYgLkPUrpudN9vk/PXCKyiP47cNvGkZRt1zl7v2i+SpM02vFgqhrpSOd7PJpKnOPk//7VOLWBjt97EohzJLhZJMzxAE7AUpS0cIzN0Q6bmffCkR7MO0apOZYVxy8AS5E+mHeoNBVHrnQAuCpKZt5RLtqsdI2rDt4U7mIVPO1y647rUdYcM28Kt9kWwOyqOWTVQd4uKr7JOTaZ9THHoIWD8I7mQ46Z7ArHFiEOclc2hTvg17GTWAc+wcFBohw81J6RfZiDOclRJcpBtE3KsY9xFAAlewlwfCUmad3x0R5MVeuOj7jT+R6PplJ3HO8++b9/NU5t3VF3r/R7TwJt1XG8O8HNMtYdR7sfwAlYFqk5jnBLcc9t5oF1hGMR7/Dugp0e7BcK1rrD5R3ePTqWPpgBuHKtOnzO4d3qV2F2iDe5cd3hKx24Ke6hV8++NcdKxTVPO5/ZFgB5e3hcdSxj6Zi5WWkq06pjGWXNsZEiOjY71Zrj0v8PRriGxrf1jF1XdyQV7yjcRVNRnAPevZNYBz7BwUGiHDzUnpF9mIM5yVElykG0Tcqxj3EUACV7CXB85UY1uGSmeQJ7uPhuW0Lizr8v/s8E2rhw8X0CVOIe4zBxTye1mYBeLkEHfbBfnHC1LGPQbma/AORdQverqL0xMwDgTSdNVNvczNOuCWsCQG4kLCK4LdxjDk1Ukz/vurDgDzuJDZ8QB4mKh9ozsg+LOclRJSqibRIZdll8n5K9hNQAAA==")
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_de4jt"]
+_data = PackedByteArray("AAADAAUAAAABAAAAYAAAAGAAAACKAgAAUklGRoICAABXRUJQVlA4THYCAAAvX8AXEE9gIEAS1JrQ/3nN8IaRgGlGMnqQHo++vkAgCXntLeY/ALDA82LHHZg2ZJDj2rbbVrwzeJcBYOsD/tRLAzBxGvUawU+CJ+A+m62z73Qf7yOl68pdRP8ZuG3bSLc3e8+ovkpT0mjHo6lqpCNdHPBkKnGOs/+HN+NQBzp+H0ggzpHgpknCHI/gAExFSQtHXx3tsJF5KRzp0byjlzXHtOD4BWAq0kfzDpVqxZErHQCui5KZd5SDNitd/aKDt4W7GAU3TW7ZcdPLkmPkbeE22wEYXWsOWXSQd5OKb3CObWad5ui0cBDeUZ3kGMmmcOwQ4iD3ZUO4A34ce4l14BMc7CTKwbn6nGzDHMxJjipRDqKuUo5tjKMAKNlKgOMrMSVdd5zao6nquuMUd7o44MlU1h3Hu8/+H96MQ73uWHcv9PtAAvWq43h3gpumft1xtPsRHIBpkjXHEW4p/rmNnFlHOCbxDu8u2OnRfqFgLTtc3uHdvWPpoxmAa9eiw+cc3q1+FGZzvM31yw5f6cBt8Q+9evQtORYq9rlpfGY7AOTdfLzqmPrSMXK70FCmq46plyXHVoro2GxU1xxXUy/e4eoq384z9s26I6l4R+EuGoriHPDuvcQ68AkOdhLl4Fx9TrZhDuYkR5UoB1FXKcc2xlEAlGwlwPGVm1SDS2aaJ4nr8fK77Yg6bvv78v9IQOLC5fcB0MBjzJOGldRGAno1BR3oo/3igOtp6oMWM/sFIC8SulxHLZWZAQBvG6mi2uVGbpoqrGHecithEcHt4I7ZVVENfrtvwoJf7SU2fELsJCrO1edkGxZzkqNKVERdJTJst3ifkq2EVAE=")
 size_override = Vector2(96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_td55x"]
-atlas = SubResource("PortableCompressedTexture2D_piy01")
-region = Rect2(64, 32, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4a5g"]
+atlas = SubResource("PortableCompressedTexture2D_de4jt")
+region = Rect2(0, 32, 32, 32)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_guj6r"]
-atlas = SubResource("PortableCompressedTexture2D_piy01")
+atlas = SubResource("PortableCompressedTexture2D_de4jt")
 region = Rect2(0, 0, 32, 32)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y47xn"]
-atlas = SubResource("PortableCompressedTexture2D_piy01")
+atlas = SubResource("PortableCompressedTexture2D_de4jt")
 region = Rect2(32, 0, 32, 32)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e5m85"]
-atlas = SubResource("PortableCompressedTexture2D_piy01")
+atlas = SubResource("PortableCompressedTexture2D_de4jt")
 region = Rect2(64, 0, 32, 32)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cqo1l"]
-atlas = SubResource("PortableCompressedTexture2D_piy01")
+atlas = SubResource("PortableCompressedTexture2D_de4jt")
 region = Rect2(0, 32, 32, 32)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jyyv1"]
-atlas = SubResource("PortableCompressedTexture2D_piy01")
+atlas = SubResource("PortableCompressedTexture2D_de4jt")
 region = Rect2(32, 32, 32, 32)
 filter_clip = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u4a5g"]
-atlas = SubResource("PortableCompressedTexture2D_piy01")
-region = Rect2(0, 32, 32, 32)
-filter_clip = true
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_nb7np"]
-atlas = SubResource("PortableCompressedTexture2D_piy01")
+atlas = SubResource("PortableCompressedTexture2D_de4jt")
 region = Rect2(64, 0, 32, 32)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1rk0"]
-atlas = SubResource("PortableCompressedTexture2D_piy01")
+atlas = SubResource("PortableCompressedTexture2D_de4jt")
 region = Rect2(32, 0, 32, 32)
 filter_clip = true
 
@@ -72,8 +67,13 @@ tracks/0/keys = {
 "values": [SubResource("AtlasTexture_guj6r"), SubResource("AtlasTexture_y47xn"), SubResource("AtlasTexture_e5m85"), SubResource("AtlasTexture_cqo1l"), SubResource("AtlasTexture_jyyv1"), SubResource("AtlasTexture_u4a5g"), SubResource("AtlasTexture_nb7np"), SubResource("AtlasTexture_l1rk0")]
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t8t0j"]
-atlas = SubResource("PortableCompressedTexture2D_piy01")
+[sub_resource type="AtlasTexture" id="AtlasTexture_piy01"]
+atlas = SubResource("PortableCompressedTexture2D_de4jt")
+region = Rect2(64, 32, 32, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td55x"]
+atlas = SubResource("PortableCompressedTexture2D_de4jt")
 region = Rect2(0, 64, 32, 32)
 filter_clip = true
 
@@ -90,7 +90,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("AtlasTexture_td55x"), SubResource("AtlasTexture_t8t0j")]
+"values": [SubResource("AtlasTexture_piy01"), SubResource("AtlasTexture_td55x")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t8t0j"]
@@ -100,23 +100,28 @@ _data = {
 }
 
 [node name="DialogBox" type="PanelContainer" unique_id=992110468]
-offset_right = 540.0
+offset_right = 461.0
 offset_bottom = 76.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
 theme = ExtResource("1_sr8h0")
 script = ExtResource("2_pn1ye")
-dialog = "YOU KNOW THE WAY IT IS.
-EVEN THE EARTH WILL PERISH AND THE UNIVERSE WILL GIVE WAY."
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1587521640]
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1358438603]
 layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=1468063041]
 layout_mode = 2
+size_flags_vertical = 4
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/PanelContainer" unique_id=199306744]
+[node name="FrogBackgroundTextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/PanelContainer" unique_id=199306744]
 texture_filter = 1
 layout_mode = 2
 texture = SubResource("PortableCompressedTexture2D_pn1ye")
@@ -149,7 +154,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
-texture = SubResource("AtlasTexture_td55x")
+texture = SubResource("AtlasTexture_u4a5g")
 stretch_mode = 4
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
@@ -174,7 +179,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://dialog_box/dialog_frog.aseprite",
 "source_uid": 2331644394074000040
 }
-metadata/_aseprite_wizard_source_file_hash_ = "1b9452b61d24b186841b838ecfd86962"
+metadata/_aseprite_wizard_source_file_hash_ = "f05ca1e969d1c94b91a6862a7ea65190"
 
 [node name="Divider" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1616238843]
 layout_mode = 2
@@ -184,15 +189,41 @@ theme_override_constants/margin_right = 8
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/Divider" unique_id=1797874190]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer" unique_id=1141508798]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=312471918]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1141508798]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 8
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 text = "YOU KNOW THE WAY IT IS.
 EVEN THE EARTH WILL PERISH AND THE UNIVERSE WILL GIVE WAY."
+fit_content = true
 scroll_active = false
 autowrap_mode = 2
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=2038350744]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="ContinueLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1542757535]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 8
+theme_override_font_sizes/normal_font_size = 6
+bbcode_enabled = true
+text = "PRESS E TO CONTINUE"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 2
 vertical_alignment = 1
 visible_characters_behavior = 1
 

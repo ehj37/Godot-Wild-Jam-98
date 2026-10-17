@@ -1,0 +1,41 @@
+[gd_scene format=4 uid="uid://dl6oq10p5g33a"]
+
+[ext_resource type="Script" uid="uid://c5fglonfx4x5p" path="res://level/level.gd" id="1_kqct8"]
+[ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="2_nadd3"]
+[ext_resource type="PackedScene" uid="uid://drtiyvlkp552e" path="res://background/background.tscn" id="2_wdb7b"]
+[ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="3_wdb7b"]
+[ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="4_t7vli"]
+[ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="5_crxwt"]
+[ext_resource type="PackedScene" uid="uid://beq4k33ne1p2k" path="res://pipe_block/pipe_block.tscn" id="6_nadd3"]
+[ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="8_t7vli"]
+
+[node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
+script = ExtResource("1_kqct8")
+grid = NodePath("Grid")
+explanation = "Intro level. Turn on the pipe, require a direction flip.
+
+Related idea: if you move the towers left by 1, then a different solution with a frog flip is necessary."
+metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1592224415]
+position = Vector2(320, 176)
+
+[node name="Background" parent="." unique_id=1561845036 instance=ExtResource("2_wdb7b")]
+
+[node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_nadd3")]
+
+[node name="RadioTile" parent="." unique_id=622849264 instance=ExtResource("3_wdb7b")]
+tile_map_data = PackedByteArray("AAAFAAcAAAAAAAAAAAAFAAIAAAAAAAAAAAA=")
+
+[node name="Block" parent="." unique_id=770176600 instance=ExtResource("4_t7vli")]
+tile_map_data = PackedByteArray("AAAGAAQAAAAAAAAAAAA=")
+
+[node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("5_crxwt")]
+position = Vector2(112, 144)
+disabled = true
+direction = 1
+
+[node name="PipeBlock" parent="." unique_id=1835997044 instance=ExtResource("6_nadd3")]
+tile_map_data = PackedByteArray("AAACAAQAAAABAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAEAAAABAAYAAAAAAAEAAAABAAcAAAAAAAEAAAABAAgAAAAAAAEAAAABAAkAAAAAAAEAAAABAAoAAAAAAAEAAAAAAAoAAAAAAAEAAAAAAAkAAAAAAAEAAAAAAAgAAAAAAAEAAAAAAAcAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAEAAAA=")
+
+[node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("8_t7vli")]

@@ -5,12 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="3_llawm"]
 [ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="3_tls41"]
 [ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="4_tls41"]
+[ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="6_tls41"]
 
 [node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_cksrc")
 grid = NodePath("Grid")
 explanation = "Three of the four pipes (2, 3, and 4) are red herrings. The way to do it is to set all of those to off, and to set pipe 1 to CCW. A spiral forms, every frog turns three times, then the spiral bursts outwards."
 metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=102499384]
+position = Vector2(320, 176)
 
 [node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_whljl")]
 
@@ -35,3 +39,5 @@ direction = 2
 [node name="FrogPipe4" parent="." unique_id=1047964939 instance=ExtResource("3_llawm")]
 position = Vector2(112, 112)
 direction = 1
+
+[node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("6_tls41")]

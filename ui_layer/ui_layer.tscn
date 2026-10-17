@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://da1so604ihmpq" path="res://ui_layer/ui_layer.gd" id="1_0ed5o"]
 [ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme.tres" id="1_p3jfd"]
+[ext_resource type="PackedScene" uid="uid://b77132yy1hc1m" path="res://dialog_box/dialog_box.tscn" id="3_1xlc3"]
 [ext_resource type="PackedScene" uid="uid://p3dqfdy4qccc" path="res://clicky_button/clicky_button.tscn" id="3_rbe85"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
@@ -9,7 +10,7 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsh5d"]
 
-[node name="UILayer" type="CanvasLayer" unique_id=624942462]
+[node name="UILayer" type="CanvasLayer" unique_id=2115605960]
 process_mode = 3
 script = ExtResource("1_0ed5o")
 
@@ -43,7 +44,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/separation = 0
 alignment = 2
+
+[node name="LeftSectionContainer" type="MarginContainer" parent="Control/HBoxContainer" unique_id=1956615736]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RadioSyncStatusPopup" type="CenterContainer" parent="Control/HBoxContainer/LeftSectionContainer" unique_id=362769260]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup" unique_id=1689494632]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/PanelContainer" unique_id=443091967]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="RadiosSyncedLabel" type="Label" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/PanelContainer/MarginContainer" unique_id=1181732676]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "RADIOS SYNCED!"
+horizontal_alignment = 1
+
+[node name="SyncUnsuccessfulLabel" type="Label" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/PanelContainer/MarginContainer" unique_id=1549491991]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "SYNC UNSUCCESSFUL"
+horizontal_alignment = 1
+
+[node name="DialogContainer" type="VBoxContainer" parent="Control/HBoxContainer/LeftSectionContainer" unique_id=165732341]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+alignment = 2
+
+[node name="DialogBox" parent="Control/HBoxContainer/LeftSectionContainer/DialogContainer" unique_id=992110468 instance=ExtResource("3_1xlc3")]
+layout_mode = 2
 
 [node name="RightPanel" type="PanelContainer" parent="Control/HBoxContainer" unique_id=2074462499]
 custom_minimum_size = Vector2(128, 0)
@@ -203,38 +251,6 @@ text = "OPTIONS"
 layout_mode = 2
 size_flags_horizontal = 8
 text = "MAIN MENU"
-
-[node name="RadioSyncStatusPopup" type="CenterContainer" parent="Control" unique_id=362769260]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Control/RadioSyncStatusPopup" unique_id=1689494632]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/RadioSyncStatusPopup/PanelContainer" unique_id=443091967]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="RadiosSyncedLabel" type="Label" parent="Control/RadioSyncStatusPopup/PanelContainer/MarginContainer" unique_id=1181732676]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "RADIOS SYNCED!"
-horizontal_alignment = 1
-
-[node name="SyncUnsuccessfulLabel" type="Label" parent="Control/RadioSyncStatusPopup/PanelContainer/MarginContainer" unique_id=1549491991]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "SYNC UNSUCCESSFUL"
-horizontal_alignment = 1
 
 [connection signal="pressed" from="Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer/UndoButton" to="." method="_on_undo_button_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer/RedoButton" to="." method="_on_redo_button_pressed"]

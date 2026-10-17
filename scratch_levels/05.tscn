@@ -5,11 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="3_vnm6a"]
 [ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="4_5s232"]
 [ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="5_0xoo1"]
+[ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="6_hf71n"]
 
 [node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_8p688")
 grid = NodePath("Grid")
 metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1516742530]
+position = Vector2(320, 176)
 
 [node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_hf71n")]
 
@@ -22,3 +26,5 @@ tile_map_data = PackedByteArray("AAAPAAAAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAA
 [node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("5_0xoo1")]
 position = Vector2(16, 16)
 direction = 1
+
+[node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("6_hf71n")]

@@ -1,0 +1,73 @@
+[gd_scene format=4 uid="uid://cgmlwj7gij616"]
+
+[ext_resource type="Script" uid="uid://bqkttm8ldjjdm" path="res://ui_layer/smiling_frog/smiling_frog.gd" id="1_iulmi"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_iulmi"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABwAAAAUklGRmgAAABXRUJQVlA4TFwAAAAvH8AHEA8w//M///Mf8GBaW3uTX0Um9F5sRojiXwWHxfWyGeMgOZF0VzeI6L/atA0Yp8y+Ax7jOI7DDW4s8RIfeOA13H/sDmwTySSD1/z1nrJrIOlc0DwQgfjkDQ==")
+size_override = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehjqf"]
+atlas = SubResource("PortableCompressedTexture2D_iulmi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jhli"]
+atlas = SubResource("PortableCompressedTexture2D_iulmi")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beyea"]
+atlas = SubResource("PortableCompressedTexture2D_iulmi")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te8gk"]
+atlas = SubResource("PortableCompressedTexture2D_iulmi")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0sa8v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehjqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jhli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beyea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te8gk")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="SmilingFrog" type="Control" unique_id=1937970542]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_iulmi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2111038383]
+texture_filter = 1
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_0sa8v")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://ui_layer/smiling_frog/smiling_frog.aseprite",
+"source_uid": 6747539056982904403
+}
+metadata/_aseprite_wizard_source_file_hash_ = "39f58c2041b3325c45482d4763933f3d"

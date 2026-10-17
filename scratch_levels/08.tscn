@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="3_kwyrq"]
 [ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="4_8obs1"]
 [ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="5_7p14l"]
+[ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="6_ad1xn"]
 
 [node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_lnjqs")
@@ -13,6 +14,9 @@ explanation = "The one that shows why you'd want to turn a signal tower off.
 
 Pipe is instruction locked, tower is instruction locked."
 metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1825903687]
+position = Vector2(320, 176)
 
 [node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_ad1xn")]
 
@@ -23,3 +27,5 @@ metadata/_custom_type_script = "uid://c5fglonfx4x5p"
 [node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("5_7p14l")]
 position = Vector2(16, 80)
 direction = 1
+
+[node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("6_ad1xn")]

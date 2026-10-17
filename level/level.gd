@@ -186,14 +186,14 @@ func _process(_delta: float) -> void:
 		_level_snapshots.resize(_current_snapshot_cursor + 1)
 		_capture_snapshot()
 		_current_snapshot_cursor += 1
-		UILayer.on_snapshot_update(_level_snapshots.size(), _current_snapshot_cursor)
+		SignalBus.snapshots_updated.emit(_level_snapshots.size(), _current_snapshot_cursor)
 		_turn_in_progress = false
 
 
 func _ready() -> void:
 	_capture_snapshot()
 	_current_snapshot_cursor = 0
-	UILayer.on_snapshot_update(_level_snapshots.size(), _current_snapshot_cursor)
+	SignalBus.snapshots_updated.emit(_level_snapshots.size(), _current_snapshot_cursor)
 
 	_frog_rotate_timer = Timer.new()
 	_frog_rotate_timer.one_shot = true
@@ -201,12 +201,12 @@ func _ready() -> void:
 	_frog_rotate_timer.timeout.connect(action_finished.emit)
 	add_child(_frog_rotate_timer)
 
-	UILayer.sync_button_pressed.connect(_on_sync_button_pressed)
+	SignalBus.sync_requested.connect(_on_sync_button_pressed)
 	# TODO: Undo should work during a turn. Should skip to the end and instantly
 	# revert.
-	UILayer.undo_button_pressed.connect(_undo)
-	UILayer.redo_button_pressed.connect(_redo)
-	UILayer.reset_button_pressed.connect(_reset)
+	SignalBus.undo_requested.connect(_undo)
+	SignalBus.redo_requested.connect(_redo)
+	SignalBus.reset_requested.connect(_reset)
 	TurnConfig.turn_speed_changed.connect(_on_turn_speed_changed)
 
 	var radio_tile_maps: Array[GridTileMap] = _get_radio_tile_maps()
@@ -403,7 +403,7 @@ func _undo() -> void:
 	_current_snapshot_cursor -= 1
 	var snapshot_to_restore: LevelSnapshot = _level_snapshots[_current_snapshot_cursor]
 	_restore_state_from_snapshot(snapshot_to_restore)
-	UILayer.on_snapshot_update(_level_snapshots.size(), _current_snapshot_cursor)
+	SignalBus.snapshots_updated.emit(_level_snapshots.size(), _current_snapshot_cursor)
 
 
 func _redo() -> void:
@@ -413,22 +413,22 @@ func _redo() -> void:
 	_current_snapshot_cursor += 1
 	var snapshot_to_restore: LevelSnapshot = _level_snapshots[_current_snapshot_cursor]
 	_restore_state_from_snapshot(snapshot_to_restore)
-	UILayer.on_snapshot_update(_level_snapshots.size(), _current_snapshot_cursor)
+	SignalBus.snapshots_updated.emit(_level_snapshots.size(), _current_snapshot_cursor)
 
 
 func _reset() -> void:
 	_level_snapshots.resize(1)
 	_current_snapshot_cursor = 0
 	_restore_state_from_snapshot(_level_snapshots[0])
-	UILayer.on_snapshot_update(_level_snapshots.size(), _current_snapshot_cursor)
+	SignalBus.snapshots_updated.emit(_level_snapshots.size(), _current_snapshot_cursor)
 
 
 func _on_sync_button_pressed() -> void:
 	if grid.win_condition_met():
 		_level_won = true
-		UILayer.on_level_won()
+		SignalBus.sync_successful.emit()
 	else:
-		UILayer.on_sync_failed()
+		SignalBus.sync_unsuccessful.emit()
 
 
 func _apply_turn_speed() -> void:

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c3es8nx35olep"
+path="res://.godot/imported/smiling_frog.aseprite-21c16f4f9e7ac785d113f89e441874af.res"
+
+[deps]
+
+source_file="res://ui_layer/smiling_frog/smiling_frog.aseprite"
+dest_files=["res://.godot/imported/smiling_frog.aseprite-21c16f4f9e7ac785d113f89e441874af.res"]
+
+[params]
+

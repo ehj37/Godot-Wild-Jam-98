@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="4_y2id2"]
 [ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="5_dge4x"]
 [ext_resource type="PackedScene" uid="uid://s5aaltkvvxil" path="res://signal_tower/signal_tower.tscn" id="6_cphj8"]
+[ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="7_wdbhs"]
 
 [node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_3afjl")
@@ -14,6 +15,9 @@ explanation = "No frog limit, top pipe could be locked to on. Set tower to flip,
 
 Maybe make this require an additional tower action after changing to CW? Just to reinforce why a tower is different than a beam."
 metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=346907195]
+position = Vector2(320, 176)
 
 [node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_cphj8")]
 
@@ -30,3 +34,5 @@ direction = 2
 
 [node name="SignalTower" parent="." unique_id=990745098 instance=ExtResource("6_cphj8")]
 position = Vector2(176, 208)
+
+[node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("7_wdbhs")]

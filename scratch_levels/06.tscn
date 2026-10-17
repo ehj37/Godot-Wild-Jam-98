@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="4_uirwf"]
 [ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="5_qj38i"]
 [ext_resource type="PackedScene" uid="uid://s5aaltkvvxil" path="res://signal_tower/signal_tower.tscn" id="6_s5xdd"]
+[ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="7_dwkvk"]
 
 [node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_1njg1")
@@ -16,6 +17,9 @@ Bounce frog one off the wall. Use the bottom right pipe to trap frog one in (fli
 
 No frog limit."
 metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1471806770]
+position = Vector2(320, 176)
 
 [node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_s5xdd")]
 
@@ -38,3 +42,5 @@ position = Vector2(272, 272)
 disabled = true
 instruction = 2
 instruction_button_stuck = true
+
+[node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("7_dwkvk")]

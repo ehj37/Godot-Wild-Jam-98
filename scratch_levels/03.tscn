@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="4_6mop0"]
 [ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="5_64t55"]
 [ext_resource type="PackedScene" uid="uid://2ahqli5fghs6" path="res://signal_beam/signal_beam.tscn" id="6_xca3m"]
+[ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="7_ia8fj"]
 
 [node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_laqcf")
@@ -17,6 +18,9 @@ For the contrived solution, the first frog going through the beam twice feels un
 
 A frog limit of 3 sort of makes this level work."
 metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=934179104]
+position = Vector2(320, 176)
 
 [node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_xca3m")]
 
@@ -41,3 +45,5 @@ position = Vector2(496, 112)
 instruction = 2
 instruction_button_stuck = true
 direction = 3
+
+[node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("7_ia8fj")]

@@ -5,12 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="3_6kup0"]
 [ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="3_r5uy3"]
 [ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="4_r5uy3"]
+[ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="6_414as"]
 
 [node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_vccx4")
 grid = NodePath("Grid")
 explanation = "Idea is that you want the first three out of each pipe to flip, and then the fourth should be CW for the left and CCW for the right."
 metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=835862496]
+position = Vector2(320, 176)
 
 [node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_qweda")]
 
@@ -28,3 +32,5 @@ direction = 1
 position = Vector2(304, 144)
 instruction = 2
 direction = 3
+
+[node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("6_414as")]
