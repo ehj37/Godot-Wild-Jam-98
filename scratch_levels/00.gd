@@ -4,6 +4,7 @@ var _dialog_box: DialogBox
 var _dialog_cursor: int = -1
 var _dialog_in_progress: bool = false
 
+# gdlint: disable=max-line-length
 @onready var _pipe: FrogPipe = $FrogPipe
 @onready var _dialog_box_configs: Array[DialogBox.DialogBoxConfig] = [
 	DialogBox.DialogBoxConfig.new("WE NEED FROGS AT THESE TOWERS PRONTO, ASAP, AND YESTERDAY."),
@@ -31,6 +32,7 @@ var _dialog_in_progress: bool = false
 		)
 	),
 ]
+# gdlint: enable=max-line-length
 
 
 func _process(delta: float) -> void:

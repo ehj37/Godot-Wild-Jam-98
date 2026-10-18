@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://xjkigq1i5mqa" path="res://instruction_animated_icons/clockwise.png" id="3_gk70j"]
 [ext_resource type="PackedScene" uid="uid://niucl2e1jqwn" path="res://signal_particles/signal_particles.tscn" id="3_h0mar"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v6jhd"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gk70j"]
 resource_local_to_scene = true
 particles_animation = true
 particles_anim_h_frames = 16
@@ -19,7 +19,7 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_i3sko"]
 curve = SubResource("Curve_i3sko")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_17knq"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v6jhd"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
 emission_shape = 3
@@ -38,9 +38,9 @@ script = ExtResource("1_41q74")
 grid_residency = 3
 
 [node name="SignalParticles" parent="." unique_id=994365525 instance=ExtResource("3_h0mar")]
-material = SubResource("CanvasItemMaterial_v6jhd")
+material = SubResource("CanvasItemMaterial_gk70j")
 texture = ExtResource("3_gk70j")
-process_material = SubResource("ParticleProcessMaterial_17knq")
+process_material = SubResource("ParticleProcessMaterial_v6jhd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1222491125]
 texture_filter = 1

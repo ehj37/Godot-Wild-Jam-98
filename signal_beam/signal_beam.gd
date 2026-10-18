@@ -221,4 +221,5 @@ func _draw() -> void:
 
 	var beam_start_local: Vector2 = to_local(_get_beam_start_global_position())
 	var beam_end_local: Vector2 = to_local(_get_beam_end_global_position())
-	draw_line(beam_start_local, beam_end_local, Color("ebeb00"), 4)
+	var beam_color: Color = Frog.INSTRUCTION_TO_COLOR[instruction]
+	draw_line(beam_start_local, beam_end_local, beam_color, 4)

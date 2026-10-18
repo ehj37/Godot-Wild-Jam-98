@@ -105,7 +105,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("redo"):
 		_redo()
 
-	if !_turn_in_progress && Input.is_action_just_pressed("test"):
+	if !_turn_in_progress && Input.is_action_just_pressed("take_turn"):
 		_turn_in_progress = true
 		_apply_turn_speed()
 
@@ -198,11 +198,14 @@ func _process(_delta: float) -> void:
 					new_frog.on_blocked_behavior = signal_blocked_behavior
 
 		_return_to_normal_time_scale()
-		# NOTE: All redo history after the current cursor gets wiped.
-		_level_snapshots.resize(_current_snapshot_cursor + 1)
-		_capture_snapshot()
-		_current_snapshot_cursor += 1
-		SignalBus.snapshots_updated.emit(_level_snapshots.size(), _current_snapshot_cursor)
+		# NOTE: Don't take a snapshot if it's the start of the level and nothing
+		# got spawned
+		if _get_frogs().size() > 0:
+			# NOTE: All redo history after the current cursor gets wiped.
+			_level_snapshots.resize(_current_snapshot_cursor + 1)
+			_capture_snapshot()
+			_current_snapshot_cursor += 1
+			SignalBus.snapshots_updated.emit(_level_snapshots.size(), _current_snapshot_cursor)
 		_turn_in_progress = false
 
 

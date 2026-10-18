@@ -13,6 +13,21 @@ const DIRECTION_TO_GRID_LOCATION_OFFSET: Dictionary = {
 	Direction.LEFT: Vector2i.LEFT,
 	Direction.RIGHT: Vector2i.RIGHT
 }
+const INSTRUCTION_TO_COLOR: Dictionary = {
+	OnBlockedBehavior.TURN_CW: Color("ffb328"),
+	OnBlockedBehavior.TURN_CCW: Color("ee82ee"),
+	OnBlockedBehavior.FLIP: Color("ffff00"),
+}
+const INSTRUCTION_TO_STUCK_COLOR: Dictionary = {
+	OnBlockedBehavior.TURN_CW: Color("9e6600"),
+	OnBlockedBehavior.TURN_CCW: Color("9e329e"),
+	OnBlockedBehavior.FLIP: Color("999900"),
+}
+const INSTRUCTION_TO_DISABLED_COLOR: Dictionary = {
+	OnBlockedBehavior.TURN_CW: Color("ffb328"),
+	OnBlockedBehavior.TURN_CCW: Color("661566"),
+	OnBlockedBehavior.FLIP: Color("616100"),
+}
 
 @export var direction: Direction:
 	set(new_value):

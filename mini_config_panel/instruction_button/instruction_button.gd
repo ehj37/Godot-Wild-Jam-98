@@ -48,9 +48,9 @@ func _update_from_state() -> void:
 	if _power_on:
 		_button.disabled = stuck
 		if stuck:
-			sprite_modulate_color = Color("9e6600")
+			sprite_modulate_color = Frog.INSTRUCTION_TO_STUCK_COLOR[instruction]
 		else:
-			sprite_modulate_color = Color("ffa500")
+			sprite_modulate_color = Frog.INSTRUCTION_TO_COLOR[instruction]
 		_sprite_clockwise.play()
 		_sprite_flip_horizontal.play()
 	else:

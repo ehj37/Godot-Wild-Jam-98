@@ -27,7 +27,8 @@ func _draw() -> void:
 		return
 
 	var signal_rect: Rect2 = Rect2(-48, -48, 96, 96)
-	draw_rect(signal_rect, Color("ffb328"), false, 1)
+	var rectangle_color: Color = Frog.INSTRUCTION_TO_COLOR[instruction]
+	draw_rect(signal_rect, rectangle_color, false, 1)
 
 
 func _on_instruction_changed() -> void:

@@ -15,6 +15,8 @@ var on_blocked_behavior: Frog.OnBlockedBehavior:
 func _update() -> void:
 	var sprite_cw: AnimatedSprite2D = get_node("SpriteCW")
 	var sprite_flip_vertical: AnimatedSprite2D = get_node("SpriteFlipVertical")
+	sprite_cw.modulate = Frog.INSTRUCTION_TO_COLOR[on_blocked_behavior]
+	sprite_flip_vertical.modulate = Frog.INSTRUCTION_TO_COLOR[on_blocked_behavior]
 	match on_blocked_behavior:
 		Frog.OnBlockedBehavior.TURN_CW:
 			sprite_cw.visible = true
