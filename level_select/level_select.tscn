@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://eplgqvvt8vaw"]
+
+[ext_resource type="Script" uid="uid://b4hxs5kvulax7" path="res://level_select/level_select.gd" id="1_l7jsa"]
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme/theme.tres" id="1_sv8in"]
+[ext_resource type="PackedScene" uid="uid://drtiyvlkp552e" path="res://background/background.tscn" id="3_kp0lh"]
+[ext_resource type="PackedScene" uid="uid://bd4xcofojxhs8" path="res://level_select/level_widget/level_widget.tscn" id="3_kxnyd"]
+
+[node name="LevelSelect" type="Control" unique_id=1561098333]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_sv8in")
+script = ExtResource("1_l7jsa")
+
+[node name="Background" parent="." unique_id=1561845036 instance=ExtResource("3_kp0lh")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1013968115]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1198631182]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "LEVEL SELECT"
+horizontal_alignment = 1
+
+[node name="LevelWidgetContainer" type="GridContainer" parent="VBoxContainer" unique_id=2042141920]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 6
+
+[node name="LevelWidget" parent="VBoxContainer/LevelWidgetContainer" unique_id=1071239744 instance=ExtResource("3_kxnyd")]
+layout_mode = 2
+
+[node name="LevelWidget2" parent="VBoxContainer/LevelWidgetContainer" unique_id=1875967404 instance=ExtResource("3_kxnyd")]
+layout_mode = 2
+level_number = 1
+
+[node name="LevelWidget3" parent="VBoxContainer/LevelWidgetContainer" unique_id=766129002 instance=ExtResource("3_kxnyd")]
+layout_mode = 2
+level_number = 1
+
+[node name="LevelWidget4" parent="VBoxContainer/LevelWidgetContainer" unique_id=1400021630 instance=ExtResource("3_kxnyd")]
+layout_mode = 2
+level_number = 1
+
+[node name="MouseBlockingColorRect" type="ColorRect" parent="." unique_id=1419229312]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0)

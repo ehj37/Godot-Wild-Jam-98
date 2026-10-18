@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c0aqvfojvyvvg"]
+
+[ext_resource type="Script" uid="uid://dll4yq4vl6kba" path="res://screen_fade_layer/screen_fade_layer.gd" id="1_xjfme"]
+
+[node name="ScreenFadeLayer" type="CanvasLayer" unique_id=1677366956]
+layer = 2
+script = ExtResource("1_xjfme")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=538504506]
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

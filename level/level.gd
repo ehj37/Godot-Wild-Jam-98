@@ -210,6 +210,8 @@ func _process(_delta: float) -> void:
 
 
 func _ready() -> void:
+	ScreenFadeLayer.fade_in()
+
 	_capture_snapshot()
 	_current_snapshot_cursor = 0
 	SignalBus.snapshots_updated.emit(_level_snapshots.size(), _current_snapshot_cursor)
@@ -456,6 +458,7 @@ func _on_sync_requested() -> void:
 	if grid.win_condition_met():
 		_level_won = true
 		SignalBus.sync_successful.emit()
+		PlayerStats.beaten_levels.append(get_tree().current_scene.scene_file_path)
 	else:
 		SignalBus.sync_unsuccessful.emit()
 

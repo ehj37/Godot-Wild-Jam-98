@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bd4xcofojxhs8"]
+
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme/theme.tres" id="1_1jrgd"]
+[ext_resource type="PackedScene" uid="uid://p3dqfdy4qccc" path="res://clicky_button/clicky_button.tscn" id="1_3ngfv"]
+[ext_resource type="Script" uid="uid://b7vgxw7s2kp7c" path="res://level_select/level_widget/level_widget.gd" id="1_tjfdw"]
+
+[node name="LevelWidget" type="VBoxContainer" unique_id=1071239744]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_1jrgd")
+script = ExtResource("1_tjfdw")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=169649289]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=929471537]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LevelContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=660462903]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LevelNumberContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/LevelContainer" unique_id=1996711468]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/LevelContainer/LevelNumberContainer" unique_id=92980167]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "LEVEL NUMBER:"
+horizontal_alignment = 1
+
+[node name="LevelNumberLabel" type="Label" parent="PanelContainer/MarginContainer/LevelContainer/LevelNumberContainer" unique_id=577475831]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "1"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BeatenContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/LevelContainer" unique_id=1973185069]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/LevelContainer/BeatenContainer" unique_id=1011670895]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "RADIOS SYNCED:"
+horizontal_alignment = 1
+
+[node name="BeatenLabel" type="Label" parent="PanelContainer/MarginContainer/LevelContainer/BeatenContainer" unique_id=1346778015]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "YES"
+horizontal_alignment = 1
+
+[node name="PlayButton" parent="." unique_id=1187957636 instance=ExtResource("1_3ngfv")]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "PLAY"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

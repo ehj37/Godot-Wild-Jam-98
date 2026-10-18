@@ -28,7 +28,10 @@ func _process(_delta: float) -> void:
 		else:
 			_dialog_box.assume_idle_state()
 			_fading = true
-			# TODO: FADE OUT TO BLACK
+			ScreenFadeLayer.fade_out()
+			await ScreenFadeLayer.fade_finished
+
+			get_tree().change_scene_to_file("res://levels/00_tutorial.tscn")
 
 
 func _ready() -> void:
@@ -36,8 +39,8 @@ func _ready() -> void:
 	_dialog_box.assume_idle_state()
 
 	_fading = true
-	# TODO: FADE IN FROM BLACK, CUTSCENE-ESQUE SOMETHING
-	await get_tree().create_timer(_FADE_IN_TIME).timeout
+	ScreenFadeLayer.fade_in()
+	await ScreenFadeLayer.fade_finished
 
 	_fading = false
 	_play_dialog_from_current_cursor_position()

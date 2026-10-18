@@ -26,6 +26,8 @@ AudioManager="*uid://du68jrnx210o4"
 TurnConfig="*uid://bnr5vt2fg75es"
 DialogConfig="*uid://u5sc5wb77u6f"
 PauseLayer="*uid://b8n2bis048ml3"
+ScreenFadeLayer="*uid://c0aqvfojvyvvg"
+PlayerStats="*uid://c4cir7rl81xj1"
 
 [debug]
 
@@ -50,6 +52,7 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://levels/": "green",
 "res://scratch_levels/": "red"
 }
 

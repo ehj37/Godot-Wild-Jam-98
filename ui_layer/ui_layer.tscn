@@ -295,10 +295,10 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = "OPTIONS"
 
-[node name="MainMenuButton" parent="Control/HBoxContainer/RightPanel/MarginContainer/VBoxContainer" unique_id=726021553 instance=ExtResource("3_rbe85")]
+[node name="LevelSelectButton" parent="Control/HBoxContainer/RightPanel/MarginContainer/VBoxContainer" unique_id=726021553 instance=ExtResource("3_rbe85")]
 layout_mode = 2
 size_flags_horizontal = 8
-text = "MAIN MENU"
+text = "LEVEL SELECT"
 
 [connection signal="pressed" from="Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer/UndoButton" to="." method="_on_undo_button_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer/RedoButton" to="." method="_on_redo_button_pressed"]
@@ -309,3 +309,4 @@ text = "MAIN MENU"
 [connection signal="pressed" from="Control/HBoxContainer/RightPanel/VBoxContainer/SyncContainer/SyncButton" to="." method="_on_sync_button_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/RightPanel/MarginContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/RightPanel/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/RightPanel/MarginContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dl6oq10p5g33a"]
 
-[ext_resource type="Script" uid="uid://blqnf3fiilvel" path="res://scratch_levels/00.gd" id="1_t7vli"]
+[ext_resource type="Script" uid="uid://blqnf3fiilvel" path="res://levels/00.gd" id="1_t7vli"]
 [ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="2_nadd3"]
 [ext_resource type="PackedScene" uid="uid://drtiyvlkp552e" path="res://background/background.tscn" id="2_wdb7b"]
 [ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="3_wdb7b"]

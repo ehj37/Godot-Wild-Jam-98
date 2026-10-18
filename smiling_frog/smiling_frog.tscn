@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cgmlwj7gij616"]
 
-[ext_resource type="Script" uid="uid://bqkttm8ldjjdm" path="res://ui_layer/smiling_frog/smiling_frog.gd" id="1_iulmi"]
+[ext_resource type="Script" uid="uid://bqkttm8ldjjdm" path="res://smiling_frog/smiling_frog.gd" id="1_iulmi"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_iulmi"]
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABwAAAAUklGRmgAAABXRUJQVlA4TFwAAAAvH8AHEA8w//M///Mf8GBaW3uTX0Um9F5sRojiXwWHxfWyGeMgOZF0VzeI6L/atA0Yp8y+Ax7jOI7DDW4s8RIfeOA13H/sDmwTySSD1/z1nrJrIOlc0DwQgfjkDQ==")

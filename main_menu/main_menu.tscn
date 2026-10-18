@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://ktjtynk653fd"]
+
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme/theme.tres" id="1_d3a7t"]
+[ext_resource type="PackedScene" uid="uid://djqmdgah084rg" path="res://settings_section/settings_section.tscn" id="1_oa53l"]
+[ext_resource type="Script" uid="uid://bsvogvrodyahb" path="res://main_menu/main_menu.gd" id="2_bws42"]
+[ext_resource type="PackedScene" uid="uid://drtiyvlkp552e" path="res://background/background.tscn" id="3_3f7m4"]
+[ext_resource type="PackedScene" uid="uid://p3dqfdy4qccc" path="res://clicky_button/clicky_button.tscn" id="3_3shxk"]
+
+[node name="MainMenu" type="Control" unique_id=1256323645]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_d3a7t")
+script = ExtResource("2_bws42")
+
+[node name="Background" parent="." unique_id=1561845036 instance=ExtResource("3_3f7m4")]
+
+[node name="MainMenu" type="Control" parent="." unique_id=635949257]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsSection" parent="MainMenu" unique_id=206500887 instance=ExtResource("1_oa53l")]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 189.0
+offset_right = 621.0
+offset_bottom = 341.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu" unique_id=1235599544]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 92.0
+offset_right = 323.0
+offset_bottom = 270.0
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenu/VBoxContainer" unique_id=2079360130]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/VBoxContainer/PanelContainer" unique_id=950172532]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/VBoxContainer/PanelContainer/MarginContainer" unique_id=2130547938]
+custom_minimum_size = Vector2(192, 0)
+clip_contents = false
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[wave amp=100.0 freq=2.0 connected=1]SYNC 
+   OR
+    SWIM[/wave]"
+fit_content = true
+scroll_active = false
+
+[node name="PlayButton" parent="MainMenu/VBoxContainer" unique_id=1187957636 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "PLAY"
+
+[node name="LevelSelectButton" parent="MainMenu/VBoxContainer" unique_id=1594899316 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "LEVEL SELECT"
+
+[connection signal="pressed" from="MainMenu/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
