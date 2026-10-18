@@ -21,6 +21,9 @@ var _selected_turn_speed_button: Button
 @onready var _redo_button: Button = get_node(
 	"Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer/RedoButton"
 )
+@onready var _sync_button: Button = get_node(
+	"Control/HBoxContainer/RightPanel/VBoxContainer/SyncContainer/SyncButton"
+)
 @onready var _radio_sync_status_popup: CenterContainer = get_node(
 	"Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup"
 )
@@ -94,22 +97,23 @@ func _on_snapshot_update(num_level_snapshots: int, current_snapshot_cursor: int)
 
 func _on_sync_successful() -> void:
 	_radio_sync_status_popup.visible = true
+	_radio_sync_status_popup.modulate.a = 1.0
 	_sync_successful_label.visible = true
 	_sync_unsuccessful_label.visible = false
+	_sync_button.disabled = true
+	_undo_button.disabled = true
+	_redo_button.disabled = true
 
 
 func _on_sync_unsuccessful() -> void:
-	_radio_sync_status_popup.modulate.a = 1.0
 	_radio_sync_status_popup.visible = true
+	_radio_sync_status_popup.modulate.a = 1.0
 	_sync_successful_label.visible = false
 	_sync_unsuccessful_label.visible = true
-	# TODO: Prevent additional sync attempts while this popup is shown.
+	_sync_button.disabled = true
 	await get_tree().create_timer(1.0).timeout
 
-	# TODO: Spam clicking makes this a problem.
-	var fade_tween: Tween = get_tree().create_tween()
-	fade_tween.tween_property(_radio_sync_status_popup, "modulate:a", 0.0, 1.5)
-
+	_sync_button.disabled = false
 	_radio_sync_status_popup.visible = false
 
 
