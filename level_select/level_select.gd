@@ -23,6 +23,8 @@ func _ready() -> void:
 	for level_widget: LevelWidget in _level_widget_container.get_children():
 		level_widget.play_button_pressed.connect(_block_mouse_clicks)
 
+	AudioManager.remove_low_pass_filter_from_music()
+
 
 func _block_mouse_clicks() -> void:
 	_mouse_blocking_color_rect.mouse_filter = Control.MOUSE_FILTER_STOP

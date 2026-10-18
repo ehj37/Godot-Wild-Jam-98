@@ -260,6 +260,8 @@ func _ready() -> void:
 
 	SignalBus.level_ready.emit(level_name, num_radio_tiles)
 
+	AudioManager.apply_low_pass_filter_to_music()
+
 
 func _get_frogs() -> Array[Frog]:
 	var result: Array[Frog]
@@ -459,6 +461,7 @@ func _on_sync_requested() -> void:
 		_level_won = true
 		SignalBus.sync_successful.emit()
 		PlayerStats.beaten_levels.append(get_tree().current_scene.scene_file_path)
+		AudioManager.remove_low_pass_filter_from_music()
 	else:
 		SignalBus.sync_unsuccessful.emit()
 

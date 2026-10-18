@@ -6,6 +6,7 @@ extends Control
 
 func _ready() -> void:
 	ScreenFadeLayer.fade_in()
+	AudioManager.remove_low_pass_filter_from_music()
 
 
 func _on_play_button_pressed() -> void:
