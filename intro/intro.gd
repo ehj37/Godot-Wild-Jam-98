@@ -10,7 +10,7 @@ var _dialog_in_progress: bool = false
 
 @onready var _intro_dialog_box_configs: Array[DialogBox.DialogBoxConfig] = [
 	DialogBox.DialogBoxConfig.new("THIS IS THE WORST DAY OF MY LIFE."),
-	DialogBox.DialogBoxConfig.new("FROG RADIO IS DOWN. THIS WON'T DO."),
+	DialogBox.DialogBoxConfig.new("FROG RADIO IS BROKEN. IT SOUNDS ALL WRONG. THIS WON'T DO."),
 	DialogBox.DialogBoxConfig.new("THIS MUST BE FIXED.")
 ]
 

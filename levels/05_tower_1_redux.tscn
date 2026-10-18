@@ -44,8 +44,6 @@ position = Vector2(176, 208)
 
 [node name="FrogPipe2" parent="." unique_id=1279903013 instance=ExtResource("5_qj38i")]
 position = Vector2(272, 272)
-disabled = true
-instruction = 2
 instruction_button_stuck = true
 
 [node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("7_dwkvk")]

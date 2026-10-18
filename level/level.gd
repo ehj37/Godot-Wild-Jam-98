@@ -206,6 +206,12 @@ func _process(_delta: float) -> void:
 			_capture_snapshot()
 			_current_snapshot_cursor += 1
 			SignalBus.snapshots_updated.emit(_level_snapshots.size(), _current_snapshot_cursor)
+
+			# NOTE: Want some audio feedback when the turn happens immediately
+			# (and all the effects that would've happened above don't happen)
+			if TurnConfig.get_current_turn_speed() == TurnConfig.TurnSpeed.INSTANT:
+				AudioManager.play_sound_effect(_frog_move_stream)
+
 		_turn_in_progress = false
 
 

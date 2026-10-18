@@ -35,12 +35,10 @@ tile_map_data = PackedByteArray("AAACAAQAAAABAAAAAAABAAQAAAABAAAAAAAAAAQAAAABAAA
 
 [node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("6_uuhew")]
 position = Vector2(112, 144)
-instruction = 2
 direction = 1
 
 [node name="FrogPipe2" parent="." unique_id=1265613237 instance=ExtResource("6_uuhew")]
 position = Vector2(400, 144)
-instruction = 2
 direction = 3
 
 [node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("7_lg18y")]

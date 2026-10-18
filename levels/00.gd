@@ -16,20 +16,20 @@ var _dialog_in_progress: bool = false
 	),
 	DialogBox.DialogBoxConfig.new("LOVELY."),
 	DialogBox.DialogBoxConfig.new("SEE THAT OTHER BUTTON ON THE PIPE?"),
-	DialogBox.DialogBoxConfig.new("THAT TELLS THE FROGS WHAT TO DO WHEN THEY CAN'T GO FORWARD."),
+	DialogBox.DialogBoxConfig.new("THAT TELLS THE FROGS WHAT TO DO WHEN THEY CAN'T MOVE FORWARD."),
 	DialogBox.DialogBoxConfig.new(
 		"FROGS CAN BE TOLD TO TURN CLOCKWISE, COUNTERCLOCKWISE, OR FLIP AROUND."
-	),
-	DialogBox.DialogBoxConfig.new(
-		"LET'S GET FROGS STANDING AT BOTH TOWERS. THEN WE SYNC WITH THE ATTEMPT SYNC BUTTON.", false
 	),
 	(
 		DialogBox
 		. DialogBoxConfig
 		. new(
-			"INSPIRATIONAL. GOOD WORK.\nTHERE'S MORE WHERE THAT CAME FROM. GOOD LUCK HAVE FUN GOODBYE SEE YOU LATER.",
+			"LET'S GET FROGS STANDING AT BOTH TOWERS. THEN WE SYNC WITH THE ATTEMPT SYNC BUTTON IN THE RIGHT PANEL.",
 			false
 		)
+	),
+	DialogBox.DialogBoxConfig.new(
+		"GOOD, GOOD, GOOD. GOOD WORK. GOOD LUCK. GOODBYE. HAVE FUN, SEE YOU LATER.", false
 	),
 ]
 # gdlint: enable=max-line-length
