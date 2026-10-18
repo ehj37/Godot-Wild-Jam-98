@@ -1,22 +1,27 @@
 [gd_scene format=3 uid="uid://bdtpenun4h5tx"]
 
 [ext_resource type="Script" uid="uid://c5fglonfx4x5p" path="res://level/level.gd" id="1_1njg1"]
+[ext_resource type="PackedScene" uid="uid://drtiyvlkp552e" path="res://background/background.tscn" id="2_hlbki"]
 [ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="2_s5xdd"]
 [ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="3_dwkvk"]
 [ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="4_uirwf"]
 [ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="5_qj38i"]
 [ext_resource type="PackedScene" uid="uid://s5aaltkvvxil" path="res://signal_tower/signal_tower.tscn" id="6_s5xdd"]
 [ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="7_dwkvk"]
+[ext_resource type="PackedScene" uid="uid://beq4k33ne1p2k" path="res://pipe_block/pipe_block.tscn" id="9_b2ktw"]
 
 [node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_1njg1")
 grid = NodePath("Grid")
+level_name = "SELF TITLED"
 explanation = "Spawn one frog from the upper left pipe, then turn the pipe off for three turns. Activate after.
 
 Bounce frog one off the wall. Use the bottom right pipe to trap frog one in (flipping back and forth) while the frogs spawned after the 3 block gap get sent up.
 
 No frog limit."
 metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Background" parent="." unique_id=1561845036 instance=ExtResource("2_hlbki")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1471806770]
 position = Vector2(320, 176)
@@ -44,3 +49,6 @@ instruction = 2
 instruction_button_stuck = true
 
 [node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("7_dwkvk")]
+
+[node name="PipeBlock" parent="." unique_id=1835997044 instance=ExtResource("9_b2ktw")]
+tile_map_data = PackedByteArray(0, 0, 8, 0, 9, 0, 0, 0, 0, 0, 1, 0, 0, 0, 8, 0, 10, 0, 0, 0, 0, 0, 1, 0, 0, 0, 4, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 32, 4, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 32)

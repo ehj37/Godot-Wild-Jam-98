@@ -1,0 +1,45 @@
+[gd_scene format=4 uid="uid://b3tsra2b3t2yb"]
+
+[ext_resource type="Script" uid="uid://b8ovo35c125qt" path="res://levels/03.gd" id="1_dp63x"]
+[ext_resource type="PackedScene" uid="uid://drtiyvlkp552e" path="res://background/background.tscn" id="2_dp63x"]
+[ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="2_kllma"]
+[ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="3_dp63x"]
+[ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="4_dbl8u"]
+[ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="5_pevgk"]
+[ext_resource type="PackedScene" uid="uid://beq4k33ne1p2k" path="res://pipe_block/pipe_block.tscn" id="6_dp63x"]
+[ext_resource type="PackedScene" uid="uid://s5aaltkvvxil" path="res://signal_tower/signal_tower.tscn" id="6_rqx1h"]
+[ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="7_uby8l"]
+
+[node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
+script = ExtResource("1_dp63x")
+grid = NodePath("Grid")
+level_name = "JAMMIN', JUST JAMMIN'"
+explanation = "Straightforward tower level. Power could be stuck to on and nothing would change.
+
+Flip at tower to  to left, then send one of the flipped frogs to the right."
+metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Background" parent="." unique_id=1561845036 instance=ExtResource("2_dp63x")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=346907195]
+position = Vector2(320, 176)
+
+[node name="Grid" parent="." unique_id=393757855 instance=ExtResource("2_kllma")]
+
+[node name="RadioTile" parent="." unique_id=622849264 instance=ExtResource("3_dp63x")]
+tile_map_data = PackedByteArray("AAABAAIAAAAAAAAAAAAKAAUAAAAAAAAAAAA=")
+
+[node name="Block" parent="." unique_id=770176600 instance=ExtResource("4_dbl8u")]
+
+[node name="PipeBlock" parent="." unique_id=1835997044 instance=ExtResource("6_dp63x")]
+tile_map_data = PackedByteArray("AAAGAAYAAAAAAAAAAAAIAAYAAAAAAAAAABAIAAcAAAAAAAAAADAGAAcAAAAAAAAAACAHAAYAAAABAAAAAAAHAAcAAAABAAAAABA=")
+
+[node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("5_pevgk")]
+position = Vector2(208, 16)
+instruction_button_stuck = true
+direction = 2
+
+[node name="SignalTower" parent="." unique_id=990745098 instance=ExtResource("6_rqx1h")]
+position = Vector2(240, 144)
+
+[node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("7_uby8l")]

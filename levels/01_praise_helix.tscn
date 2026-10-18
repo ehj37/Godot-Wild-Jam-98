@@ -1,16 +1,18 @@
-[gd_scene format=3 uid="uid://dih5lia4sm6ol"]
+[gd_scene format=4 uid="uid://dih5lia4sm6ol"]
 
 [ext_resource type="Script" uid="uid://c5fglonfx4x5p" path="res://level/level.gd" id="1_x3wub"]
 [ext_resource type="PackedScene" uid="uid://drtiyvlkp552e" path="res://background/background.tscn" id="2_wva6k"]
 [ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="3_7vmpx"]
 [ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="4_xqur7"]
 [ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="5_yfr0q"]
+[ext_resource type="PackedScene" uid="uid://beq4k33ne1p2k" path="res://pipe_block/pipe_block.tscn" id="6_7e3ql"]
 [ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="6_l2qij"]
 [ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="7_wva6k"]
 
 [node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
 script = ExtResource("1_x3wub")
 grid = NodePath("Grid")
+level_name = "PRAISE HELIX"
 explanation = "TODO: Need to test.
 
 "
@@ -24,10 +26,13 @@ position = Vector2(320, 176)
 [node name="Grid" parent="." unique_id=393757855 instance=ExtResource("3_7vmpx")]
 
 [node name="RadioTile" parent="." unique_id=622849264 instance=ExtResource("4_xqur7")]
-tile_map_data = PackedByteArray(0, 0, 8, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAAFAAEAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAA=")
 
 [node name="Block" parent="." unique_id=770176600 instance=ExtResource("5_yfr0q")]
-tile_map_data = PackedByteArray(0, 0, 9, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAAMAAQAAAAAAAAAAAALAAgAAAAAAAAAAAAEAAcAAAAAAAAAAAA=")
+
+[node name="PipeBlock" parent="." unique_id=1835997044 instance=ExtResource("6_7e3ql")]
+tile_map_data = PackedByteArray("AAACAAQAAAAAAAAAAAADAAQAAAABAAAAAAACAAUAAAAAAAEAAAADAAkAAAABAAAAAAAEAAkAAAABAAAAAAAFAAkAAAABAAAAAAACAAYAAAAAAAAAADABAAYAAAAAAAAAAAABAAkAAAAAAAAAACACAAkAAAABAAAAAAABAAgAAAAAAAEAAAABAAcAAAAAAAEAAAAGAAkAAAAAAAAAABAGAAoAAAAAAAEAAAAPAAoAAAAAAAAAAAAOAAEAAAAAAAAAACAOAAAAAAAAAAEAABAPAAEAAAABAAAAAAAAAAIAAAAAAAEAABAAAAEAAAAAAAEAABAAAAMAAAAAAAEAABAAAAQAAAAAAAEAABAAAAAAAAAAAAAAABAAAAUAAAAAAAAAADA=")
 
 [node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("6_l2qij")]
 position = Vector2(144, 144)

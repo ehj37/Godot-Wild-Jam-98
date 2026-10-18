@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://ybyw8l30ynr"]
+
+[ext_resource type="Script" uid="uid://c5fglonfx4x5p" path="res://level/level.gd" id="1_v6yvr"]
+[ext_resource type="PackedScene" uid="uid://drtiyvlkp552e" path="res://background/background.tscn" id="2_3frjn"]
+[ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="3_gys61"]
+[ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="4_p3lvk"]
+[ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="5_81bi8"]
+[ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="6_2enhw"]
+[ext_resource type="PackedScene" uid="uid://beq4k33ne1p2k" path="res://pipe_block/pipe_block.tscn" id="6_3frjn"]
+[ext_resource type="PackedScene" uid="uid://2ahqli5fghs6" path="res://signal_beam/signal_beam.tscn" id="7_gm0j8"]
+[ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="8_2vfeu"]
+
+[node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
+script = ExtResource("1_v6yvr")
+grid = NodePath("Grid")
+level_name = "A E I O U"
+explanation = "Pipes are locked as flip instructions, so the signal beam is the only way to change an instruction.
+The pipe spawn order isn't controllable by the player, so they have to disable the left pipe (which spawns frogs before the right pipe) to spawn an initial frog from the right.
+
+For the contrived solution, the first frog going through the beam twice feels unnecessary.
+
+A frog limit of 3 sort of makes this level work."
+metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Background" parent="." unique_id=1561845036 instance=ExtResource("2_3frjn")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=934179104]
+position = Vector2(320, 176)
+
+[node name="Grid" parent="." unique_id=393757855 instance=ExtResource("3_gys61")]
+
+[node name="RadioTile" parent="." unique_id=622849264 instance=ExtResource("4_p3lvk")]
+tile_map_data = PackedByteArray(0, 0, 2, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="Block" parent="." unique_id=770176600 instance=ExtResource("5_81bi8")]
+
+[node name="PipeBlock" parent="." unique_id=1835997044 instance=ExtResource("6_3frjn")]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 48, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 16, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 32)
+
+[node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("6_2enhw")]
+position = Vector2(48, 112)
+instruction = 2
+instruction_button_stuck = true
+direction = 1
+
+[node name="SignalBeam" parent="." unique_id=459733674 instance=ExtResource("7_gm0j8")]
+position = Vector2(272, 16)
+direction = 1
+
+[node name="FrogPipe2" parent="." unique_id=1917919032 instance=ExtResource("6_2enhw")]
+position = Vector2(496, 112)
+instruction = 2
+instruction_button_stuck = true
+direction = 3
+
+[node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("8_2vfeu")]

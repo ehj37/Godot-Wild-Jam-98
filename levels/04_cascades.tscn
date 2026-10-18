@@ -1,0 +1,34 @@
+[gd_scene format=4 uid="uid://bxq1vum4610sf"]
+
+[ext_resource type="Script" uid="uid://c5fglonfx4x5p" path="res://level/level.gd" id="1_yv4x7"]
+[ext_resource type="PackedScene" uid="uid://drtiyvlkp552e" path="res://background/background.tscn" id="2_ucueq"]
+[ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="3_ds4e5"]
+[ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="4_gvorc"]
+[ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="5_a67cq"]
+[ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="6_7346i"]
+[ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="7_8d67e"]
+
+[node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
+script = ExtResource("1_yv4x7")
+grid = NodePath("Grid")
+level_name = "CASCADES"
+metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Background" parent="." unique_id=1561845036 instance=ExtResource("2_ucueq")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1516742530]
+position = Vector2(320, 176)
+
+[node name="Grid" parent="." unique_id=393757855 instance=ExtResource("3_ds4e5")]
+
+[node name="RadioTile" parent="." unique_id=622849264 instance=ExtResource("4_gvorc")]
+tile_map_data = PackedByteArray("AAACAAAAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAoAAAAAAAAAAAA=")
+
+[node name="Block" parent="." unique_id=770176600 instance=ExtResource("5_a67cq")]
+tile_map_data = PackedByteArray("AAAPAAAAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAA=")
+
+[node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("6_7346i")]
+position = Vector2(16, 16)
+direction = 1
+
+[node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("7_8d67e")]

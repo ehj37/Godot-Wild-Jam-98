@@ -1,0 +1,46 @@
+[gd_scene format=4 uid="uid://c1myinjkmb4mo"]
+
+[ext_resource type="Script" uid="uid://c5fglonfx4x5p" path="res://level/level.gd" id="1_xke32"]
+[ext_resource type="PackedScene" uid="uid://drtiyvlkp552e" path="res://background/background.tscn" id="2_4pefr"]
+[ext_resource type="PackedScene" uid="uid://cfbjcg2eaxvs5" path="res://grid/grid.tscn" id="3_xh34n"]
+[ext_resource type="PackedScene" uid="uid://hqflrt1or3t2" path="res://radio_tile/radio_tile.tscn" id="4_tjfk7"]
+[ext_resource type="PackedScene" uid="uid://bfqrqebtbkat1" path="res://block/block.tscn" id="5_evh1u"]
+[ext_resource type="PackedScene" uid="uid://beq4k33ne1p2k" path="res://pipe_block/pipe_block.tscn" id="6_s0omj"]
+[ext_resource type="PackedScene" uid="uid://coil6jaqwwyf3" path="res://frog_pipe/frog_pipe.tscn" id="6_uuhew"]
+[ext_resource type="PackedScene" uid="uid://boj56712nlua5" path="res://ui_layer/ui_layer.tscn" id="7_lg18y"]
+
+[node name="Level" type="Node2D" unique_id=706673764 node_paths=PackedStringArray("grid")]
+script = ExtResource("1_xke32")
+grid = NodePath("Grid")
+level_name = "THE SPICE OF LIFE"
+explanation = "Idea is that you want the first three out of each pipe to flip, and then the fourth should be CW for the left and CCW for the right.
+
+Gets the player engaging with all kinds of instructions."
+metadata/_custom_type_script = "uid://c5fglonfx4x5p"
+
+[node name="Background" parent="." unique_id=1561845036 instance=ExtResource("2_4pefr")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=835862496]
+position = Vector2(320, 176)
+
+[node name="Grid" parent="." unique_id=393757855 instance=ExtResource("3_xh34n")]
+
+[node name="RadioTile" parent="." unique_id=622849264 instance=ExtResource("4_tjfk7")]
+tile_map_data = PackedByteArray("AAAEAAgAAAAAAAAAAAALAAgAAAAAAAAAAAA=")
+
+[node name="Block" parent="." unique_id=770176600 instance=ExtResource("5_evh1u")]
+
+[node name="PipeBlock" parent="." unique_id=1835997044 instance=ExtResource("6_s0omj")]
+tile_map_data = PackedByteArray("AAACAAQAAAABAAAAAAABAAQAAAABAAAAAAAAAAQAAAABAAAAAAANAAQAAAABAAAAABAOAAQAAAABAAAAABAPAAQAAAABAAAAABAPAAAAAAAAAAAAACAAAAAAAAAAAAAAADACAAMAAAAAAAAAADACAAIAAAAAAAAAABANAAIAAAAAAAAAAAANAAMAAAAAAAAAACAOAAMAAAABAAAAAAAPAAMAAAABAAAAAAAOAAIAAAABAAAAAAAPAAIAAAABAAAAAAABAAIAAAABAAAAABAAAAIAAAABAAAAABABAAMAAAABAAAAABAAAAMAAAABAAAAABAAAAUAAAABAAAAABAAAAYAAAABAAAAABAPAAUAAAABAAAAAAAPAAYAAAABAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAACABAAYAAAAAAAAAADABAAUAAAAAAAAAABA=")
+
+[node name="FrogPipe" parent="." unique_id=852955402 instance=ExtResource("6_uuhew")]
+position = Vector2(112, 144)
+instruction = 2
+direction = 1
+
+[node name="FrogPipe2" parent="." unique_id=1265613237 instance=ExtResource("6_uuhew")]
+position = Vector2(400, 144)
+instruction = 2
+direction = 3
+
+[node name="UILayer" parent="." unique_id=2115605960 instance=ExtResource("7_lg18y")]

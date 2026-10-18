@@ -21,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=1198631182]
@@ -33,7 +34,9 @@ horizontal_alignment = 1
 [node name="LevelWidgetContainer" type="GridContainer" parent="VBoxContainer" unique_id=2042141920]
 layout_mode = 2
 size_flags_horizontal = 4
-columns = 6
+theme_override_constants/h_separation = 48
+theme_override_constants/v_separation = 24
+columns = 3
 
 [node name="LevelWidget" parent="VBoxContainer/LevelWidgetContainer" unique_id=1071239744 instance=ExtResource("3_kxnyd")]
 layout_mode = 2
@@ -44,11 +47,31 @@ level_number = 1
 
 [node name="LevelWidget3" parent="VBoxContainer/LevelWidgetContainer" unique_id=766129002 instance=ExtResource("3_kxnyd")]
 layout_mode = 2
-level_number = 1
+level_number = 2
 
 [node name="LevelWidget4" parent="VBoxContainer/LevelWidgetContainer" unique_id=1400021630 instance=ExtResource("3_kxnyd")]
 layout_mode = 2
-level_number = 1
+level_number = 3
+
+[node name="LevelWidget5" parent="VBoxContainer/LevelWidgetContainer" unique_id=512781007 instance=ExtResource("3_kxnyd")]
+layout_mode = 2
+level_number = 4
+
+[node name="LevelWidget6" parent="VBoxContainer/LevelWidgetContainer" unique_id=272953295 instance=ExtResource("3_kxnyd")]
+layout_mode = 2
+level_number = 5
+
+[node name="LevelWidget7" parent="VBoxContainer/LevelWidgetContainer" unique_id=1041491374 instance=ExtResource("3_kxnyd")]
+layout_mode = 2
+level_number = 6
+
+[node name="LevelWidget8" parent="VBoxContainer/LevelWidgetContainer" unique_id=183667389 instance=ExtResource("3_kxnyd")]
+layout_mode = 2
+level_number = 7
+
+[node name="LevelWidget9" parent="VBoxContainer/LevelWidgetContainer" unique_id=1769645502 instance=ExtResource("3_kxnyd")]
+layout_mode = 2
+level_number = 8
 
 [node name="MouseBlockingColorRect" type="ColorRect" parent="." unique_id=1419229312]
 layout_mode = 0

@@ -20,7 +20,7 @@ class DialogBoxConfig:
 		self.show_continue = show_continue
 
 
-const _BASE_TEXT_SPEED: float = 10.0
+const _BASE_TEXT_SPEED: float = 12.0
 const _DIALOG_SPEED_TO_MULTIPLIER: Dictionary = {
 	DialogConfig.DialogSpeed.SLOW: 0.5,
 	DialogConfig.DialogSpeed.NORMAL: 1.0,
