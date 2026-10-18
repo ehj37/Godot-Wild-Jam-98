@@ -20,6 +20,15 @@ var _new_frog_fade_tween: Tween
 var _frog_rotate_timer: Timer
 
 @onready var _frog_packed_scene: PackedScene = preload("res://frog/frog.tscn")
+@onready var _frog_move_stream: AudioStreamOggVorbis = preload("./sound_effects/frog_move.ogg")
+@onready var _frog_rotate_stream: AudioStreamOggVorbis = preload("./sound_effects/frog_rotate.ogg")
+@onready var _instruction_changed_stream: AudioStreamOggVorbis = preload(
+	"./sound_effects/frog_instruction_changed.ogg"
+)
+@onready var _frog_spawn_stream: AudioStreamOggVorbis = preload("./sound_effects/frog_spawn.ogg")
+@onready var _undo_stream: AudioStreamOggVorbis = preload("./sound_effects/undo.ogg")
+@onready var _redo_stream: AudioStreamOggVorbis = preload("./sound_effects/redo.ogg")
+@onready var _reset_stream: AudioStreamOggVorbis = preload("./sound_effects/reset.ogg")
 
 
 class FrogSnapshot:
@@ -121,6 +130,7 @@ func _process(_delta: float) -> void:
 				# gets into a nook and needs multiple turns to do a 270 deg turn.
 				next_grid_location = frog.get_next_grid_location()
 				if TurnConfig.get_current_turn_speed() != TurnConfig.TurnSpeed.INSTANT:
+					AudioManager.play_sound_effect(_frog_rotate_stream)
 					_frog_rotate_timer.start()
 					await action_finished
 
@@ -129,6 +139,7 @@ func _process(_delta: float) -> void:
 					next_grid_location
 				)
 				if TurnConfig.get_current_turn_speed() != TurnConfig.TurnSpeed.INSTANT:
+					AudioManager.play_sound_effect(_frog_move_stream)
 					_frog_move_tween = get_tree().create_tween()
 					_frog_move_tween.tween_property(
 						frog,
@@ -150,7 +161,11 @@ func _process(_delta: float) -> void:
 				var signal_blocked_behavior: Frog.OnBlockedBehavior = _get_signal_behavior_at(
 					frog.grid_location, signal_emitters, signal_emitter_to_effected_grid_locations
 				)
-				if signal_blocked_behavior != -1:
+				if (
+					signal_blocked_behavior != -1
+					&& frog.on_blocked_behavior != signal_blocked_behavior
+				):
+					AudioManager.play_sound_effect(_instruction_changed_stream)
 					frog.on_blocked_behavior = signal_blocked_behavior
 
 		var pipes: Array[FrogPipe] = _get_pipes()
@@ -162,6 +177,7 @@ func _process(_delta: float) -> void:
 			if grid.is_empty(spawn_location):
 				var new_frog: Frog = _add_frog(spawn_location, pipe.direction, pipe.instruction)
 				if TurnConfig.get_current_turn_speed() != TurnConfig.TurnSpeed.INSTANT:
+					AudioManager.play_sound_effect(_frog_spawn_stream)
 					new_frog.modulate.a = 0.0
 					_new_frog_fade_tween = get_tree().create_tween()
 					_new_frog_fade_tween.tween_property(
@@ -209,11 +225,13 @@ func _ready() -> void:
 	SignalBus.reset_requested.connect(_reset)
 	TurnConfig.turn_speed_changed.connect(_on_turn_speed_changed)
 
+	var num_radio_tiles: int = 0
 	var radio_tile_maps: Array[GridTileMap] = _get_radio_tile_maps()
 	for radio_tile_map: GridTileMap in radio_tile_maps:
 		var grid_tile_locations: Array[Vector2i] = radio_tile_map.get_tile_grid_locations()
 		for grid_tile_location: Vector2i in grid_tile_locations:
 			grid.register_radio_tile(grid_tile_location)
+			num_radio_tiles += 1
 
 	for pipe: FrogPipe in _get_pipes():
 		grid.register_residency(Grid.Residency.PIPE, pipe.grid_location)
@@ -235,8 +253,7 @@ func _ready() -> void:
 	for signal_emitter: SignalEmitter in signal_emitters:
 		signal_emitter.update(grid)
 
-	if level_name.length() > 0:
-		SignalBus.level_ready.emit(level_name)
+	SignalBus.level_ready.emit(level_name, num_radio_tiles)
 
 
 func _get_frogs() -> Array[Frog]:
@@ -403,6 +420,8 @@ func _undo() -> void:
 	if _current_snapshot_cursor == 0 || _turn_in_progress:
 		return
 
+	AudioManager.play_sound_effect(_undo_stream)
+
 	_current_snapshot_cursor -= 1
 	var snapshot_to_restore: LevelSnapshot = _level_snapshots[_current_snapshot_cursor]
 	_restore_state_from_snapshot(snapshot_to_restore)
@@ -413,6 +432,8 @@ func _redo() -> void:
 	if _current_snapshot_cursor == _level_snapshots.size() - 1 || _turn_in_progress:
 		return
 
+	AudioManager.play_sound_effect(_redo_stream)
+
 	_current_snapshot_cursor += 1
 	var snapshot_to_restore: LevelSnapshot = _level_snapshots[_current_snapshot_cursor]
 	_restore_state_from_snapshot(snapshot_to_restore)
@@ -420,6 +441,8 @@ func _redo() -> void:
 
 
 func _reset() -> void:
+	AudioManager.play_sound_effect(_reset_stream)
+
 	_level_snapshots.resize(1)
 	_current_snapshot_cursor = 0
 	_restore_state_from_snapshot(_level_snapshots[0])

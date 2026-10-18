@@ -8,4 +8,4 @@ signal sync_requested
 signal undo_requested
 signal redo_requested
 signal reset_requested
-signal level_ready(level_name: String)
+signal level_ready(level_name: String, num_radio_tiles: int)

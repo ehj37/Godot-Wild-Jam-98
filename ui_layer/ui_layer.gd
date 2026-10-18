@@ -3,6 +3,9 @@ extends CanvasLayer
 var _selected_turn_speed_button: Button
 
 # gdlint: disable=max-line-length
+@onready var _num_towers_label: Label = get_node(
+	"Control/HBoxContainer/RightPanel/VBoxContainer/SyncContainer/HBoxContainer/NumTowersLabel"
+)
 @onready var _level_name_container: MarginContainer = get_node(
 	"Control/HBoxContainer/LeftSectionContainer/LevelNameContainer"
 )
@@ -53,25 +56,28 @@ func _ready() -> void:
 	SignalBus.level_ready.connect(_on_level_ready)
 
 
-func _on_level_ready(level_name: String) -> void:
-	await get_tree().create_timer(1.0).timeout
+func _on_level_ready(level_name: String, num_radio_towers: int) -> void:
+	_num_towers_label.text = str(num_radio_towers)
 
-	_level_name_container.visible = true
-	_level_name_container.modulate.a = 0
-	_level_name_label.text = level_name
+	if level_name.length() > 0:
+		await get_tree().create_timer(1.0).timeout
 
-	var fade_in_tween: Tween = get_tree().create_tween()
-	fade_in_tween.tween_property(_level_name_container, "modulate:a", 1.0, 1.5)
+		_level_name_container.visible = true
+		_level_name_container.modulate.a = 0
+		_level_name_label.text = level_name
 
-	await fade_in_tween.finished
+		var fade_in_tween: Tween = get_tree().create_tween()
+		fade_in_tween.tween_property(_level_name_container, "modulate:a", 1.0, 1.5)
 
-	await get_tree().create_timer(1.5).timeout
+		await fade_in_tween.finished
 
-	var fade_out_tween: Tween = get_tree().create_tween()
-	fade_out_tween.tween_property(_level_name_container, "modulate:a", 0.0, 1.0)
-	await fade_out_tween.finished
+		await get_tree().create_timer(1.5).timeout
 
-	_level_name_container.visible = false
+		var fade_out_tween: Tween = get_tree().create_tween()
+		fade_out_tween.tween_property(_level_name_container, "modulate:a", 0.0, 1.0)
+		await fade_out_tween.finished
+
+		_level_name_container.visible = false
 
 
 func _on_snapshot_update(num_level_snapshots: int, current_snapshot_cursor: int) -> void:

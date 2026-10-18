@@ -97,6 +97,7 @@ layout_mode = 2
 
 [node name="LevelNameContainer" type="MarginContainer" parent="Control/HBoxContainer/LeftSectionContainer" unique_id=838921622]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -104,6 +105,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/LeftSectionContainer/LevelNameContainer" unique_id=33321003]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer/LeftSectionContainer/LevelNameContainer/VBoxContainer" unique_id=998014312]
 layout_mode = 2
@@ -123,6 +125,7 @@ text = "THE NAME OF THE LEVEL IS:"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/LeftSectionContainer/LevelNameContainer/VBoxContainer/LevelNameLabelContainer" unique_id=2019357122]
 layout_mode = 2
@@ -241,11 +244,16 @@ alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/RightPanel/VBoxContainer/SyncContainer" unique_id=743042402]
 layout_mode = 2
+alignment = 1
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/RightPanel/VBoxContainer/SyncContainer" unique_id=371204205]
+[node name="NumTowersLabel" type="Label" parent="Control/HBoxContainer/RightPanel/VBoxContainer/SyncContainer/HBoxContainer" unique_id=371204205]
 layout_mode = 2
-text = "X TOWERS TO SYNC"
+text = "999"
 horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/HBoxContainer/RightPanel/VBoxContainer/SyncContainer/HBoxContainer" unique_id=1324438671]
+layout_mode = 2
+text = "TOWERS TO SYNC"
 
 [node name="SyncButton" parent="Control/HBoxContainer/RightPanel/VBoxContainer/SyncContainer" unique_id=474992046 instance=ExtResource("3_rbe85")]
 custom_minimum_size = Vector2(100, 0)
