@@ -12,7 +12,7 @@ var grid_location: Vector2i:
 
 
 func _process(_delta: float) -> void:
-	if Engine.is_editor_hint() && EditorInterface.get_edited_scene_root() != self:
+	if false:
 		var nearest_grid_position: Vector2i = Grid.get_nearest_grid_location(global_position)
 		grid_location = nearest_grid_position
 		global_position = Grid.get_global_position_center(nearest_grid_position)

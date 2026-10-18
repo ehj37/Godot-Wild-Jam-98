@@ -1,56 +1,55 @@
 extends Control
 
-const _FADE_IN_TIME: float = 3.0
-const _FADE_OUT_TIME: float = 2.0
+var _dialog_cursor: int
+var _next_dialog_blocked: bool
 
-var _dialog_box_config_cursor: int = 0
-# For the fade in and out at the beginning of the level.
-var _fading: bool = true
-var _dialog_in_progress: bool = false
-
-@onready var _intro_dialog_box_configs: Array[DialogBox.DialogBoxConfig] = [
+@onready var _dialog_box: DialogBox = $MarginContainer/DialogBox
+@onready var _dialog_box_configs: Array[DialogBox.DialogBoxConfig] = [
 	DialogBox.DialogBoxConfig.new("THIS IS THE WORST DAY OF MY LIFE."),
 	DialogBox.DialogBoxConfig.new("FROG RADIO IS BROKEN. IT SOUNDS ALL WRONG. THIS WON'T DO."),
 	DialogBox.DialogBoxConfig.new("THIS MUST BE FIXED.")
 ]
 
-@onready var _dialog_box: DialogBox = $MarginContainer/DialogBox
-
 
 func _process(_delta: float) -> void:
-	if _fading:
-		return
+	# NOTE: Would ideally have a back to level select button after the last dialog has been finished.
+	if (
+		!_next_dialog_blocked
+		&& Input.is_action_just_pressed("dialog_next")
+		&& _dialog_cursor < _dialog_box_configs.size()
+	):
+		_next_dialog_blocked = true
+		_play_dialog_at_current_cursor()
 
-	if Input.is_action_just_pressed("dialog_next") && !_dialog_in_progress:
-		if _dialog_box_config_cursor < _intro_dialog_box_configs.size() - 1:
-			_dialog_box_config_cursor += 1
-			_play_dialog_from_current_cursor_position()
-		else:
-			_dialog_box.assume_idle_state()
-			_fading = true
-			ScreenFadeLayer.fade_out()
-			await ScreenFadeLayer.fade_finished
+	if _dialog_cursor == _dialog_box_configs.size() && !_next_dialog_blocked:
+		_next_dialog_blocked = true
+		ScreenFadeLayer.fade_out()
+		await ScreenFadeLayer.fade_finished
 
-			get_tree().change_scene_to_file("res://levels/00_tutorial.tscn")
+		get_tree().change_scene_to_file("res://levels/00_tutorial.tscn")
 
 
 func _ready() -> void:
-	# NOTE: No real utility in assigning DialogConfig.current_dialog_box here.
-	_dialog_box.assume_idle_state()
+	# NOTE: Shouldn't be strictly necessary.
+	AudioManager.remove_low_pass_filter_from_music()
 
-	_fading = true
+	_next_dialog_blocked = true
+	_dialog_box.assume_idle_state()
 	ScreenFadeLayer.fade_in()
 	await ScreenFadeLayer.fade_finished
 
-	_fading = false
-	_play_dialog_from_current_cursor_position()
+	_play_dialog_at_current_cursor()
 
 
-func _play_dialog_from_current_cursor_position() -> void:
-	var config: DialogBox.DialogBoxConfig = _intro_dialog_box_configs[_dialog_box_config_cursor]
-	_dialog_box.play_dialog(config)
-	_dialog_in_progress = true
+func _play_dialog_at_current_cursor() -> void:
+	_next_dialog_blocked = true
+	var dialog_box_config: DialogBox.DialogBoxConfig = _dialog_box_configs[_dialog_cursor]
+	_dialog_box.play_dialog(dialog_box_config)
+	await _dialog_box.dialog_finished
+
+	_next_dialog_blocked = false
+	_dialog_cursor += 1
 
 
-func _on_dialog_box_dialog_finished() -> void:
-	_dialog_in_progress = false
+func _on_level_select_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://level_select/level_select.tscn")

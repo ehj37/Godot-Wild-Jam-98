@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot Wild Jam 98"
-run/main_scene="uid://dl6oq10p5g33a"
+run/main_scene="uid://ktjtynk653fd"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
@@ -21,10 +21,10 @@ buses/default_bus_layout="uid://c1jyn0mt5fr2g"
 
 [autoload]
 
+DialogConfig="*uid://u5sc5wb77u6f"
 SignalBus="*uid://cewnwi2qldog4"
 AudioManager="*uid://du68jrnx210o4"
 TurnConfig="*uid://bnr5vt2fg75es"
-DialogConfig="*uid://u5sc5wb77u6f"
 PauseLayer="*uid://b8n2bis048ml3"
 ScreenFadeLayer="*uid://c0aqvfojvyvvg"
 PlayerStats="*uid://c4cir7rl81xj1"
@@ -105,5 +105,5 @@ dialog_next={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
 2d/snap/snap_2d_transforms_to_pixel=true
