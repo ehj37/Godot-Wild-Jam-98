@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-var _selected_turn_speed_button: Button
-
 # gdlint: disable=max-line-length
 @onready var _dialog_box: DialogBox = get_node(
 	"Control/HBoxContainer/LeftSectionContainer/DialogContainer/DialogBox"
@@ -62,7 +60,8 @@ func _ready() -> void:
 
 	_radio_sync_status_popup.visible = false
 	_level_name_container.visible = false
-	_selected_turn_speed_button = _normal_speed_button
+
+	_set_button_state_from_current_turn_speed()
 
 	SignalBus.snapshots_updated.connect(_on_snapshot_update)
 	SignalBus.sync_successful.connect(_on_sync_successful)
@@ -127,11 +126,18 @@ func _on_sync_unsuccessful() -> void:
 	_radio_sync_status_popup.visible = false
 
 
-func _on_turn_speed_button_pressed(button: Button, turn_speed: TurnConfig.TurnSpeed) -> void:
-	_selected_turn_speed_button.disabled = false
-	_selected_turn_speed_button = button
-	_selected_turn_speed_button.disabled = true
+func _set_button_state_from_current_turn_speed() -> void:
+	var current_turn_speed: TurnConfig.TurnSpeed = TurnConfig.get_current_turn_speed()
+
+	_tenth_speed_button.disabled = current_turn_speed == TurnConfig.TurnSpeed.TENTH
+	_normal_speed_button.disabled = current_turn_speed == TurnConfig.TurnSpeed.NORMAL
+	_double_speed_button.disabled = current_turn_speed == TurnConfig.TurnSpeed.DOUBLE
+	_instant_button.disabled = current_turn_speed == TurnConfig.TurnSpeed.INSTANT
+
+
+func _on_turn_speed_button_pressed(turn_speed: TurnConfig.TurnSpeed) -> void:
 	TurnConfig.set_new_turn_speed(turn_speed)
+	_set_button_state_from_current_turn_speed()
 
 
 func _on_reset_button_pressed() -> void:
@@ -151,19 +157,19 @@ func _on_redo_button_pressed() -> void:
 
 
 func _on_tenth_speed_button_pressed() -> void:
-	_on_turn_speed_button_pressed(_tenth_speed_button, TurnConfig.TurnSpeed.TENTH)
+	_on_turn_speed_button_pressed(TurnConfig.TurnSpeed.TENTH)
 
 
 func _on_normal_speed_button_pressed() -> void:
-	_on_turn_speed_button_pressed(_normal_speed_button, TurnConfig.TurnSpeed.NORMAL)
+	_on_turn_speed_button_pressed(TurnConfig.TurnSpeed.NORMAL)
 
 
 func _on_double_speed_button_pressed() -> void:
-	_on_turn_speed_button_pressed(_double_speed_button, TurnConfig.TurnSpeed.DOUBLE)
+	_on_turn_speed_button_pressed(TurnConfig.TurnSpeed.DOUBLE)
 
 
 func _on_instant_button_pressed() -> void:
-	_on_turn_speed_button_pressed(_instant_button, TurnConfig.TurnSpeed.INSTANT)
+	_on_turn_speed_button_pressed(TurnConfig.TurnSpeed.INSTANT)
 
 
 func _on_options_button_pressed() -> void:
