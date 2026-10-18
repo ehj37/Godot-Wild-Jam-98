@@ -37,6 +37,15 @@ var _dialog_in_progress: bool
 	"MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/ContinueLabel"
 )
 
+@onready var _yap_1_stream: AudioStreamOggVorbis = preload("./sound_effects/yap_1.ogg")
+@onready var _yap_2_stream: AudioStreamOggVorbis = preload("./sound_effects/yap_2.ogg")
+@onready var _yap_3_stream: AudioStreamOggVorbis = preload("./sound_effects/yap_3.ogg")
+@onready var _yap_4_stream: AudioStreamOggVorbis = preload("./sound_effects/yap_4.ogg")
+@onready var _yap_5_stream: AudioStreamOggVorbis = preload("./sound_effects/yap_5.ogg")
+@onready var _yap_streams: Array[AudioStreamOggVorbis] = [
+	_yap_1_stream, _yap_2_stream, _yap_3_stream, _yap_4_stream, _yap_5_stream
+]
+
 
 func assume_idle_state() -> void:
 	assert(!_dialog_in_progress)
@@ -100,3 +109,16 @@ func _set_frog_activity(frog_activity: FrogActivity) -> void:
 			_animation_player.play("idle")
 		FrogActivity.YAP:
 			_animation_player.play("yap")
+			_yap_until_dialog_over()
+
+
+func _yap_until_dialog_over() -> void:
+	var yap_stream: AudioStreamOggVorbis = _yap_streams.pick_random()
+	var pitch_scale: float = randf_range(0.8, 1.2)
+	AudioManager.play_sound_effect(yap_stream, pitch_scale)
+	# NOTE: In practice, all of the yap sound effects are slightly less than 1s
+	# long, otherwise this would sound horrible with the hardcoded 0.9.
+	await get_tree().create_timer(0.9).timeout
+
+	if _dialog_in_progress:
+		_yap_until_dialog_over()
