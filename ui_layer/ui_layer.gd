@@ -180,12 +180,11 @@ func _on_next_level_button_pressed() -> void:
 	var level_i: int = LevelSelect.LEVELS.find(get_tree().current_scene.scene_file_path)
 	assert(level_i != -1)
 
+	ScreenFadeLayer.fade_out()
+	await ScreenFadeLayer.fade_finished
+
 	if level_i < LevelSelect.LEVELS.size() - 1:
 		var next_level_path: String = LevelSelect.LEVELS[level_i + 1]
-		ScreenFadeLayer.fade_out()
-		await ScreenFadeLayer.fade_finished
-
 		get_tree().change_scene_to_file(next_level_path)
 	else:
-		# TODO: Outro
-		pass
+		get_tree().change_scene_to_file("res://outro/outro.tscn")

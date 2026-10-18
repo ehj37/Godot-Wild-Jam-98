@@ -3,8 +3,8 @@
 [ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme/theme.tres" id="1_d3a7t"]
 [ext_resource type="PackedScene" uid="uid://djqmdgah084rg" path="res://settings_section/settings_section.tscn" id="1_oa53l"]
 [ext_resource type="Script" uid="uid://bsvogvrodyahb" path="res://main_menu/main_menu.gd" id="2_bws42"]
-[ext_resource type="PackedScene" uid="uid://drtiyvlkp552e" path="res://background/background.tscn" id="3_3f7m4"]
 [ext_resource type="PackedScene" uid="uid://p3dqfdy4qccc" path="res://clicky_button/clicky_button.tscn" id="3_3shxk"]
+[ext_resource type="PackedScene" uid="uid://co87mwmd8t82u" path="res://background_cinematic/background_cinematic.tscn" id="4_6tl50"]
 
 [node name="MainMenu" type="Control" unique_id=1256323645]
 custom_minimum_size = Vector2(640, 360)
@@ -13,7 +13,8 @@ anchors_preset = 0
 theme = ExtResource("1_d3a7t")
 script = ExtResource("2_bws42")
 
-[node name="Background" parent="." unique_id=1561845036 instance=ExtResource("3_3f7m4")]
+[node name="BackgroundCinematic" parent="." unique_id=737955479 instance=ExtResource("4_6tl50")]
+layout_mode = 0
 
 [node name="MainMenu" type="Control" parent="." unique_id=635949257]
 layout_mode = 1
@@ -61,12 +62,14 @@ scroll_active = false
 
 [node name="PlayButton" parent="MainMenu/VBoxContainer" unique_id=1187957636 instance=ExtResource("3_3shxk")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 42
 text = "PLAY"
 
 [node name="LevelSelectButton" parent="MainMenu/VBoxContainer" unique_id=1594899316 instance=ExtResource("3_3shxk")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
 text = "LEVEL SELECT"
 
 [connection signal="pressed" from="MainMenu/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

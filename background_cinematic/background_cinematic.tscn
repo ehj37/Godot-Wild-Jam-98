@@ -1,0 +1,31 @@
+[gd_scene format=4 uid="uid://co87mwmd8t82u"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_d0xdn"]
+_data = PackedByteArray("AAADAAUAAAABAAAAgAIAAGgBAABIAAAAUklGRkAAAABXRUJQVlA4TDMAAAAvf8JZAA8QoSBtAxabaXfmP3ggk7ZROZPVuj8R/VeYtAHT4TG7a3flP/yH//Af/oN8+E8A")
+size_override = Vector2(640, 360)
+
+[node name="BackgroundCinematic" type="TextureRect" unique_id=737955479]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_d0xdn")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://background_cinematic/background_cinematic.aseprite",
+"source_uid": 8922780243186303032
+}
+metadata/_aseprite_wizard_source_file_hash_ = "bb299aeb8d2eac2df0fcb7dd399523e6"

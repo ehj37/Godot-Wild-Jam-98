@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://d0ei5flq8agnw"
+path="res://.godot/imported/background_cinematic.aseprite-53719e2ab5304f541a99f87aa66680e9.res"
+
+[deps]
+
+source_file="res://background_cinematic/background_cinematic.aseprite"
+dest_files=["res://.godot/imported/background_cinematic.aseprite-53719e2ab5304f541a99f87aa66680e9.res"]
+
+[params]
+

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b4hxs5kvulax7" path="res://level_select/level_select.gd" id="1_l7jsa"]
 [ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme/theme.tres" id="1_sv8in"]
-[ext_resource type="PackedScene" uid="uid://drtiyvlkp552e" path="res://background/background.tscn" id="3_kp0lh"]
+[ext_resource type="PackedScene" uid="uid://co87mwmd8t82u" path="res://background_cinematic/background_cinematic.tscn" id="3_kp0lh"]
 [ext_resource type="PackedScene" uid="uid://bd4xcofojxhs8" path="res://level_select/level_widget/level_widget.tscn" id="3_kxnyd"]
 
 [node name="LevelSelect" type="Control" unique_id=1561098333]
@@ -12,7 +12,8 @@ anchors_preset = 0
 theme = ExtResource("1_sv8in")
 script = ExtResource("1_l7jsa")
 
-[node name="Background" parent="." unique_id=1561845036 instance=ExtResource("3_kp0lh")]
+[node name="BackgroundCinematic" parent="." unique_id=737955479 instance=ExtResource("3_kp0lh")]
+layout_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1013968115]
 layout_mode = 1

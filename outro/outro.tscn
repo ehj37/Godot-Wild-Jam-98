@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://btqkvm2wbdly7"]
+
+[ext_resource type="Theme" uid="uid://brsp0xkft6avc" path="res://theme/theme.tres" id="1_7strh"]
+[ext_resource type="Script" uid="uid://dqmlcaeqdnnu5" path="res://outro/outro.gd" id="1_mng0s"]
+[ext_resource type="PackedScene" uid="uid://co87mwmd8t82u" path="res://background_cinematic/background_cinematic.tscn" id="2_24x1m"]
+[ext_resource type="PackedScene" uid="uid://b77132yy1hc1m" path="res://dialog_box/dialog_box.tscn" id="2_yw0tw"]
+[ext_resource type="PackedScene" uid="uid://p3dqfdy4qccc" path="res://clicky_button/clicky_button.tscn" id="4_24x1m"]
+
+[node name="Outro" type="Control" unique_id=1578968201]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_7strh")
+script = ExtResource("1_mng0s")
+
+[node name="BackgroundCinematic" parent="." unique_id=737955479 instance=ExtResource("2_24x1m")]
+layout_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1544385582]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="DialogBox" parent="MarginContainer" unique_id=992110468 instance=ExtResource("2_yw0tw")]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1953414145]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 0
+offset_top = 241.0
+offset_right = 640.0
+offset_bottom = 285.0
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1500731916]
+visible = false
+layout_mode = 2
+
+[node name="LevelSelectButton" parent="CenterContainer/ButtonsContainer" unique_id=1187957636 instance=ExtResource("4_24x1m")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "LEVEL SELECT"
+
+[node name="QuitButton" parent="CenterContainer/ButtonsContainer" unique_id=1807713913 instance=ExtResource("4_24x1m")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "QUIT"
+
+[connection signal="pressed" from="CenterContainer/ButtonsContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="CenterContainer/ButtonsContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,11 +1,8 @@
-[gd_scene format=4 uid="uid://cjltbei0g4sf3"]
+[gd_scene format=3 uid="uid://cjltbei0g4sf3"]
 
 [ext_resource type="PackedScene" uid="uid://b77132yy1hc1m" path="res://dialog_box/dialog_box.tscn" id="1_fpmxm"]
 [ext_resource type="Script" uid="uid://ch4x25jj3yj2a" path="res://intro/intro.gd" id="1_jkt4n"]
-
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_fpmxm"]
-_data = PackedByteArray("AAADAAUAAAABAAAAgAIAAGgBAABIAAAAUklGRkAAAABXRUJQVlA4TDMAAAAvf8JZAA8QoSBtAxabaXfmP3ggk7ZROZPVuj8R/VeYtAHT4TG7a3flP/yH//Af/oN8+E8A")
-size_override = Vector2(640, 360)
+[ext_resource type="PackedScene" uid="uid://co87mwmd8t82u" path="res://background_cinematic/background_cinematic.tscn" id="2_vjsr4"]
 
 [node name="Intro" type="Control" unique_id=2007415332]
 layout_mode = 3
@@ -14,34 +11,8 @@ offset_right = 640.0
 offset_bottom = 360.0
 script = ExtResource("1_jkt4n")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1898715421]
-texture_filter = 1
+[node name="BackgroundCinematic" parent="." unique_id=737955479 instance=ExtResource("2_vjsr4")]
 layout_mode = 0
-offset_right = 640.0
-offset_bottom = 360.0
-texture = SubResource("PortableCompressedTexture2D_fpmxm")
-metadata/_aseprite_wizard_interface_config_ = {
-"pending_changes": {}
-}
-metadata/_aseprite_wizard_config_ = {
-"convert_fps_field": 60.0,
-"convert_ms_field": 16.0,
-"convert_to_fps": false,
-"embed_tex": true,
-"i_mode": 1,
-"keep_anim_length": false,
-"layers": [],
-"o_ex_p": "",
-"o_folder": "",
-"o_name": "",
-"only_visible": false,
-"player": "",
-"scale": "1.0",
-"slice": "",
-"source": "res://intro/intro_background.aseprite",
-"source_uid": 8922780243186303032
-}
-metadata/_aseprite_wizard_source_file_hash_ = "bb299aeb8d2eac2df0fcb7dd399523e6"
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1305065900]
 layout_mode = 1
