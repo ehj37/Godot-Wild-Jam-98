@@ -57,33 +57,49 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="RadioSyncStatusPopup" type="CenterContainer" parent="Control/HBoxContainer/LeftSectionContainer" unique_id=362769260]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup" unique_id=1689494632]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup" unique_id=430878920]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/PanelContainer" unique_id=443091967]
+[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/VBoxContainer" unique_id=1689494632]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/VBoxContainer/PanelContainer" unique_id=443091967]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="RadiosSyncedLabel" type="Label" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/PanelContainer/MarginContainer" unique_id=1181732676]
-visible = false
+[node name="RadiosSyncedLabel" type="Label" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/VBoxContainer/PanelContainer/MarginContainer" unique_id=1181732676]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "RADIOS SYNCED!"
 horizontal_alignment = 1
 
-[node name="SyncUnsuccessfulLabel" type="Label" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/PanelContainer/MarginContainer" unique_id=1549491991]
+[node name="SyncUnsuccessfulLabel" type="Label" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/VBoxContainer/PanelContainer/MarginContainer" unique_id=1549491991]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "SYNC UNSUCCESSFUL"
 horizontal_alignment = 1
+
+[node name="NextLevelButton" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/VBoxContainer" unique_id=1187957636 instance=ExtResource("3_rbe85")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "NEXT LEVEL"
+
+[node name="LevelSelectButton" parent="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/VBoxContainer" unique_id=186104070 instance=ExtResource("3_rbe85")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "LEVEL SELECT"
 
 [node name="DialogContainer" type="VBoxContainer" parent="Control/HBoxContainer/LeftSectionContainer" unique_id=165732341]
 layout_mode = 2
@@ -180,7 +196,7 @@ text = "999"
 layout_mode = 2
 alignment = 1
 
-[node name="UndoButton" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer" unique_id=1187957636 instance=ExtResource("3_rbe85")]
+[node name="UndoButton" parent="Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer" unique_id=12341296 instance=ExtResource("3_rbe85")]
 layout_mode = 2
 text = "UNDO"
 
@@ -300,6 +316,8 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = "LEVEL SELECT"
 
+[connection signal="pressed" from="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer/UndoButton" to="." method="_on_undo_button_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/HBoxContainer/RedoButton" to="." method="_on_redo_button_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/RightPanel/VBoxContainer/TurnSpeedContainer/SpeedButtonContainer/TenthSpeedButton" to="." method="_on_tenth_speed_button_pressed"]

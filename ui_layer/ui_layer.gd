@@ -28,10 +28,16 @@ var _selected_turn_speed_button: Button
 	"Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup"
 )
 @onready var _sync_successful_label: Label = get_node(
-	"Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/PanelContainer/MarginContainer/RadiosSyncedLabel"
+	"Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/VBoxContainer/PanelContainer/MarginContainer/RadiosSyncedLabel"
 )
 @onready var _sync_unsuccessful_label: Label = get_node(
-	"Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/PanelContainer/MarginContainer/SyncUnsuccessfulLabel"
+	"Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/VBoxContainer/PanelContainer/MarginContainer/SyncUnsuccessfulLabel"
+)
+@onready var _sync_popup_next_level_button: Button = get_node(
+	"Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/VBoxContainer/NextLevelButton"
+)
+@onready var _sync_popup_level_select_button: Button = get_node(
+	"Control/HBoxContainer/LeftSectionContainer/RadioSyncStatusPopup/VBoxContainer/LevelSelectButton"
 )
 @onready var _turn_number_label: Label = get_node(
 	"Control/HBoxContainer/RightPanel/VBoxContainer/TurnContainer/VBoxContainer2/TurnContainer/TurnNumberLabel"
@@ -104,6 +110,10 @@ func _on_sync_successful() -> void:
 	_undo_button.disabled = true
 	_redo_button.disabled = true
 
+	await get_tree().create_timer(1.5).timeout
+	_sync_popup_next_level_button.visible = true
+	_sync_popup_level_select_button.visible = true
+
 
 func _on_sync_unsuccessful() -> void:
 	_radio_sync_status_popup.visible = true
@@ -162,3 +172,20 @@ func _on_options_button_pressed() -> void:
 
 func _on_level_select_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://level_select/level_select.tscn")
+
+
+func _on_next_level_button_pressed() -> void:
+	_sync_popup_next_level_button.disabled = true
+
+	var level_i: int = LevelSelect.LEVELS.find(get_tree().current_scene.scene_file_path)
+	assert(level_i != -1)
+
+	if level_i < LevelSelect.LEVELS.size() - 1:
+		var next_level_path: String = LevelSelect.LEVELS[level_i + 1]
+		ScreenFadeLayer.fade_out()
+		await ScreenFadeLayer.fade_finished
+
+		get_tree().change_scene_to_file(next_level_path)
+	else:
+		# TODO: Outro
+		pass
