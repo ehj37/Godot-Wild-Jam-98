@@ -9,3 +9,7 @@ signal undo_requested
 signal redo_requested
 signal reset_requested
 signal level_ready(level_name: String, num_radio_tiles: int)
+# Weird, it works though.
+signal dialog_ready(dialog_box: DialogBox)
+signal tutorial_text_show_requested(tutorial_text: String)
+signal tutorial_text_hide_requested

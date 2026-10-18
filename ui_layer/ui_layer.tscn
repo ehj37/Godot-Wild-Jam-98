@@ -86,13 +86,13 @@ text = "SYNC UNSUCCESSFUL"
 horizontal_alignment = 1
 
 [node name="DialogContainer" type="VBoxContainer" parent="Control/HBoxContainer/LeftSectionContainer" unique_id=165732341]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 alignment = 2
 
 [node name="DialogBox" parent="Control/HBoxContainer/LeftSectionContainer/DialogContainer" unique_id=992110468 instance=ExtResource("3_1xlc3")]
+visible = false
 layout_mode = 2
 
 [node name="LevelNameContainer" type="MarginContainer" parent="Control/HBoxContainer/LeftSectionContainer" unique_id=838921622]

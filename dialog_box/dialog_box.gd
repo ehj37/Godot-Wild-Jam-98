@@ -11,11 +11,13 @@ enum FrogActivity { IDLE, YAP }
 
 class DialogBoxConfig:
 	var dialog: String
+	var show_continue: bool
 
 	@warning_ignore("shadowed_variable")
 
-	func _init(dialog: String) -> void:
+	func _init(dialog: String, show_continue: bool = true) -> void:
 		self.dialog = dialog
+		self.show_continue = show_continue
 
 
 const _BASE_TEXT_SPEED: float = 10.0
@@ -26,6 +28,7 @@ const _DIALOG_SPEED_TO_MULTIPLIER: Dictionary = {
 }
 const _SPEED_UP_MULTIPLIER: float = 3.0
 
+var _active_config: DialogBoxConfig
 var _parsed_text_length: int
 var _dialog_in_progress: bool
 
@@ -57,6 +60,7 @@ func assume_idle_state() -> void:
 func play_dialog(dialog_box_config: DialogBoxConfig) -> void:
 	assert(!_dialog_in_progress)
 
+	_active_config = dialog_box_config
 	_dialog_in_progress = true
 	_continue_label.visible = false
 	_rich_text_label.text = dialog_box_config.dialog
@@ -88,7 +92,7 @@ func _process(delta: float) -> void:
 		dialog_finished.emit()
 		_animation_player.play("idle")
 		_dialog_in_progress = false
-		_continue_label.visible = true
+		_continue_label.visible = _active_config.show_continue
 		_set_frog_activity(FrogActivity.IDLE)
 
 

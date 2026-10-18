@@ -217,7 +217,7 @@ func _ready() -> void:
 	_frog_rotate_timer.timeout.connect(action_finished.emit)
 	add_child(_frog_rotate_timer)
 
-	SignalBus.sync_requested.connect(_on_sync_button_pressed)
+	SignalBus.sync_requested.connect(_on_sync_requested)
 	# TODO: Undo should work during a turn. Should skip to the end and instantly
 	# revert.
 	SignalBus.undo_requested.connect(_undo)
@@ -449,7 +449,7 @@ func _reset() -> void:
 	SignalBus.snapshots_updated.emit(_level_snapshots.size(), _current_snapshot_cursor)
 
 
-func _on_sync_button_pressed() -> void:
+func _on_sync_requested() -> void:
 	if grid.win_condition_met():
 		_level_won = true
 		SignalBus.sync_successful.emit()

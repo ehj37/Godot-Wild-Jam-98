@@ -32,6 +32,7 @@ func _process(_delta: float) -> void:
 
 
 func _ready() -> void:
+	# NOTE: No real utility in assigning DialogConfig.current_dialog_box here.
 	_dialog_box.assume_idle_state()
 
 	_fading = true

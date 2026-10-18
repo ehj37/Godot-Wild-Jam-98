@@ -3,6 +3,9 @@ extends CanvasLayer
 var _selected_turn_speed_button: Button
 
 # gdlint: disable=max-line-length
+@onready var _dialog_box: DialogBox = get_node(
+	"Control/HBoxContainer/LeftSectionContainer/DialogContainer/DialogBox"
+)
 @onready var _num_towers_label: Label = get_node(
 	"Control/HBoxContainer/RightPanel/VBoxContainer/SyncContainer/HBoxContainer/NumTowersLabel"
 )
@@ -46,6 +49,8 @@ var _selected_turn_speed_button: Button
 
 
 func _ready() -> void:
+	DialogConfig.current_dialog_box = _dialog_box
+
 	_radio_sync_status_popup.visible = false
 	_level_name_container.visible = false
 	_selected_turn_speed_button = _normal_speed_button
@@ -54,6 +59,7 @@ func _ready() -> void:
 	SignalBus.sync_successful.connect(_on_sync_successful)
 	SignalBus.sync_unsuccessful.connect(_on_sync_unsuccessful)
 	SignalBus.level_ready.connect(_on_level_ready)
+	SignalBus.dialog_ready.emit(_dialog_box)
 
 
 func _on_level_ready(level_name: String, num_radio_towers: int) -> void:

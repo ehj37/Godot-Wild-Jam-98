@@ -11,9 +11,9 @@ size_override = Vector2(32, 32)
 _data = PackedByteArray("AAADAAUAAAABAAAAYAAAAGAAAACKAgAAUklGRoICAABXRUJQVlA4THYCAAAvX8AXEE9gIEAS1JrQ/3nN8IaRgGlGMnqQHo++vkAgCXntLeY/ALDA82LHHZg2ZJDj2rbbVrwzeJcBYOsD/tRLAzBxGvUawU+CJ+A+m62z73Qf7yOl68pdRP8ZuG3bSLc3e8+ovkpT0mjHo6lqpCNdHPBkKnGOs/+HN+NQBzp+H0ggzpHgpknCHI/gAExFSQtHXx3tsJF5KRzp0byjlzXHtOD4BWAq0kfzDpVqxZErHQCui5KZd5SDNitd/aKDt4W7GAU3TW7ZcdPLkmPkbeE22wEYXWsOWXSQd5OKb3CObWad5ui0cBDeUZ3kGMmmcOwQ4iD3ZUO4A34ce4l14BMc7CTKwbn6nGzDHMxJjipRDqKuUo5tjKMAKNlKgOMrMSVdd5zao6nquuMUd7o44MlU1h3Hu8/+H96MQ73uWHcv9PtAAvWq43h3gpumft1xtPsRHIBpkjXHEW4p/rmNnFlHOCbxDu8u2OnRfqFgLTtc3uHdvWPpoxmAa9eiw+cc3q1+FGZzvM31yw5f6cBt8Q+9evQtORYq9rlpfGY7AOTdfLzqmPrSMXK70FCmq46plyXHVoro2GxU1xxXUy/e4eoq384z9s26I6l4R+EuGoriHPDuvcQ68AkOdhLl4Fx9TrZhDuYkR5UoB1FXKcc2xlEAlGwlwPGVm1SDS2aaJ4nr8fK77Yg6bvv78v9IQOLC5fcB0MBjzJOGldRGAno1BR3oo/3igOtp6oMWM/sFIC8SulxHLZWZAQBvG6mi2uVGbpoqrGHecithEcHt4I7ZVVENfrtvwoJf7SU2fELsJCrO1edkGxZzkqNKVERdJTJst3ifkq2EVAE=")
 size_override = Vector2(96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l1rk0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4a5g"]
 atlas = SubResource("PortableCompressedTexture2D_de4jt")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(0, 32, 32, 32)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_guj6r"]
@@ -41,14 +41,14 @@ atlas = SubResource("PortableCompressedTexture2D_de4jt")
 region = Rect2(32, 32, 32, 32)
 filter_clip = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u4a5g"]
-atlas = SubResource("PortableCompressedTexture2D_de4jt")
-region = Rect2(0, 32, 32, 32)
-filter_clip = true
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_nb7np"]
 atlas = SubResource("PortableCompressedTexture2D_de4jt")
 region = Rect2(64, 0, 32, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1rk0"]
+atlas = SubResource("PortableCompressedTexture2D_de4jt")
+region = Rect2(32, 0, 32, 32)
 filter_clip = true
 
 [sub_resource type="Animation" id="Animation_u4a5g"]
@@ -154,7 +154,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
-texture = SubResource("AtlasTexture_l1rk0")
+texture = SubResource("AtlasTexture_u4a5g")
 stretch_mode = 4
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
