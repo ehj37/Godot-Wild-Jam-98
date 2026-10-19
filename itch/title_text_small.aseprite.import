@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dvap86vhyy8nn"
+path="res://.godot/imported/title_text_small.aseprite-26c40df513813711a4a71750c90dc59d.res"
+
+[deps]
+
+source_file="res://itch/title_text_small.aseprite"
+dest_files=["res://.godot/imported/title_text_small.aseprite-26c40df513813711a4a71750c90dc59d.res"]
+
+[params]
+

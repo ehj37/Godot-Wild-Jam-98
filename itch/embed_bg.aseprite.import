@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bbfjtetcuijkq"
+path="res://.godot/imported/embed_bg.aseprite-1d9a4379ed388f39a7e13ecda818c700.res"
+
+[deps]
+
+source_file="res://itch/embed_bg.aseprite"
+dest_files=["res://.godot/imported/embed_bg.aseprite-1d9a4379ed388f39a7e13ecda818c700.res"]
+
+[params]
+
